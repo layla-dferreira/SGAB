@@ -4,7 +4,7 @@ package sgab.model.dto;
  * GRUPO F
  * @author luisf
  */
-class Autor extends Pessoa {
+class Autor extends Pessoa implements AutorInterface {
     
     private String nacionalidade;   
     private String nascimento;      // (dd/mm/aaaa)
@@ -24,24 +24,31 @@ class Autor extends Pessoa {
     }
     
     // Getters e Setters
+    @Override
     public void setNacionalidade(String nacionalidade){
         this.nacionalidade = nacionalidade;
     }
+    @Override
     public String getNacionalidade(){
         return nacionalidade;
     }
+    @Override
     public void setNascimento(String nascimento){
         this.nascimento = nascimento;
     }
+    @Override
     public String getNascimento(){
         return nascimento;
     }
+    @Override
     public void setGenero(String genero){
         this.genero = genero;
     }
+    @Override
     public String getGenero(){
         return genero;
     }
+   
     // Sujeito a alteração
     public void setProx(Autor proxAutor){
         this.prox = proxAutor;
@@ -51,6 +58,7 @@ class Autor extends Pessoa {
     }
     
     // Retorna os dados do autor
+    @Override
     public String biografia(){
         String resultado = this.getNome() + ", " + nacionalidade + ", " + nascimento + ", " + genero + "."; 
         return resultado;    
