@@ -51,7 +51,7 @@ class Autor extends Pessoa {
     }
     
     // Retorna os dados do autor
-    String biografia(){
+    public String biografia(){
         String resultado = this.getNome() + ", " + nacionalidade + ", " + nascimento + ", " + genero + "."; 
         return resultado;    
     }   
