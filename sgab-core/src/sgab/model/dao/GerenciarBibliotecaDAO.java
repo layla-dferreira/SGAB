@@ -12,6 +12,8 @@ public interface GerenciarBibliotecaDAO<E> {
     public void GerenciarBiblioteca(BibliotecaDAO biblioteca);
     public void adicionarAtendente(E atendente);
     public void adicionarBibliotecario(E bibliotecario);
+    public void alterarNome(E nome);
+    public void alterarID(E id);
     public void alterarAtendente(E atendente);
     public void alterarBibliotecario(E bibliotecario);
     public E removerAtendente(E atendente);
