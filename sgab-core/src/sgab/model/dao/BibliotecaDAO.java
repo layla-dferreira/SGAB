@@ -10,13 +10,17 @@ package sgab.model.dao;
  */
 public interface BibliotecaDAO<E>{
     
-    public void Biblioteca(E unidadeorg, String nome, E id, E[] obras);
+    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, E[] atendentes, E[] bibliotecarios);
     public void setUnidadeOrg(E unidadeorg);
     public void setNome(String nome);
     public void setId(E id);
-    public void setObras(E[] obras);
+    public void setAcervo(E acervo);
+    public void setAtendentes(E[] atendentes);
+    public void setBibliotecarios(E[] Bibliotecarios);
     public E getUnidadeOrganizacional();
     public String getNome();
     public E getId();
-    public E[] getObras();
+    public E getAcervo();
+    public E[] getAtendentes();
+    public E[] getBibliotecarios();
 }
