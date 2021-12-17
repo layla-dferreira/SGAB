@@ -2,7 +2,10 @@ package sgab.model.dao;
 
 import jdk.jfr.Experimental;
 import sgab.model.dto.Autor;
-
+/**
+ * @author Marcos Paulo
+ * Grupo F
+ * */
 @Experimental
 public interface GestaoAutorDAO {
     Autor getAutor(String nome);
