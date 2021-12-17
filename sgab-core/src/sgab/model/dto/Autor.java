@@ -1,28 +1,29 @@
 package sgab.model.dto;
 
+import sgab.model.dao.AutorDAO;
+
 /**
  * GRUPO F
  * @author luisf
+ * @implNote Marcos Paulo: Tive que alterar algumas coisas na classe, como o construtor e a variavel prox.
+ * O motivo dessas alterações se da pelo fato de não termos um banco de dados em uso no momento, então se
+ * torna impraticavel a utilização do parametro ID implemtado na classe Pessoa. A variavel prox foi removida
+ * pelo fato de não estar sendo usada uma lista encadeada, mas sim um ArrayList.
  */
-class Autor extends Pessoa implements AutorInterface {
+public class Autor extends Pessoa implements AutorDAO {
     
     private String nacionalidade;   
     private String nascimento;      // (dd/mm/aaaa)
     private String genero;
     
-    // Caso seja membro de uma lista, sujeito a alteração
-    private Autor prox;             // Aponta para o próximo autor
-    
     // Construtor
-    public Autor(long id){
-        setId(id);
-        setNome("");
-        this.nacionalidade = "";
-        this.nascimento = "";
-        this.genero = "";
-        this.prox = null;
+    public Autor(String nome, String nacionalidade, String nascimento, String genero) {
+        super.setNome(nome);
+        this.nacionalidade = nacionalidade;
+        this.nascimento = nascimento;
+        this.genero = genero;
     }
-    
+
     // Getters e Setters
     @Override
     public void setNacionalidade(String nacionalidade){
@@ -48,19 +49,10 @@ class Autor extends Pessoa implements AutorInterface {
     public String getGenero(){
         return genero;
     }
-   
-    // Sujeito a alteração
-    public void setProx(Autor proxAutor){
-        this.prox = proxAutor;
-    }
-    public Autor getProx(){
-        return prox;
-    }
-    
+
     // Retorna os dados do autor
     @Override
     public String biografia(){
-        String resultado = this.getNome() + ", " + nacionalidade + ", " + nascimento + ", " + genero + "."; 
-        return resultado;    
+        return this.getNome() + ", " + nacionalidade + ", " + nascimento + ", " + genero + ".";
     }   
 }
