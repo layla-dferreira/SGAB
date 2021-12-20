@@ -16,7 +16,7 @@ public interface BibliotecaDAO<E>{
     public void setId(E id);
     public void setAcervo(E acervo);
     public void setAtendentes(E[] atendentes);
-    public void setBibliotecarios(E[] Bibliotecarios);
+    public void setBibliotecarios(E[] bibliotecarios);
     public E getUnidadeOrganizacional();
     public String getNome();
     public E getId();
