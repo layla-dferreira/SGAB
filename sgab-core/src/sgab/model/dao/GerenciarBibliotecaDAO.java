@@ -13,14 +13,11 @@ Import sgab.model.dto.Pessoa;
 public interface GerenciarBibliotecaDAO<E> {
     public void adicionarAtendente(Pessoa atendente);
     public void adicionarBibliotecario(Pessoa bibliotecario);
-    public void alterarNome(E nome);
-    public void alterarID(E id);
-    public void alterarAtendente(Pessoa atendente);
-    public void alterarBibliotecario(Pessoa bibliotecario);
-    public E removerAtendente(Pessoa atendente);
-    public E removerBibliotecario(Pessoa bibliotecario);
+    public E removerAtendente(String nome);
+    public E removerBibliotecario(String nome);
     public E pesquisarAtendente(String nome);
     public E pesquisarBibliotecario(String nome);
+    
     public void excluirBiblioteca(String nome);
     public void mudarBiblioteca(BibliotecaDAO biblioteca);
 }
