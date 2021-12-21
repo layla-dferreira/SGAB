@@ -1,93 +1,137 @@
 package sgab.model.dto;
 
 /**
- *
  * @author Victor Schneider
  */
+
 public class Biblioteca<E> implements BibliotecaDAO{
 
     private E unidadeorg;
     private String nome;
     private E id;
     private E acervo;
-    private E[] atendentes;
-    private E[] bibliotecarios;
     
-    private boolean reservado;
+    ArrayList<Pessoa> Atendentes = new ArrayList<>();
+    ArrayList<Pessoa> Bibliotecarios = new ArrayList<>();
+
     
     //construtor
-    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, E[] atendentes, E[] bibliotecarios){
+    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, E atendente, E bibliotecario){
         
         this.unidadeorg = unidadeorg;
         this.nome = nome;
         this.id = id;
         this.acervo = acervo;
-        this.atendentes = atendentes;
-        this.bibliotecarios = bibliotecarios;
+        this.Atendentes.add(atendente);
+        this.Bibliotecarios.add(bibliotecario);
     }
     
     //setters
-    @Override
     public void setUnidadeOrg(E unidadeorg){
     
         this.unidadeorg = unidadeorg;
     }
-    @Override
     public void setNome(String Nome){
     
         this.nome = nome;
     }
-    @Override
     public void setId(E id){
     
         this.id = id;
     }
-    @Override
     public void setAcervo(E acervo){
     
         this.acervo = acervo;
     }
-    @Override
-    public void setAtendentes(E atendentes){
-    
-        this.atendentes = atendentes;
-    }
-    @Override
-    public void setBibliotecarios(E bibliotecarios){
-    
-        this.bibliotecarios = bibliotecarios;
-    }
     
     //getters
-    
-    @Override
     public E getUnidadeOrg(){
     
         return unidadeorg;
     }
-    @Override
     public String getNome(){
     
         return nome;
     }
-    @Override
     public E id(){
     
         return id;
     }
-    @Override
     public E getAcervo(){
     
         return acervo;
-    }
-    @Override
-    public E getAtendentes(){
+    } 
+    public E getAtendente(){
     
-        return atendentes;
+        return Atendentes;
     }
-    @Override
-    public E getBibliotecarios(){
+    public E getBibliotecario(){
     
-        return bibliotecarios;
+        return Bibliotecarios;
     }
+    
+    //metodos da interface
+    //metodos com bibliotecario
+    @Override
+    public void adicionaBibliotecario(Pessoa bibliotecario){
+    
+        this.Bibliotecarios.add(bibliotecario);
+    }
+    
+    @Override
+    public void removeBibliotecarioPorNome(String nome){
+        
+         for each(bibliotecario : Bibliotecarios){
+             
+             if(bibliotecario.nome == nome){
+                 
+                 Bibliotecarios.remove(bibliotecario);
+             }
+         }
+    }
+    
+    @Override 
+    public Pessoa pesquisaBibliotecarioPorNome(String nome){
+    
+        for each(bibliotecario : Bibliotecarios){
+             
+             if(bibliotecario.nome == nome)  
+                 return bibliotecario;
+             else 
+                 return null;
+        }
+    }
+    
+    //metodos com atendente
+    
+    @Override
+    public void adicionaAtendente(Pessoa atendente){
+    
+        this.Atendentes.add(atendente);
+    }
+    
+    @Override
+    public void removeAtendentePorNome(String nome){
+        
+        for each(atendente : Atendentes){
+             
+             if(atendente.nome == nome){
+                 
+                 Atendentes.remove(atendente);
+             }
+         }
+    }
+    
+    @Override
+    public Pessoa pesquisaAtendentePorNome(String nome){
+        
+         for each(atendente : Atendentes){
+             
+             if(atendente.nome == nome)  
+                 return atendente;
+             else 
+                 return null;
+        }
+    }
+    
 }
