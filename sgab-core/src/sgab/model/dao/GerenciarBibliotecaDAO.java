@@ -9,14 +9,14 @@ package sgab.model.dao;
  * @author gasa1
  */
 public interface GerenciarBibliotecaDAO<E> {
-    public void adicionarAtendente(E atendente);
-    public void adicionarBibliotecario(E bibliotecario);
+    public void adicionarAtendente(Pessoa atendente);
+    public void adicionarBibliotecario(Pessoa bibliotecario);
     public void alterarNome(E nome);
     public void alterarID(E id);
-    public void alterarAtendente(E atendente);
-    public void alterarBibliotecario(E bibliotecario);
-    public E removerAtendente(E atendente);
-    public E removerBibliotecario(E bibliotecario);
+    public void alterarAtendente(Pessoa atendente);
+    public void alterarBibliotecario(Pessoa bibliotecario);
+    public E removerAtendente(Pessoa atendente);
+    public E removerBibliotecario(Pessoa bibliotecario);
     public E pesquisarAtendente(String nome);
     public E pesquisarBibliotecario(String nome);
     public void excluirBiblioteca(String nome);
