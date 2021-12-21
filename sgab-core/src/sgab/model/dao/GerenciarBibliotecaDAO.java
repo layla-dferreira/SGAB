@@ -9,7 +9,6 @@ package sgab.model.dao;
  * @author gasa1
  */
 public interface GerenciarBibliotecaDAO<E> {
-    public void GerenciarBiblioteca(BibliotecaDAO biblioteca);
     public void adicionarAtendente(E atendente);
     public void adicionarBibliotecario(E bibliotecario);
     public void alterarNome(E nome);
