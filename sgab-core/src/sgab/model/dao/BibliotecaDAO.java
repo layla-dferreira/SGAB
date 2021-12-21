@@ -4,7 +4,7 @@
  */
 package sgab.model.dao;
 
-Import sgab.model.dto.Pessoa;
+Import sgab.model.dto;
 /**
  *
  * @author gasa1
