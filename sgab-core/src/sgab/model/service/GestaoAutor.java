@@ -48,65 +48,14 @@ public class GestaoAutor implements GestaoAutorDAO {
         }
     }
 
-    public String getInfoAutor(int id) throws IllegalArgumentException {
-        if (id >= 0) {
-            for (Autor autor : mock) {
-                if (autor.getId() == id) {
-                    return autor.biografia();
-                }
-            }
-            return null;
-        } else {
-            throw new IllegalArgumentException("o parametro id é invalido");
-        }
-    }
-
-    public String getInfoAutor(String nome) throws IllegalArgumentException {
-        if (nome != null && !nome.trim().equals("")) {
-            for (Autor autor : mock) {
-                if (autor.getNome().equals(nome)) {
-                    return autor.biografia();
-                }
-            }
-            return null;
-        } else {
-            throw new IllegalArgumentException("o parametro nome é invalido");
-        }
-    }
-
     public Autor[] getAutores() {
         return Arrays.copyOf(mock.toArray(), mock.size(), Autor[].class);
     }
 
-    public Autor[] getAutoresPorGenero(String genero) throws IllegalArgumentException {
-        if (genero != null && !genero.trim().equals("")) {
-            ArrayList<Autor> filtrado = new ArrayList<>();
-            for (Autor autor : mock) {
-                if (autor.getGenero().equals(genero)) {
-                    filtrado.add(autor);
-                }
-            }
-            return Arrays.copyOf(filtrado.toArray(), filtrado.size(), Autor[].class);
-        } else {
-            throw new IllegalArgumentException("o parametro genero é invalido");
-        }
-    }
-
-    public Autor[] getAutoresPorNacionalidade(String nacionalidade) throws IllegalArgumentException{
-        if (nacionalidade != null && !nacionalidade.trim().equals("")) {
-            ArrayList<Autor> filtrado = new ArrayList<>();
-            for (Autor autor : mock) {
-                if (autor.getNacionalidade().equals(nacionalidade)) {
-                    filtrado.add(autor);
-                }
-            }
-            return Arrays.copyOf(filtrado.toArray(), filtrado.size(), Autor[].class);
-        } else {
-            throw new IllegalArgumentException("o parametro nacionalidade é invalido");
-        }
-    }
-
     public void removeAutor(int id) throws IllegalArgumentException{
+        /* TODO: Quando um banco de dados for adicionado e o cadastro de obras estiver pronto
+        *   deve ser adicionado uma verificação, o autor devera ser apagado apenas quando
+        *   não tiver nenhuma obra em seu nome*/
         if (id >= 0) {
             for (int i = 0; i < mock.size(); i++) {
                 if (mock.get(i).getId() == id){
@@ -121,6 +70,9 @@ public class GestaoAutor implements GestaoAutorDAO {
     }
 
     public void removeAutor(String nome) {
+        /* TODO: Quando um banco de dados for adicionado e o cadastro de obras estiver pronto
+         *   deve ser adicionado uma verificação, o autor devera ser apagado apenas quando
+         *   não tiver nenhuma obra em seu nome*/
         if (nome != null && !nome.trim().equals("")) {
             ArrayList<Autor> filtrado = new ArrayList<>();
             for (int i = 0; i < mock.size(); i++) {
@@ -135,9 +87,28 @@ public class GestaoAutor implements GestaoAutorDAO {
         }
     }
 
-    public void adicionarAutor(String nome, String nacionalidade, String nascimento, String genero) {
-        Autor autor = new Autor(nome, nacionalidade, nascimento, genero);
+    public void adicionarAutor(String nome) throws IllegalArgumentException{
+        Autor autor = new Autor(nome);
+        if (mock.contains(autor)){
+            throw new IllegalArgumentException("O autor já existe no banco de dados");
+        }
         mock.add(autor);
+    }
+
+    public void alterarAutor(String nomeAntigo, String novoNome){
+        Autor autor = this.getAutor(nomeAntigo);
+        if (autor != null){
+            autor.setNome(novoNome);
+        }
+        throw new IllegalArgumentException("O autor a ser alterado não existe no banco");
+    }
+
+    public void alterarAutor(int id, String novoNome){
+        Autor autor = this.getAutor(id);
+        if (autor != null){
+            autor.setNome(novoNome);
+        }
+        throw new IllegalArgumentException("O autor a ser alterado não existe no banco");
     }
 
     public int getNumeroDeAutores() {

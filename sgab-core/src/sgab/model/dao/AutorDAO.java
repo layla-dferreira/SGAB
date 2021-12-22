@@ -2,15 +2,11 @@ package sgab.model.dao;
 
 /**
  * GRUPO F
- * @author luisf
+ * @author luisf, Marcos Paulo
  */
 public interface AutorDAO {
-    
-    String getNacionalidade();
-    void setNacionalidade(String n);
-    String getGenero();
-    void setGenero(String n);
-    String getNascimento();
-    void setNascimento(String n);
-    String biografia();
+    int getId();
+    void setId(int id);
+    void setNome(String nome);
+    String getNome();
 }

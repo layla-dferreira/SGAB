@@ -12,21 +12,17 @@ public interface GestaoAutorDAO {
 
     Autor getAutor(int id);
 
-    String getInfoAutor(int id);
-
-    String getInfoAutor(String nome);
-
     Autor[] getAutores();
-
-    Autor[] getAutoresPorGenero(String genero);
-
-    Autor[] getAutoresPorNacionalidade(String nacionalidade);
 
     void removeAutor(int id);
 
     void removeAutor(String nome);
 
-    void adicionarAutor(String nome, String nacionalidade, String nascimento, String genero);
+    void adicionarAutor(String nome);
 
     int getNumeroDeAutores();
+
+    void alterarAutor(String nomeAntigo, String novoNome);
+
+    void alterarAutor(int id, String novoNome);
 }
