@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cadastro</title>
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <link rel="stylesheet" href="css/template-form.css" />
+  </head>
+  <body>
+    <header>
+      <div id="pagina-inicial">
+        <a href="" title="Página Inicial"> Biblioteca </a>
+      </div>
+      <div id="logo-topo">
+        <a
+          href="http://www.cefetmg.br/"
+          target="_blank"
+          title="Centro Federal de Educação Tecnológica de Minas Gerais"
+        >
+          <img
+            src="img-template/logo_topo.png"
+            alt="Centro Federal de Educação Tecnológica de Minas Gerais"
+          />
+        </a>
+      </div>
+    </header>
+    <main>
+      <section id="nome-form">
+        <h1>Cadastrar Obra</h1>
+      </section>
+      <section id="form">
+        <div id="caixa-form">
+          <form action="" method="post">
+            <label for="categoria">Categoria</label>
+            <select name="" id="categoria">
+              <option value="">Livro</option>
+              <option value="">Mapa</option>
+              <option value="">Documento computacional</option>
+            </select>
+            <label for="titulo">Título</label>
+            <input
+              type="select"
+              id="titulo"
+              name="titulo"
+              placeholder="Insira o título da obra"
+            />
+            <label for="titulo">Nome do(a) autor(a)</label>
+            <input
+              id="titulo"
+              name="titulo"
+              placeholder="Insira o nome do(a) autor(a)"
+            />
+            <label for="titulo">Assunto</label>
+            <span style="float: right; font-weight: bolder; font-size: 1.5em;
+            cursor: pointer; user-select: none;" id="expandir">+</span>
+            <div id="tags">
+
+            </div>
+
+            <!-- jsp -->
+            <label for="titulo">Nota</label>
+            <input
+              style="height: 5em;"
+              id="titulo"
+              name="titulo"
+              placeholder="Insira uma breve descrição"
+            />
+            <div class="divisao">
+              <div>
+                <label for="titulo">Ano de publicação</label>
+                <input
+                  id="titulo"
+                  name="titulo"
+                  placeholder="Ex.: 1987"
+                />
+              </div>
+              <div>
+                <label for="titulo">Editora</label>
+                <input
+                  id="titulo"
+                  name="titulo"
+                  placeholder="Ex.: Fundamento"
+                />
+              </div>
+            </div>
+            <label for="titulo">Cidade da Editora</label>
+            <input
+              id="titulo"
+              name="titulo"
+              placeholder="Insira uma breve descrição"
+            />
+            <div class="divisao">
+              <div>
+                <label for="titulo">Edição</label>
+                <input
+                  id="titulo"
+                  name="titulo"
+                  placeholder="Insira a edição"
+                />
+              </div>
+              <div>
+                <label for="titulo">Volume</label>
+                <input
+                  id="titulo"
+                  name="titulo"
+                  placeholder="Ex.: 1"
+                />
+              </div>
+            </div>
+            <div id="buttons">
+                <button type="submit">Cadastrar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="cadastrar.js"></script>
+  </body>
+</html>
