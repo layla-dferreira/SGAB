@@ -4,20 +4,19 @@
  */
 package sgab.model.dao;
 
-Import sgab.model.dto.Pessoa;
+import sgab.model.dto.Pessoa;
 
 /**
  *
  * @author gasa1
  */
 public interface GerenciarBibliotecaDAO<E> {
-    public void adicionarAtendente(Pessoa atendente);
-    public void adicionarBibliotecario(Pessoa bibliotecario);
-    public E removerAtendente(String nome);
-    public E removerBibliotecario(String nome);
-    public E pesquisarAtendente(String nome);
-    public E pesquisarBibliotecario(String nome);
-    
-    public void excluirBiblioteca(String nome);
-    public void mudarBiblioteca(BibliotecaDAO biblioteca);
+    public void mudarId(E id);
+    public void mudarOrganizacao(E org);
+    public void mudarNome(String nome);
+    public void mudarAcervo(E acervo);
+    public E pegarId ();
+    public E pegarOrganizacao ();
+    public String pegarNome ();
+    public E pegarAcervo ();
 }

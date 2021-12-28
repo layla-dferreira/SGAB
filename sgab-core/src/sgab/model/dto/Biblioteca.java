@@ -4,7 +4,9 @@ package sgab.model.dto;
  * @author Victor Schneider
  */
 
-public class Biblioteca<E> implements BibliotecaDAO{
+import java.util.*;
+
+public class Biblioteca<E>{
 
     private E unidadeorg;
     private String nome;
@@ -16,7 +18,7 @@ public class Biblioteca<E> implements BibliotecaDAO{
 
     
     //construtor
-    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, E atendente, E bibliotecario){
+    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, Pessoa atendente, Pessoa bibliotecario){
         
         this.unidadeorg = unidadeorg;
         this.nome = nome;
@@ -46,92 +48,21 @@ public class Biblioteca<E> implements BibliotecaDAO{
     
     //getters
     public E getUnidadeOrg(){
-    
         return unidadeorg;
     }
     public String getNome(){
-    
         return nome;
     }
-    public E id(){
-    
+    public E getId(){
         return id;
     }
     public E getAcervo(){
-    
         return acervo;
     } 
-    public E getAtendente(){
-    
+    public ArrayList getAtendente(){
         return Atendentes;
     }
-    public E getBibliotecario(){
-    
+    public ArrayList getBibliotecario(){
         return Bibliotecarios;
     }
-    
-    //metodos da interface
-    //metodos com bibliotecario
-    @Override
-    public void adicionaBibliotecario(Pessoa bibliotecario){
-    
-        this.Bibliotecarios.add(bibliotecario);
-    }
-    
-    @Override
-    public void removeBibliotecarioPorNome(String nome){
-        
-         for each(bibliotecario : Bibliotecarios){
-             
-             if(bibliotecario.nome == nome){
-                 
-                 Bibliotecarios.remove(bibliotecario);
-             }
-         }
-    }
-    
-    @Override 
-    public Pessoa pesquisaBibliotecarioPorNome(String nome){
-    
-        for each(bibliotecario : Bibliotecarios){
-             
-             if(bibliotecario.nome == nome)  
-                 return bibliotecario;
-             else 
-                 return null;
-        }
-    }
-    
-    //metodos com atendente
-    
-    @Override
-    public void adicionaAtendente(Pessoa atendente){
-    
-        this.Atendentes.add(atendente);
-    }
-    
-    @Override
-    public void removeAtendentePorNome(String nome){
-        
-        for each(atendente : Atendentes){
-             
-             if(atendente.nome == nome){
-                 
-                 Atendentes.remove(atendente);
-             }
-         }
-    }
-    
-    @Override
-    public Pessoa pesquisaAtendentePorNome(String nome){
-        
-         for each(atendente : Atendentes){
-             
-             if(atendente.nome == nome)  
-                 return atendente;
-             else 
-                 return null;
-        }
-    }
-    
 }
