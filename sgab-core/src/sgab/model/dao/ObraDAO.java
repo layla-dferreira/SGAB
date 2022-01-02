@@ -20,6 +20,7 @@ public class ObraDAO implements GenericDAO<Obra, Integer>{
 
     @Override
     public void alterar(Obra entidade) {
+        obras.put(entidade.getId(), entidade);
     }
 
     @Override

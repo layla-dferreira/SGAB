@@ -2,6 +2,7 @@ package sgab.model.service;
 
 import sgab.model.dto.Pessoa;
 import sgab.model.dto.util.PessoaHelper;
+import sgab.model.dto.Obra;
 /**
  *
  * @author maffort <maffort@gmail.com>
@@ -15,6 +16,14 @@ public class GestaoPessoas {
         
         // chamar dao de pessoa para persistir dado
             
+    }
+    
+    void alterarObra(Obra obra){
+        
+    }
+    
+    void pesquisarObra(Obra obra){
+        
     }
     
 }
