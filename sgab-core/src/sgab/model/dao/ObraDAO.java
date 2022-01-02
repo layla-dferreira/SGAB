@@ -25,7 +25,8 @@ public class ObraDAO implements GenericDAO<Obra, Integer>{
 
     @Override
     public Obra pesquisar(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        return (obras.get(key));
+        
     }
 
     @Override
