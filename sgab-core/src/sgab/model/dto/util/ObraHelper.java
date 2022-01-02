@@ -1,5 +1,7 @@
+package sgab.model.dto.util;
 
-import sgab.model.dto.Pessoa;
+
+import sgab.model.dto.Obra;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +14,7 @@ import sgab.model.dto.Pessoa;
  * @author iulli
  */
 public class ObraHelper {
-    public static boolean validarPessoa(Pessoa pessoa) {
+    public static boolean validarObra(Obra obra) {
         
         
         
