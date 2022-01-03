@@ -7,6 +7,7 @@ package sgab.model.service;
 import java.util.ArrayList;
 import sgab.model.dto.Fornecedor;
 import sgab.model.dao.FornecedoresDAO;
+import sgab.model.dto.util.FornecedorHelper;
 
 /**
  *
@@ -18,6 +19,24 @@ public class GestaoFornecedores implements FornecedoresDAO {
     @Override
     public void CadastrarFornecedor(Long cnpj, String nomeFornecedor, String email, Long telefone, Long cep, String endereco) {
         Fornecedor novoFornecedor = new Fornecedor(cnpj, nomeFornecedor, email, telefone, cep, endereco);
+        
+        switch(FornecedorHelper.validarFornecedor(novoFornecedor)){
+            case 0:
+                break;
+            case 1:
+                throw new RuntimeException("O cnpj do fornecedor está vazio.");
+            case 2:
+                throw new RuntimeException("O nome do fornecedor está vazio.");
+            case 3:
+                throw new RuntimeException("O email do fornecedor está vazio.");
+            case 4:
+                throw new RuntimeException("O telefone do fornecedor está vazio.");
+            case 5:
+                throw new RuntimeException("O cep do fornecedor está vazio.");
+            case 6:
+                throw new RuntimeException("O endereço do fornecedor está vazio.");
+        }
+        
         fornecedores.add(novoFornecedor);
     }
     
