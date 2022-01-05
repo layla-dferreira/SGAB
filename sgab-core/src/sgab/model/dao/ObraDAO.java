@@ -9,7 +9,7 @@ import java.util.Map;
 import sgab.model.dto.Obra;
 
 public class ObraDAO implements GenericDAO<Obra, Integer>{
-    private Map<Integer, Obra> obras = new HashMap<>();
+    private static Map<Integer, Obra> obras = new HashMap<>();
 
     
     @Override
