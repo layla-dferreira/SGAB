@@ -13,7 +13,7 @@ import java.util.Vector;
  * @author HP
  */
 public class Obra  {
-    private int id;
+    private Integer id;
     private String categoria;
     private String titulo;
     private Autores[] autor;
@@ -25,8 +25,9 @@ public class Obra  {
     private String edicao;
     private int volume;
 
-    public Obra(int id, String categoria, String titulo, String nota, int anoPublicacao, String editora, String cidadeEditora, String edicao, int volume) {
+    public Obra(Integer id, String categoria, String titulo, String nota, int anoPublicacao, String editora, String cidadeEditora, String edicao, int volume) {
         this.id = id;
+        id++;
         this.categoria = categoria;
         this.titulo = titulo;
         this.nota = nota;
