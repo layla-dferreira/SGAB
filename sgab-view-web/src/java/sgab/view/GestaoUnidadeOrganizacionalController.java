@@ -11,14 +11,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model.service.GestaoPessoasService;
+import sgab.model.service.GestaoUnidadeOrganizacionalService;
 
 /**
  *
  * @author maffort <maffort@gmail.com>
  */
-@WebServlet(name = "Main", urlPatterns = {"/Main"})
-public class Main extends HttpServlet {
+@WebServlet(name = "GestaoUOrg", urlPatterns = {"/GestaoUOrg"})
+public class GestaoUnidadeOrganizacionalController extends HttpServlet {
+    
+    private GestaoUnidadeOrganizacionalService uorgService = new GestaoUnidadeOrganizacionalService();
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,20 +34,16 @@ public class Main extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        GestaoPessoasService gestaoPessoa = new GestaoPessoasService();
-        
-        
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Main</title>");            
+            out.println("<title>Servlet GestaoUnidadesOrganizacionais</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Main at " + request.getContextPath() + "-> Programação para Web</h1>");
+            out.println("<h1>Servlet GestaoUnidadesOrganizacionais at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
