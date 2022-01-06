@@ -6,7 +6,7 @@ import sgab.model.dto.util.PessoaHelper;
  *
  * @author maffort <maffort@gmail.com>
  */
-public class GestaoPessoas {
+public class GestaoPessoasService {
 
     void cadastrarPessoa(Pessoa pessoa) {
 
