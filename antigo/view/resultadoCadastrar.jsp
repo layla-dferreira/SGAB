@@ -30,7 +30,7 @@
                 <div id="caixa-form">
                     <h2>Novo assunto <%= assuntoCadastrado%> foi cadastrado!</h2>
                     <div class="caixa-form-footer">
-                        <a href="cadastrar.html">Cadastrar Novo Assunto</a>
+                        <a href="cadastrar.html">Cadastrar Novo sgab.model.dto.Assunto</a>
                     </div>
                 </div>
             </section>

@@ -29,9 +29,9 @@
             </section>
             <section id="cadastro">
                 <div id="caixa-form">
-                    <h2>Assunto <%= assuntoAntigo%> foi alterado para <%= assuntoEditado%>!</h2>
+                    <h2>sgab.model.dto.Assunto <%= assuntoAntigo%> foi alterado para <%= assuntoEditado%>!</h2>
                     <div class="caixa-form-footer">
-                        <a href="editar.html">Editar Novo Assunto</a>
+                        <a href="editar.html">Editar Novo sgab.model.dto.Assunto</a>
                     </div>
                 </div>
             </section>

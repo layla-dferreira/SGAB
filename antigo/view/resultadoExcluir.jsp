@@ -28,9 +28,9 @@
             </section>
             <section id="form">
                 <div id="caixa-form">
-                    <h2>Assunto <%= assuntoExcluido%> foi excluído!</h2>
+                    <h2>sgab.model.dto.Assunto <%= assuntoExcluido%> foi excluído!</h2>
                     <div class="caixa-form-footer">
-                        <a href="excluir.html">Excluir Novo Assunto</a>
+                        <a href="excluir.html">Excluir Novo sgab.model.dto.Assunto</a>
                     </div>
                 </div>
             </section>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FORKMAFFORT.iml" filepath="$PROJECT_DIR$/FORKMAFFORT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/antigo/antigo.iml" filepath="$PROJECT_DIR$/antigo/antigo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sgab-core/sgab-core.iml" filepath="$PROJECT_DIR$/sgab-core/sgab-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sgab-view-swing/sgab-view-swing.iml" filepath="$PROJECT_DIR$/sgab-view-swing/sgab-view-swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sgab-view-web/sgab-view-web.iml" filepath="$PROJECT_DIR$/sgab-view-web/sgab-view-web.iml" />
+    </modules>
+  </component>
+</project>

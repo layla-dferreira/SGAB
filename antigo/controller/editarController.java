@@ -22,7 +22,7 @@ public class editarController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             
             assunto = new Assunto(); 
-            //Assunto assuntoEditado;
+            //sgab.model.dto.Assunto assuntoEditado;
           
             String assunto = request.getParameter("assunto"));
             String assuntoNovo = request.getParameter("assuntoNovo"));

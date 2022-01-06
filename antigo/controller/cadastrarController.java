@@ -22,7 +22,7 @@ public class cadastrarController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             
             assunto = new Assunto();
-            //Assunto assuntoCadastrado;
+            //sgab.model.dto.Assunto assuntoCadastrado;
           
             String tagAssunto = request.getParameter("assunto"));
             
