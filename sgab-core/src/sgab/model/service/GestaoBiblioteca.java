@@ -6,44 +6,49 @@ package sgab.model.service;
  */
 
 import sgab.model.dto.Biblioteca;
+import sgab.model.dao.BibliotecaDAO;
+import sgab.model.dto.util.BibliotecaHelper;
+import java.util.List;
 
-public class GestaoBiblioteca<E>{
-
-    Biblioteca biblioteca = new Biblioteca();
+public class GestaoBiblioteca{
     
-  public void GestaoBiblioteca(Biblioteca biblioteca){
+    BibliotecaDAO bibliotecas = new BibliotecaDAO();
+    Biblioteca biblioteca;
     
-      this.biblioteca = biblioteca;
-  }
-
-  public void mudarId(E id){
-      this.biblioteca.setId(id);
-  }
-  public void mudarOrganizacao(E org){
-      this.biblioteca.setUnidadeOrg(org);
-  }
-  public void mudarNome(String nome){
-    this.biblioteca.setNome(nome);
-  }
-  
-  public void mudarAcervo(E acervo){
-    this.biblioteca.setAcervo(acervo);
-  }
-  
-  public E pegarId (){
-    return (E) this.biblioteca.getId();
-  }
-  
-  public E pegarOrganizacao (){
-      return (E)this.biblioteca.getUnidadeOrg();
-  }
-  
-  public String pegarNome (){
-      return this.biblioteca.getNome();
-  }
-  
-  public E pegarAcervo (){
-      return (E) this.biblioteca.getAcervo();
-  }
-  
+    public void cadastrarBiblioteca(Biblioteca biblioteca){
+        if(BibliotecaHelper.validarBiblioteca(biblioteca)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            bibliotecas.inserir(biblioteca);
+        }
+    }
+    
+    public void alterarBiblioteca(Biblioteca biblioteca){
+       if(BibliotecaHelper.validarBiblioteca(biblioteca)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            bibliotecas.alterar(biblioteca);
+        } 
+    }
+    
+    public Biblioteca pesquisarId(Integer id){
+       if(BibliotecaHelper.validarId(biblioteca)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            return bibliotecas.pesquisar(id);
+        } 
+    }
+    
+    public List pesquisarNome(String nome){
+       if(BibliotecaHelper.validarNome(biblioteca)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            return bibliotecas.pesquisar(nome);
+        } 
+    }
+    
 }

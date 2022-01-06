@@ -6,30 +6,22 @@ package sgab.model.dto;
 
 import java.util.*;
 
-public class Biblioteca<E>{
+public class Biblioteca<Interger>{
 
-    private E unidadeorg;
+    private String unidadeorg;
     private String nome;
-    private E id;
-    private E acervo;
-    
-    ArrayList<Pessoa> Atendentes = new ArrayList<>();
-    ArrayList<Pessoa> Bibliotecarios = new ArrayList<>();
+    private Integer id;
 
-    
     //construtor
-    public void Biblioteca(E unidadeorg, String nome, E id, E acervo, Pessoa atendente, Pessoa bibliotecario){
+    public void Biblioteca(String unidadeorg, String nome, Integer id){
         
         this.unidadeorg = unidadeorg;
         this.nome = nome;
         this.id = id;
-        this.acervo = acervo;
-        this.Atendentes.add(atendente);
-        this.Bibliotecarios.add(bibliotecario);
     }
     
     //setters
-    public void setUnidadeOrg(E unidadeorg){
+    public void setUnidadeOrg(String unidadeorg){
     
         this.unidadeorg = unidadeorg;
     }
@@ -37,32 +29,19 @@ public class Biblioteca<E>{
     
         this.nome = nome;
     }
-    public void setId(E id){
+    public void setId(Integer id){
     
         this.id = id;
     }
-    public void setAcervo(E acervo){
-    
-        this.acervo = acervo;
-    }
     
     //getters
-    public E getUnidadeOrg(){
+    public String getUnidadeOrg(){
         return unidadeorg;
     }
     public String getNome(){
         return nome;
     }
-    public E getId(){
+    public Integer getId(){
         return id;
-    }
-    public E getAcervo(){
-        return acervo;
-    } 
-    public ArrayList getAtendente(){
-        return Atendentes;
-    }
-    public ArrayList getBibliotecario(){
-        return Bibliotecarios;
     }
 }
