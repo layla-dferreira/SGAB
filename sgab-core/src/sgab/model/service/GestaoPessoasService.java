@@ -6,7 +6,7 @@ import sgab.model.dao.GestaoPessoasDAO;
 import sgab.model.dto.Pessoa;
 import sgab.model.dto.util.PessoaHelper;
 
-public class GestaoPessoas implements GestaoPessoasDAO{
+public class GestaoPessoasService implements GestaoPessoasDAO{
     ArrayList<Pessoa> pessoas = new ArrayList<>();
 
     public void cadastrarPessoa(Long cpf, String nome, String email, String senha) {
