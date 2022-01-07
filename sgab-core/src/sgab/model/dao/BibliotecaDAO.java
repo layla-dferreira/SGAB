@@ -26,6 +26,39 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     public void alterar(Biblioteca biblioteca){
         this.bibliotecas.put(biblioteca.getId(), biblioteca);
     }
+    
+    public void alterarId(String nome,Integer id){
+        for(Integer key : this.bibliotecas.keySet()){
+            
+            Biblioteca valor = this.bibliotecas.get(key);
+            if(valor.getNome().equals(nome)){
+                valor.setId(id);
+                break;
+            }
+        }
+    }
+    
+    public void alterarUnidadeOrg(String nome, String org){
+        for(Integer key : this.bibliotecas.keySet()){
+            
+            Biblioteca valor = this.bibliotecas.get(key);
+            if(valor.getNome().equals(nome)){
+                valor.setUnidadeOrg(org);
+                break;
+            }
+        }
+    }
+    
+    public void alterarNome(String nomeAntigo, String nomeNovo){
+        for(Integer key : this.bibliotecas.keySet()){
+            
+            Biblioteca valor = this.bibliotecas.get(key);
+            if(valor.getNome().equals(nomeAntigo)){
+                valor.setNome(nomeNovo);
+                break;
+            }
+        }
+    }
    
     @Override
     public Biblioteca pesquisar(Integer key){

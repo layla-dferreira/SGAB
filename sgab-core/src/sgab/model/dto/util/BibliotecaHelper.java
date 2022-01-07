@@ -22,8 +22,8 @@ public class BibliotecaHelper {
         return resultado;
     }
      
-    public static boolean validarId(Biblioteca biblioteca){
-        if(biblioteca.getId() <= 0){
+    public static boolean validarId(Integer id){
+        if(id <= 0){
             return false;
         }
         else{
@@ -31,8 +31,8 @@ public class BibliotecaHelper {
         }
     }
     
-    public static boolean validarNome(Biblioteca biblioteca){
-        if(biblioteca.getNome().length() <= 1){
+    public static boolean validarNome(String nome){
+        if(nome.length() <= 1){
             return false;
         }
         else{

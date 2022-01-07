@@ -33,8 +33,36 @@ public class GestaoBiblioteca{
         } 
     }
     
+    public void alterarId(String nome, Integer id){
+       if(BibliotecaHelper.validarId(id)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            bibliotecas.alterarId(nome,id);
+        } 
+    }
+    
+    public void alterarNome(String nomeAntigo, String nomeNovo){
+       if(BibliotecaHelper.validarNome(nomeNovo)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            bibliotecas.alterarNome(nomeAntigo,nomeNovo);
+        } 
+    }
+
+
+    public void alterarUnidadeOrganizacional(String nome, String org){
+       if(BibliotecaHelper.validarNome(org)==false){
+            throw new RuntimeException("Dados Inválidos!");
+        }
+        else{
+            bibliotecas.alterarNome(nome,org);
+        } 
+    }    
+    
     public Biblioteca pesquisarId(Integer id){
-       if(BibliotecaHelper.validarId(biblioteca)==false){
+       if(BibliotecaHelper.validarId(id)==false){
             throw new RuntimeException("Dados Inválidos!");
         }
         else{
@@ -43,7 +71,7 @@ public class GestaoBiblioteca{
     }
     
     public List pesquisarNome(String nome){
-       if(BibliotecaHelper.validarNome(biblioteca)==false){
+       if(BibliotecaHelper.validarNome(nome)==false){
             throw new RuntimeException("Dados Inválidos!");
         }
         else{
