@@ -6,7 +6,7 @@ package sgab.model.dto;
 
 import java.util.*;
 
-public class Biblioteca<Interger>{
+public class Biblioteca<Integer>{
 
     private String unidadeorg;
     private String nome;
