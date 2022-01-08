@@ -1,22 +1,42 @@
 package sgab.model.dto.util;
 
-import jdk.jfr.Experimental;
 import sgab.model.dto.Autor;
 
 /**
- * @author Marcos Paulo
+ * @author Luiz Fernando
  * Grupo F
  */
 
-@Experimental
 public class AutorHelper {
-    boolean validarAutor(Autor autor){
-        if (autor.getNome() != null && !autor.getNome().trim().equals("")){
-            if (autor.getNacionalidade() != null && !autor.getNacionalidade().trim().equals("")){
-                if (autor.getGenero() != null && !autor.getGenero().trim().equals(""))
-                    return autor.getNascimento() != null && !autor.getNascimento().trim().equals("");
-            }
+    public static boolean validarAutor(Autor autor){
+      boolean resultado = true;
+                 
+        if(autor.getNome().length() <= 1){
+            resultado = false;
         }
-        return false;
+        
+        else if(autor.getId() <= 0){
+            resultado = false;
+        }
+
+        return resultado;
+    }
+     
+    public static boolean validarId(Integer id){
+        if(id <= 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    public static boolean validarNome(String nome){
+        if(nome.length() <= 1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }

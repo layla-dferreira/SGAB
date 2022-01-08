@@ -1,12 +1,11 @@
 package sgab.model.dto;
 
-import sgab.model.dao.AutorDAO;
-
 /**
  * GRUPO F
  * @author luisf, Marcos Paulo
  */
-public class Autor implements AutorDAO {
+
+public class Autor{
     private String nome;
     private int id;
 
