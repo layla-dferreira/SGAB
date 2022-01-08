@@ -3,14 +3,12 @@ package sgab.model.service;
 import sgab.model.dto.Assunto;
 import java.util.ArrayList;
 
-public class GestaoAssuntosService /*implements GestaoDeAssuntosDAO (segundo o maffort, não pode)*/{
+public class GestaoAssuntosService {
     ArrayList<Assunto> assuntoLista = new ArrayList<>();
-    private int quantidadeAssuntosInseridos = 0;
-    
 
     public void adicionarAssunto(String nome){
-        Assunto assunto = new Assunto(nome);
-        if (assuntoLista.contains(nome)){
+        Assunto assunto = new Assunto();
+        if (assuntoLista.contains(getAssunto(nome))){
             throw new IllegalArgumentException("Erro: assunto já existente");
         }
         assuntoLista.add(assunto);
@@ -27,7 +25,8 @@ public class GestaoAssuntosService /*implements GestaoDeAssuntosDAO (segundo o m
         }
         return null;
     }
-    public Assunto getAssunto(int id) {
+
+    public Assunto getAssunto(long id) {
         if (id >= 0) {
             for (Assunto assunto : assuntoLista) {
                 if (assunto.getId() == id) {
@@ -40,26 +39,21 @@ public class GestaoAssuntosService /*implements GestaoDeAssuntosDAO (segundo o m
     }
 
     public void removerAssunto (String nome) {
-         for (int i = 0; i < this.quantidadeAssuntosInseridos; i++) {
-             Assunto a = this.getNome()[i];
-             if (a.getNome().equals(nome)){
-                 for (int j = i; j < this.quantidadeAssuntosInseridos; j++) {
-                     if (j + 1 < this.getNome().length) {
-                         this.getNome()[j] = this.getNome()[j + 1];
-                     }
-                     this.quantidadeAssuntosInseridos--;
-                     return;
-                 }
-             } else {
-                 throw new IllegalArgumentException("Esse assunto já foi removido");
-             }
+          if(assuntoLista == null) {
+              throw new IllegalArgumentException("Não há nada registrado no banco de dados.");
+          }
+          else if(getAssunto(nome).equals(nome)){
+              assuntoLista.remove(getAssunto(nome));
+          }
+            else {
+              throw new IllegalArgumentException("Esse assunto já foi removido");
+            }
          }
-    }
+
     public void editarAssunto(String oldNome, String newNome){
-        Assunto assunto = this.getNome(oldNome);
+        Assunto assunto = this.getAssunto(oldNome);
         if(assunto != null){
             assunto.setNome(newNome);
         }
     }
-
 }
