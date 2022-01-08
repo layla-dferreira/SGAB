@@ -118,6 +118,22 @@ input[type="text"]{
     border: 1px solid #d2d6de;
 }
 
+input[type="password"]{   
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    box-sizing: border-box;
+    width: 95%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d2d6de;
+}
+
 input:focus-visible {
     outline: none !important;
     border: 1px solid #3c8dbc;
@@ -155,7 +171,7 @@ form div {
     border: 1px solid transparent;
     font-size: 14px;
     padding: 6px 12px;
-    float: right;
+    float: left;
     color: #fff;
     margin-left: 3px;
 }
