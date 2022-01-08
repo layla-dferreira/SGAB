@@ -47,6 +47,20 @@ public class AutorDAO implements GenericDAO<Autor, Integer>{
         }
         return null;
     }
+
+    public void remover(Integer key){
+        boolean encontrado = false;
+        for(Autor a : mock){
+            if(a.getId() == key){
+                encontrado = true;
+                this.mock.remove(a);
+                return;
+            }
+        }
+        if(!encontrado){
+            throw new RuntimeException("Autor não encontrado");
+        }
+    }
     
     public List<Autor> pesquisar(List<BasicPair<Integer, Autor>> parameterList){
         throw new UnsupportedOperationException("Not supported yet."); 

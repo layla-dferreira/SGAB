@@ -31,7 +31,7 @@ public class GestaoAutor {
     }
 
     public Autor pesquisarId(Integer id){
-        if (!AutorHelper.validarAutor(autor)) {
+        if (!AutorHelper.validarId(id)) {
 
             throw new RuntimeException("Dados Inválidos!");
         } else {
@@ -40,11 +40,20 @@ public class GestaoAutor {
     }
 
     public Autor pesquisarNome(String nome){
-        if (!AutorHelper.validarAutor(autor)) {
+        if (!AutorHelper.validarNome(nome)) {
 
             throw new RuntimeException("Dados Inválidos!");
         } else {
             return autores.pesquisar(nome);
+        }
+    }
+
+    public void removerAutor(Integer id){
+        if (!AutorHelper.validarId(id)) {
+
+            throw new RuntimeException("Dados Inválidos!");
+        } else {
+            autores.remover(id);
         }
     }
 }
