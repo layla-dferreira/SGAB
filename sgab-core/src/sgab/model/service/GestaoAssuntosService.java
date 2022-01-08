@@ -3,12 +3,12 @@ package sgab.model.service;
 import sgab.model.dto.Assunto;
 import java.util.ArrayList;
 
-public class GestaoAssuntosService implements GestaoDeAssuntosDAO {
+public class GestaoAssuntosService /*implements GestaoDeAssuntosDAO (segundo o maffort, não pode)*/{
     ArrayList<Assunto> assuntoLista = new ArrayList<>();
     private int quantidadeAssuntosInseridos = 0;
     
 
-    public void cadastrarAssunto(String nome){
+    public void adicionarAssunto(String nome){
         Assunto assunto = new Assunto(nome);
         if (assuntoLista.contains(nome)){
             throw new IllegalArgumentException("Erro: assunto já existente");
@@ -16,7 +16,7 @@ public class GestaoAssuntosService implements GestaoDeAssuntosDAO {
         assuntoLista.add(assunto);
     }
 
-    public Assunto pesquisarAssunto(String nome) {
+    public Assunto getAssunto(String nome) {
         if (nome != null) {
             for (Assunto assunto : assuntoLista) {
                 if (assunto.getNome().equals(nome)) {
@@ -27,7 +27,7 @@ public class GestaoAssuntosService implements GestaoDeAssuntosDAO {
         }
         return null;
     }
-    public Assunto pesquisarAssunto(int id) {
+    public Assunto getAssunto(int id) {
         if (id >= 0) {
             for (Assunto assunto : assuntoLista) {
                 if (assunto.getId() == id) {

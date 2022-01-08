@@ -1,11 +1,14 @@
 package sgab.model.dao;
+
+import sgab.model.dto.Assunto;
+
 /**
  *
  * @author Helio
  */
 public interface GestaoDeAssuntosDAO {
     Assunto getAssunto(String nome); // pesquisa por nome
-    Assunto getAssunto(String tag); // pesquisa por tag
+   /* Assunto getAssunto(String tag);*/ // pesquisa por tag (dando erro pois está duplicado)
     Assunto getAssunto(int id); // pesquisa por id
 
     void adcionarAssunto(String nome);
