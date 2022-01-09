@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Biblioteca opções</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href=".//opcoes.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
     <header>
