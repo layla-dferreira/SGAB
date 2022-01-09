@@ -4,10 +4,6 @@
  */
 package sgab.model.dto;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Vector;
-
 /**
  *
  * @author HP
@@ -16,8 +12,8 @@ public class Obra  {
     private Integer id;
     private String categoria;
     private String titulo;
-    private Autores[] autor;
-    private Assuntos[] assuntos;
+    //private Autores[] autor;
+    //private Assuntos[] assuntos;
     private String nota;
     private int anoPublicacao;
     private String editora;
@@ -25,9 +21,7 @@ public class Obra  {
     private String edicao;
     private int volume;
 
-    public Obra(Integer id, String categoria, String titulo, String nota, int anoPublicacao, String editora, String cidadeEditora, String edicao, int volume) {
-        this.id = id;
-        id++;
+    public Obra(String categoria, String titulo, String nota, int anoPublicacao, String editora, String cidadeEditora, String edicao, int volume) {
         this.categoria = categoria;
         this.titulo = titulo;
         this.nota = nota;
@@ -62,7 +56,7 @@ public class Obra  {
         this.titulo = titulo;
     }
 
-    public Autores[] getAutor() {
+    /*public Autores[] getAutor() {
         return autor;
     }
 
@@ -76,7 +70,7 @@ public class Obra  {
 
     public void setAssuntos(Assuntos[] assuntos) {
         this.assuntos = assuntos;
-    }
+    }*/
 
     public String getNota() {
         return nota;

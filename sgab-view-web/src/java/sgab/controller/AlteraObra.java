@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package sgab.controller;
 
 import java.io.IOException;
@@ -12,29 +8,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import sgab.model.dto.Obra;
-
 import sgab.model.service.GestaoObras;
+
 /**
  *
  * @author HP
  */
-@WebServlet(name = "CadastraObra", urlPatterns = {"/CadastraObra"})
-public class CadastraObra extends HttpServlet {
+@WebServlet(name = "AlteraObra", urlPatterns = {"/AlteraObra"})
+public class AlteraObra extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-             GestaoObras obras = new GestaoObras();
+            
+            GestaoObras obras = new GestaoObras();
             
             String categoria = (String) request.getAttribute("categoria");
             String titulo = (String) request.getAttribute("titulo");
@@ -47,7 +35,7 @@ public class CadastraObra extends HttpServlet {
             
             Obra obra = new Obra(categoria, titulo, nota, ano, editora, cidEditora, edicao, volume);
             try{
-                obras.cadastrarObra(obra);
+                obras.alterarObra(obra);
             }
             catch(Exception e){
                 //redirecionar página de erro
@@ -55,7 +43,7 @@ public class CadastraObra extends HttpServlet {
                 //vi que esta página já existe, mas preciso dar pull request para atualizar
                 //meu branch e poder utilizá-la
             }
-            out.println("<script>window.location.replace(\"cadastroObraSucesso.html\")</script>");
+            out.println("<script>window.location.replace(\"alteraObraSucesso.html\")</script>");
         }
     }
 

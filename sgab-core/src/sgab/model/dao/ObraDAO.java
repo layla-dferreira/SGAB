@@ -1,9 +1,8 @@
 
 package sgab.model.dao;
 
-import java.util.Collections;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import sgab.model.dto.Obra;
@@ -26,8 +25,7 @@ public class ObraDAO implements GenericDAO<Obra, Integer>{
 
     @Override
     public Obra pesquisar(Integer key) {
-        return (obras.get(key));
-        
+        return obras.get(key);
     }
 
     @Override
@@ -35,8 +33,8 @@ public class ObraDAO implements GenericDAO<Obra, Integer>{
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     
-    public List pesquisar(String titulo){
-        ArrayList<Obra> resultados = new ArrayList();
+    public LinkedList<Obra> pesquisar(String titulo){
+        LinkedList<Obra> resultados = new LinkedList();
         for (Map.Entry<Integer, Obra> pair : obras.entrySet()) {
             if(pair.getValue().getTitulo().equals(titulo)){
                 resultados.add(pair.getValue());

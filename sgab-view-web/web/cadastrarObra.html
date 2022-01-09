@@ -34,79 +34,79 @@
       </section>
       <section id="form">
         <div id="caixa-form">
-          <form action="" method="post">
+           <form action="CadastraObra" method="post">
             <label for="categoria">Categoria</label>
-            <select name="" id="categoria">
+            <select name="categoria" id="categoria">
               <option value="">Livro</option>
               <option value="">Mapa</option>
               <option value="">Documento computacional</option>
             </select>
             <label for="titulo">Título</label>
             <input
-              type="select"
               id="titulo"
               name="titulo"
               placeholder="Insira o título da obra"
             />
-            <label for="titulo">Nome do(a) autor(a)</label>
+            <!<!-- TODO AUTORES -->
+            <label for="autor">Nome do(a) autor(a)</label>
             <input
-              id="titulo"
-              name="titulo"
-              placeholder="Insira o nome do(a) autor(a)"
+              id="autor"
+              name="autor"
+              placeholder="TODO"
             />
-            <label for="titulo">Assunto</label>
+            <!<!-- TODO ASSUNTOS -->
+            <label for="assunto">Assunto</label>
             <span style="float: right; font-weight: bolder; font-size: 1.5em;
             cursor: pointer; user-select: none;" id="expandir">+</span>
             <div id="tags">
 
             </div>
 
-            <!-- jsp -->
-            <label for="titulo">Nota</label>
+             <label for="nota">Nota</label>
             <input
               style="height: 5em;"
-              id="titulo"
-              name="titulo"
+              id="nota"
+              name="nota"
               placeholder="Insira uma breve descrição"
             />
             <div class="divisao">
               <div>
-                <label for="titulo">Ano de publicação</label>
+                <label for="ano">Ano de publicação</label>
                 <input
-                  id="titulo"
-                  name="titulo"
+                  id="ano"
+                  name="ano"
                   placeholder="Ex.: 1987"
                 />
               </div>
               <div>
-                <label for="titulo">Editora</label>
+                <label for="editora">Editora</label>
                 <input
-                  id="titulo"
-                  name="titulo"
+                  id="editora"
+                  name="editora"
                   placeholder="Ex.: Fundamento"
                 />
               </div>
             </div>
-            <label for="titulo">Cidade da Editora</label>
+            <label for="cidEditora">Cidade da Editora</label>
             <input
-              id="titulo"
-              name="titulo"
+              id="cidEditora"
+              name="cidEditora"
               placeholder="Insira uma breve descrição"
             />
             <div class="divisao">
               <div>
-                <label for="titulo">Edição</label>
+                <label for="edicao">Edição</label>
                 <input
-                  id="titulo"
-                  name="titulo"
+                  id="edicao"
+                  name="edicao"
                   placeholder="Insira a edição"
                 />
               </div>
               <div>
-                <label for="titulo">Volume</label>
+                <label for="volume">Volume</label>
                 <input
-                  id="titulo"
-                  name="titulo"
+                  id="volume"
+                  name="volume"
                   placeholder="Ex.: 1"
                 />
               </div>
@@ -119,6 +119,6 @@
       </section>
     </main>
     <footer></footer>
-    <script src="cadastrar.js"></script>
+    <script src="cadastrarObra.js"></script>
   </body>
 </html>

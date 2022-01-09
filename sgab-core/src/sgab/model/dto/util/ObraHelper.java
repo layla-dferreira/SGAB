@@ -1,53 +1,36 @@
 package sgab.model.dto.util;
 
-
 import sgab.model.dto.Obra;
-import java.util.List;
-import java.util.Map;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author iulli
- */
 public class ObraHelper {
-    public static boolean validarObra(Obra obra) {
+    public void validarObra(Obra obra) throws Exception{
+        if (obra.getCategoria().length() <=1){
+            throw new RuntimeException("Categoria inválida");
+        }
+        
         if (obra.getTitulo().length() <= 1) {
-            return false;
+            throw new Exception("Título inválido.");
         }
         
         if (obra.getEditora().length() <= 1) {
-            return false;
+            throw new Exception("Editora inválida.");
         }
         
         if (obra.getCidadeEditora().length() <= 1) {
-            return false;
+            throw new Exception("Cidade da editora inválida.");
         }
         
         if (obra.getVolume() <= 0) {
-            return false;
+            throw new Exception("Volume inválido.");
         }
         
-        if (obra.getAutores().lenght() <= 1){//implementar o metodo length em autores
-            return false;
+        if (obra.getEditora().length() <= 1) {
+            throw new Exception("Editora inválida.");
         }
         
-        return true;
-    }
-    
-    public static boolean validarID(Integer id){
-        if (id <= 0) {
+        /*if (obra.getAutores().lenght() <= 1){//implementar o metodo length em autores
             return false;
-        }
-        return true;
+        }*/
     }
     
-    public static boolean validarParameter(List parameterlist){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

@@ -11,15 +11,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model.dto.Obra;
-
+import java.util.LinkedList;
 import sgab.model.service.GestaoObras;
+
 /**
  *
  * @author HP
  */
-@WebServlet(name = "CadastraObra", urlPatterns = {"/CadastraObra"})
-public class CadastraObra extends HttpServlet {
+@WebServlet(name = "PesquisaObras", urlPatterns = {"/PesquisaObras"})
+public class PesquisaObras extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,28 +34,30 @@ public class CadastraObra extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-             GestaoObras obras = new GestaoObras();
+            GestaoObras obras = new GestaoObras();
             
-            String categoria = (String) request.getAttribute("categoria");
-            String titulo = (String) request.getAttribute("titulo");
-            String nota = (String) request.getAttribute("nota");
-            int ano = (Integer) request.getAttribute("ano");
-            String editora = (String) request.getAttribute("editora");
-            String cidEditora = (String) request.getAttribute("cidEditora");
-            String edicao = (String) request.getAttribute("edicao");
-            int volume = (Integer) request.getAttribute("volume");
+            String tipoPesquisa = (String) request.getParameter("tipo");
+            String titulo = (String) request.getParameter("titulo");
             
-            Obra obra = new Obra(categoria, titulo, nota, ano, editora, cidEditora, edicao, volume);
             try{
-                obras.cadastrarObra(obra);
+                switch(tipoPesquisa){
+                    case "titulo":
+                        LinkedList resultado = obras.pesquisarObra(titulo);
+                        request.setAttribute("resultado", resultado);
+                        request.getRequestDispatcher("pesquisaObra.jsp").forward(request, response);
+                        break;
+                    
+                    case "autor":
+                        //TODO
+                        break;
+                            
+                    default:
+                        throw new Exception("Tipo de pesquisa inválido");
+                }
             }
             catch(Exception e){
-                //redirecionar página de erro
-                
-                //vi que esta página já existe, mas preciso dar pull request para atualizar
-                //meu branch e poder utilizá-la
+                //redirect página de erro
             }
-            out.println("<script>window.location.replace(\"cadastroObraSucesso.html\")</script>");
         }
     }
 
