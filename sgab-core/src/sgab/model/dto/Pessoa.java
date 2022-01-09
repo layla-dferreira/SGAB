@@ -2,7 +2,7 @@ package sgab.model.dto;
 
 public class Pessoa {
     
-    private Long cpf;
+    private final Long cpf;
     private String nome;
     private String email;
     private String senha;
@@ -18,10 +18,6 @@ public class Pessoa {
     
     public Long getCpf() {
         return cpf;
-    }
-
-    public void setCpf(Long cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {

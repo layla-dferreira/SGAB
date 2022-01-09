@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
+<%  Pessoa pessoa = (Pessoa) request.getAttribute("pessoa"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,22 +26,34 @@
     </header>
     <main>
         <section id="nome-form">
-            <h1>Resultado de Pessoa</h1>
+            <h1>Alteraração de Pessoa</h1>
         </section>
         <section id="form">
             <div id="caixa-form">
-                <form action="" method="get">
+                <form name="modificarPessoa" method="post">
+                    <div>
+                        <label for="cpf">CPF</label>
+                        <input type="number" id="cpf" name="cpf" placeholder="CPF" value="<%=pessoa.getCpf()%>" readonly>
+                        <small>Digite um CPF válido. Informe apenas números.</small>
+                    </div>
                     <div>
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" placeholder="Nome">
+                        <input type="text" id="nome" name="nome" placeholder="Nome" value="<%=pessoa.getNome()%>">
+                        <small>Digite seu nome e sobrenome.</small>
                     </div>
                     <div>
-                        <label for="id">Identificação</label>
-                        <input type="text" id="id" name="id" placeholder="ID">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Email" value="<%=pessoa.getEmail()%>">
+                        <small>Digite um endereço de email válido.</small>
+                    </div>
+                    <div>
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Senha" value="<%=pessoa.getSenha()%>">
+                        <small>A senha precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.</small>
                     </div>
                     <div id="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Alterar">
-                        <input type="button" class="button" name="ordem" value="Excluir">
+                        <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarPessoa(document.frmAltUsuario)">
+                        <input type="button" class="button" name="ordem" value="Excluir" onclick="excluirPessoa(<%=usuario.getCpf()%>, document.modificarPessoa)">
                     </div>
                 </form>
             </div>
@@ -49,5 +63,17 @@
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
     <script src="../../js/validacao-pessoa.js"></script>
+    <script>
+        let senha2DivEl = document.querySelector("#senha2-div");
+
+        senhaEl.addEventListener("change", () => {
+            let regexEl = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+            if(regexEl.test(senhaEl.value)) {
+                senha2DivEl.style.display = "block";
+                senha2DivEl.style.visibility = "visible";
+                senha2DivEl.attributes.required = true;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -28,7 +28,7 @@
         </section>
         <section id="form">
             <div id="caixa-form">
-                <form action="" method="post">
+                <form name="perquisarPessoa" method="post">
                     <div>
                         <label for="cpf">Informe o CPF <span class="input-obrigatorio">*</span></label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" required>

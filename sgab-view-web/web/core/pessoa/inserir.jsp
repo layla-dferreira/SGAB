@@ -28,7 +28,7 @@
         </section>
         <section id="form">
             <div id="caixa-form">
-                <form action="" method="post">
+                <form name="inserirPessoa" method="post">
                     <div>
                         <label for="cpf">Informe o seu CPF <span class="input-obrigatorio">*</span></label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
@@ -55,7 +55,7 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div class="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Cadastrar">
+                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravarPessoa(document.inserirPessoa)">
                     </div>
                 </form>
             </div>

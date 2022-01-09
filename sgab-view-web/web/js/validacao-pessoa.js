@@ -64,3 +64,46 @@ senha2El.addEventListener("change", () => {
     validacaoView(senha2El, regexEl, smallEl, labelEl, inputObrigatorioEl);
 });
 
+function validarPessoa(frm) {
+    var result = false;
+    
+    if (frm.cpf.value == "") {
+        alert("Informar o cpf!");
+        frm.cpf.focus();
+    } else if (frm.nome.value === "") {
+        alert("Informar o nome!");
+        frm.nome.focus();
+    } else if (frm.senha.value === "") {
+        alert("Informar a senha!");
+        frm.senha.focus();
+    } else if (frm.email.value === "") {
+        alert("Informar o email!");
+        frm.email.focus();
+    } 
+    else
+        result = true;
+        
+    return result;
+
+}
+
+
+function gravarPessoa(frm) {
+    if (validarUsuario(frm)) {
+        if (frm.acao.value === "alterar")
+            caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
+        else if (frm.acao.value === "gravar")
+            caminhourl = "/sgab/main?acao=PessoaGravarInsercao";
+    }
+
+    frm.action = caminhourl;
+    frm.submit();
+}
+
+function excluirPessoa(cpf, frm) {
+    if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
+        frm.cpf.value = cpf;
+        frm.action = "/sgab/main?acao=PessoaExcluir";            
+        frm.submit();
+    }
+}
