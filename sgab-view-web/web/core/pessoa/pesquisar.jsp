@@ -43,6 +43,6 @@
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-    <script src="../../js/validacao.js"></script>
+   <script src="../../js/validacao-pessoa.js"></script> 
 </body>
 </html>
