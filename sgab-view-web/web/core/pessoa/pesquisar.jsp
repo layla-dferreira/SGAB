@@ -30,8 +30,9 @@
             <div id="caixa-form">
                 <form action="" method="post">
                     <div>
-                        <label for="cpf-pesquisa">Informe o CPF <span class="input-obrigatorio">*</span></label>
-                        <input type="number" id="cpf-pesquisa" name="cpf-pesquisa" placeholder="CPF" required>
+                        <label for="cpf">Informe o CPF <span class="input-obrigatorio">*</span></label>
+                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
+                        <small>Digite um CPF válido. Informe apenas números.</small>
                     </div>
                     <div class="caixa-form-footer">
                        <input type="button" class="button" name="ordem" value="Pesquisar">

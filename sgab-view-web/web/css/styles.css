@@ -139,7 +139,7 @@ form div {
 }
 
 small {
-    display: block;
+    display: none;
     font-size: 85%;
     color: #a94442;
     text-align: justify;
