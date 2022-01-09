@@ -28,12 +28,14 @@ public class CadastrarAutorServlet extends HttpServlet {
 
         GestaoAutor gestaoAutor = new GestaoAutor();
 
-        Integer id = Math.random();
-        if (gestaoAutor.pesquisarId(id) == null) {
-            Autor novaAutor = new Autor(nome);
-            novaAutor.setId(id);
-            cadastro.cadastrarAutor(autor);
-            response.sendRedirect("/core/autores/certo.jsp");
+        while(true){
+            Integer id = Math.random();
+            if (gestaoAutor.pesquisarId(id) == null) {
+                Autor novaAutor = new Autor(nome);
+                novaAutor.setId(id);
+                cadastro.cadastrarAutor(autor);
+                response.sendRedirect("../../../web/core/autores/certo.jsp");
+            }
         }
     }
 

@@ -36,10 +36,10 @@ public class AlterarAutorServlet extends HttpServlet {
         autor.setId(Id);
         try {
           autor = gestaoAutor.alterarAutor(autor);
-          response.sendRedirect("/core/autores/resposta.jsp");
+          response.sendRedirect("../../../web/core/autores/resposta.jsp");
 
         } catch (RuntimeException e) {
-          response.sendRedirect("/core/erro.jsp");
+          response.sendRedirect("../../../web/core/erro.jsp");
           // ID não encontrado
           return;
         } catch (Exception e) {

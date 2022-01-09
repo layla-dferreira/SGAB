@@ -35,7 +35,7 @@ public class ExcluirAutorServlet extends HttpServlet {
         autor.setId(Id);
         try {
           gestaoAutor.removerAutor(autor);
-          response.sendRedirect("/core/autores/resposta.jsp");
+          response.sendRedirect("../../../web/core/autores/resposta.jsp");
         } catch (Exception e) {
           
         }

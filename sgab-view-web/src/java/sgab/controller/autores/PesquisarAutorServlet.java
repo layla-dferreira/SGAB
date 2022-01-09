@@ -36,13 +36,13 @@ public class PesquisadorAutorServlet extends HttpServlet {
                 autor = gestao.pesquisarId(pesquisarId);
                 request.setAttribute("nome", autor.getNome());
                 request.setAttribute("id", autor.getId());
-                response.sendRedirect("/core/autores/pesquisapronta.jsp");
+                response.sendRedirect("../../../web/core/autores/pesquisapronta.jsp");
             } 
             else if(nome!=null){
                 autor = gestao.pesquisarNome(pesquisarNome);
                 request.setAttribute("nome", autor.getNome());
                 request.setAttribute("id", autor.getId());
-                response.sendRedirect("/core/autores/pesquisapronta.jsp");
+                response.sendRedirect("../../../web/core/autores/pesquisapronta.jsp");
             }
 
 
