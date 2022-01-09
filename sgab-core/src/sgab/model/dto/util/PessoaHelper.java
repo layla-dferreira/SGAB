@@ -1,12 +1,11 @@
 package sgab.model.dto.util;
 
+import sgab.model.dao.PessoasDAO;
 import sgab.model.dto.Pessoa;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
-
 public class PessoaHelper {
-    public static int validarPessoa(Pessoa pessoa, ArrayList<Pessoa> pessoas) {
+    public static int validarPessoa(Pessoa pessoa, PessoasDAO pessoas) {
         if(!validarEmail(pessoa.getEmail())){
             return -1;
         }
@@ -14,19 +13,38 @@ public class PessoaHelper {
         if(!validarSenha(pessoa.getSenha())){
             return -2;
         }
-
-
-        for(Pessoa p : pessoas) {
-            if(pessoa.getCpf() == p.getCpf()) {
-                return -3;
-            }
+        
+        if(pessoas.pesquisar(pessoa.getCpf()) != null) {
+            return -3;
         }
-
+        
         if(!validarNome(pessoa.getNome())){
             return -4;
         }
 
+        if(!validarCpf(pessoa.getCpf())){
+            return -5;
+        }
+
         return 0;
+    }
+
+    public static boolean validarCpf(Long cpf){
+        if(cpf == null){
+            return false;
+        }
+        
+        String c = Long.toString(cpf);
+
+        String regexCpf = "^[0-9]{9}$";
+        Pattern validarCpf = Pattern.compile(regexCpf);
+        Matcher matcher = validarCpf.matcher(c);
+
+        if(matcher.matches() == false){
+            return false;
+        }
+
+        return true;
     }
 
     public static boolean validarNome(String nome){

@@ -1,19 +1,17 @@
 package sgab.model.service;
 
-import java.util.ArrayList;
-
-import sgab.model.dao.GestaoPessoasDAO;
+import sgab.model.dao.PessoasDAO;
 import sgab.model.dto.Pessoa;
 import sgab.model.dto.util.PessoaHelper;
 
-public class GestaoPessoasService implements GestaoPessoasDAO{
-    ArrayList<Pessoa> pessoas = new ArrayList<>();
+public class GestaoPessoasService {
+    PessoasDAO pessoas = new PessoasDAO();
+    Pessoa pessoa;
 
-    public void cadastrarPessoa(Long cpf, String nome, String email, String senha) {
-        Pessoa novaPessoa = new Pessoa(cpf,nome,email,senha);
-
-        switch(PessoaHelper.validarPessoa(novaPessoa, pessoas)){
+    public void cadastrarPessoa(Pessoa pessoa) {
+        switch(PessoaHelper.validarPessoa(pessoa, pessoas)){
             case 0:
+                pessoas.inserir(pessoa);
                 break;
             case -1:
                 throw new RuntimeException("O email da pessoa não é válido.");
@@ -23,45 +21,40 @@ public class GestaoPessoasService implements GestaoPessoasDAO{
                 throw new RuntimeException("O CPF inserido já foi cadastrado.");
             case -4:
                 throw new RuntimeException("O nome da pessoa não é válido.");
+            case -5:
+                throw new RuntimeException("O CPF inserido não é válido");
         }
-
-        pessoas.add(novaPessoa);
     }
 
-    public Pessoa pesquisar(Long cpf){
-        for(Pessoa p : pessoas) {
-            if(cpf == p.getCpf() && p.getHabilitado()) {
-                return p;
-            }
+    public Pessoa pesquisarCpf(Long cpf){
+        if(!PessoaHelper.validarCpf(cpf)){
+            throw new RuntimeException("Cpf Inválido!");
+        } else {
+            return pessoas.pesquisar(cpf);
         }
+    }
 
-        return null;
+    public Pessoa pesquisarNome(String nome){
+        if(!PessoaHelper.validarNome(nome)){
+            throw new RuntimeException("Nome Inválido!");
+        } else {
+            return pessoas.pesquisar(nome);
+        }
     }
 
     public void excluir(Long cpf){
-        Pessoa p = pesquisar(cpf);
-        
-        if(p == null){
-            throw new RuntimeException("Esse cpf não está cadastrado.");
+        if(!PessoaHelper.validarCpf(cpf)){
+            throw new RuntimeException("Cpf Inválido!");
+        } else {
+            pessoas.delete(cpf);
         }
-
-        p.setHabilitado(false);
     }
 
-    public void alterar(Long cpf, String nome, String email, String senha){
-        Pessoa p = pesquisar(cpf);
-
-        if(p == null){
-            throw new RuntimeException("Esse cpf não está cadastrado.");
-        }
-
-        if(PessoaHelper.validarNome(nome) && PessoaHelper.validarEmail(email) && PessoaHelper.validarSenha(senha)){
-            p.setNome(nome);
-            p.setEmail(email);
-            p.setSenha(senha);
+    public void alterar(Pessoa pessoa){
+        if(!PessoaHelper.validarNome(pessoa.getNome()) && !PessoaHelper.validarEmail(pessoa.getEmail()) && !PessoaHelper.validarSenha(pessoa.getSenha())){
+            throw new RuntimeException("Dados Inválidos!");
         } else {
-            throw new RuntimeException("A alteração não é válida. Insira novos dados válidos.");
+            pessoas.alterar(pessoa);
         }
-        
     }
 }
