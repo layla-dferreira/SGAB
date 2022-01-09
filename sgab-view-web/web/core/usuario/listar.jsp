@@ -21,26 +21,26 @@
                 <input type="hidden" name="table" value="Usuario">
                 <input type="hidden" name="usuarioId" value="">
                 
-                <table>
+                <table id="usuario">
                     <tr>
-                        <td>
+                        <th>
                             Código
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Login
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Nome Completo
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Email
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Senha
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             &nbsp; &nbsp;
-                        </td>
+                        </th>
                     </tr>
                     <%
                         List<Usuario> listUsuario = (List<Usuario>) request.getAttribute("listUsuario");
