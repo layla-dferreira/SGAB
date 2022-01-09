@@ -21,22 +21,24 @@ public class editarController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            assunto = new Assunto(); 
-            //sgab.model.dto.Assunto assuntoEditado;
+            //assunto = new Assunto(); 
+            //Assunto assuntoEditado;
+            GestaoAssunto service = new GestaoAssunto();
           
-            String assunto = request.getParameter("assunto"));
+            String assuntoAntigo = request.getParameter("assuntoAntigo"));
             String assuntoNovo = request.getParameter("assuntoNovo"));
             
-            assunto = editar(assunto, assuntoNovo);
+            service.editarAssunto(assuntoAntigo, assuntoNovo);
 
-            request.setAttribute("tagAssuntoAntigo", assunto);
-            request.setAttribute("tagAssuntoNovo", assunto.getTag);
+            request.setAttribute("tagAssuntoAntigo", assuntoAntigo);
+            request.setAttribute("tagAssuntoNovo", assuntoNovo);
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/resultadoEditar.jsp"); // verificar caminho do arquivo
 
             dispatcher.forward(request, response);
         }
 
+        /*
         private Assunto editar(String assunto, String assuntoNovo) { // Pode sofrer alteração dependendo do service
 
             GestaoAssunto service = new GestaoAssunto();
@@ -46,6 +48,7 @@ public class editarController extends HttpServlet {
 
             return resultado; 
         }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

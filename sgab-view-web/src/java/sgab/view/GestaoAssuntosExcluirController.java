@@ -21,11 +21,12 @@ public class excluirController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            assunto = new Assunto();
+            //assunto = new Assunto();
+            GestaoAssunto service = new GestaoAssunto();
           
             String tagAssuntoExcluido = request.getParameter("assunto"));
             
-            excluir(tagAssuntoExcluido);
+            service.removerAssunto(tagAssuntoExcluido);
 
             request.setAttribute("tagAssuntoExcluido", tagAssuntoExcluido);
             
@@ -34,6 +35,7 @@ public class excluirController extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
+        /*
         private Assunto excluir(String tagAssuntoExcluido) { // Pode sofrer alteração dependendo do service
 
             GestaoAssunto service = new GestaoAssunto();
@@ -43,6 +45,7 @@ public class excluirController extends HttpServlet {
 
             return resultado;
         }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

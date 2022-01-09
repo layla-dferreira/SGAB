@@ -21,28 +21,28 @@ public class cadastrarController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            assunto = new Assunto();
-            //sgab.model.dto.Assunto assuntoCadastrado;
+            //assunto = new Assunto();
+            
+            GestaoAssunto service = new GestaoAssunto();
           
             String tagAssunto = request.getParameter("assunto"));
             
-            assunto = cadastrar(tagAssunto);
+            service.adicionarAssunto(tagAssunto);
 
-            request.setAttribute("tagAssunto", assunto.getTag);
+            request.setAttribute("tagAssunto", tagAssunto);
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/resultadoCadastrar.jsp"); // verificar caminho do arquivo (resultadoCadastrar.jsp)
             dispatcher.forward(request, response);
         }
 
+        /*
         private Assunto cadastrar(String tagAssunto) { // Pode sofrer alteração dependendo do service
 
             GestaoAssunto service = new GestaoAssunto();
-            Assunto resultado;
 
-            resultado = service.cadastrarAssunto(tagAssunto); // verificar se retorna alguma coisa
-
-            return resultado;
+            service.adicionarAssunto(tagAssunto); // verificar se retorna alguma coisa
         }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
