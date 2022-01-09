@@ -13,7 +13,7 @@
     <body>
         <header>
             <div id="pagina-inicial">
-                <a href=""title="Página Inicial">
+                <a href="" title="Página Inicial">
                     SGAB
                 </a>
             </div>

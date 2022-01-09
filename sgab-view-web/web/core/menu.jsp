@@ -19,7 +19,7 @@
     <body>
         <header>
             <div id="pagina-inicial">
-                <a href=""title="Página Inicial">
+                <a href="" title="Página Inicial">
                     SGAB
                 </a>
             </div>
@@ -32,11 +32,11 @@
             <section id="nome-form">
                 <h1>Menu</h1>
             </section>
-            <div>
-                <a href='/sgab/main?acao=UsuarioListar'>Cadastro de Usuarios</a><br>
-            </div>
-            <div>
-                <a href='/sgab/main?acao=FornecedorListar'>Cadastro de Fornecedores</a><br>
+            <div class="menu">
+                <a href='/sgab/main?acao=UsuarioListar' id="usuario">Cadastro de Usuarios</a><br>
+            </div >
+            <div class="menu">
+                <a href='/sgab/main?acao=FornecedorListar' id="fornecedor">Cadastro de Fornecedores</a><br>
             </div>            
         </main>
         <footer>
