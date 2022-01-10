@@ -15,10 +15,9 @@ public class Biblioteca{
     private BibliotecaStatus status;
 
     //construtor
-    public void Biblioteca(String unidadeorg, String nome, Long id){
+    public void Biblioteca(String unidadeorg, String nome){
         this.unidadeorg = unidadeorg;
         this.nome = nome;
-        this.id = id;
         this.status = BibliotecaStatus.ATIVA;
     }
     
