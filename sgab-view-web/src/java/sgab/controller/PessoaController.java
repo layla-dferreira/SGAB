@@ -53,7 +53,7 @@ public class PessoaController {
         try {
             Long pessoaId = Long.parseLong(request.getParameter("pessoaId"));
             String login = request.getParameter("login");
-            Long cpf = request.getParameter("cpf");
+            Long cpf = Long.parseLong(request.getParameter("cpf"));
             String nomeCompleto = request.getParameter("nome");
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
@@ -81,7 +81,7 @@ public class PessoaController {
         String jsp = "";
         try {
             String login = request.getParameter("login");
-            Long cpf = request.getParameter("cpf");
+            Long cpf = Long.parseLong(request.getParameter("cpf"));
             String nomeCompleto = request.getParameter("nome");
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");

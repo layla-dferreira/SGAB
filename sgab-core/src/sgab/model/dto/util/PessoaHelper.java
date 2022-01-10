@@ -57,7 +57,7 @@ public class PessoaHelper {
             return false;
         }
         
-        String regexNomeCompleto = "^[A-z]+(\s[A-z]+)+";
+        String regexNomeCompleto = "^[A-z]+[ ][A-z]+";
         Pattern validarNome = Pattern.compile(regexNomeCompleto);
         Matcher matcher = validarNome.matcher(nome);
 
