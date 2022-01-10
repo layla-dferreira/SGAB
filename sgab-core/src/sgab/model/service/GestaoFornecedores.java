@@ -6,7 +6,6 @@ package sgab.model.service;
 
 import java.util.ArrayList;
 import sgab.model.dto.Fornecedor;
-import sgab.model.dao.FornecedoresDAO;
 import sgab.model.dto.util.FornecedorHelper;
 
 /**
