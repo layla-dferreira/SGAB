@@ -70,7 +70,7 @@ public class GestaoBiblioteca{
         } 
     }
     
-    public List pesquisarNome(String nome){
+    public Biblioteca pesquisarNome(String nome){
        if(BibliotecaHelper.validarNome(nome)==false){
             throw new RuntimeException("Dados Inválidos!");
         }

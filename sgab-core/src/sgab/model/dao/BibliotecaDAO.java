@@ -18,13 +18,13 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     
     @Override
     public void inserir(Biblioteca biblioteca){
-        this.bibliotecas.put(biblioteca.getId(), biblioteca);
+        this.bibliotecas.put((Integer)biblioteca.getId(), biblioteca);
     }
     
     
     @Override
     public void alterar(Biblioteca biblioteca){
-        this.bibliotecas.put(biblioteca.getId(), biblioteca);
+        this.bibliotecas.put((Integer)biblioteca.getId(), biblioteca);
     }
     
     public void alterarId(String nome,Integer id){
@@ -70,16 +70,17 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     
-    public List pesquisar(String nome){
-        ArrayList<Biblioteca> resultados = new ArrayList();
+    public Biblioteca pesquisar(String nome){
+        Biblioteca resultado = new Biblioteca();
         for(Integer key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);
             if(valor.getNome().equals(nome)){
-                resultados.add(valor);
+                resultado = valor;
+                break;
             }
         }
-        return resultados;
+        return resultado;
     }
     
 }
