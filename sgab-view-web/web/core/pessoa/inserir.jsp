@@ -29,6 +29,13 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="inserirPessoa" method="post">
+                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="acao" value="gravar">
+                    <div>
+                        <label for="login">Informe o seu Login <span class="input-obrigatorio">*</span></label>
+                        <input type="text" id="login" name="login" placeholder="Login" required>
+                        <small>Digite um Login válido.</small>
+                    </div>
                     <div>
                         <label for="cpf">Informe o seu CPF <span class="input-obrigatorio">*</span></label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
@@ -55,7 +62,8 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div class="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravarPessoa(document.inserirPessoa)">
+                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravar(document.inserirPessoa)">
+                        <a href="/sgab/main?acao=PessoaListar">Listar Usuários</a><br>
                     </div>
                 </form>
             </div>
@@ -64,6 +72,6 @@
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-    <script src="../../js/validacao-pessoa.js"></script>
+    <script src="../../js/validacao.js"></script>
 </body>
 </html>

@@ -2,22 +2,46 @@ package sgab.model.dto;
 
 public class Pessoa {
     
-    private final Long cpf;
+    private Long id;
+    private final String Login;
+    private Long cpf;
     private String nome;
     private String email;
     private String senha;
     private boolean habilitado;
 
-    public Pessoa (Long cpf, String nome, String email, String senha){
+    public Pessoa(String login){
+        this.Login = login;
+        this.habilitado = true;
+    }
+
+    public Pessoa(Long cpf, String login, String nome, String email, String senha){
         this.cpf = cpf;
+        this.Login = login;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.habilitado = true;
     }
     
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return Login;
+    }
+
     public Long getCpf() {
         return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {

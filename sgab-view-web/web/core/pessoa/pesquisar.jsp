@@ -29,13 +29,15 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="perquisarPessoa" method="post">
+                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="acao" value="pesquisar">
                     <div>
                         <label for="cpf">Informe o CPF <span class="input-obrigatorio">*</span></label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
                         <small>Digite um CPF válido. Informe apenas números.</small>
                     </div>
                     <div class="caixa-form-footer">
-                       <input type="button" class="button" name="ordem" value="Pesquisar">
+                       <input type="button" class="button" name="ordem" value="Pesquisar" onclick="pesquisar(document.inserirPessoa)">
                     </div>
                 </form>
             </div>
@@ -44,6 +46,6 @@
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-   <script src="../../js/validacao-pessoa.js"></script> 
+   <script src="../../js/validacao.js"></script> 
 </body>
 </html>

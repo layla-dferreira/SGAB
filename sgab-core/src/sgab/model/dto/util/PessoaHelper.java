@@ -2,31 +2,36 @@ package sgab.model.dto.util;
 
 import sgab.model.dao.PessoasDAO;
 import sgab.model.dto.Pessoa;
+
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class PessoaHelper {
-    public static int validarPessoa(Pessoa pessoa, PessoasDAO pessoas) {
+    public static List<String> validarPessoa(Pessoa pessoa, PessoasDAO pessoas) {
+        List<String> exMsgs = new LinkedList<>();
+
         if(!validarEmail(pessoa.getEmail())){
-            return -1;
+            exMsgs.add("O email da pessoa não é válido.");
         }
         
         if(!validarSenha(pessoa.getSenha())){
-            return -2;
+            exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
         }
         
         if(pessoas.pesquisar(pessoa.getCpf()) != null) {
-            return -3;
+            exMsgs.add("O CPF inserido já foi cadastrado.");
         }
         
         if(!validarNome(pessoa.getNome())){
-            return -4;
+            exMsgs.add("O nome da pessoa não é válido.");
         }
 
         if(!validarCpf(pessoa.getCpf())){
-            return -5;
+            exMsgs.add("O CPF inserido não é válido");
         }
 
-        return 0;
+        return exMsgs;
     }
 
     public static boolean validarCpf(Long cpf){

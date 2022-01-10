@@ -10,6 +10,17 @@
     <title>SGAB | Resultado de Pessoa</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        #nome, #email, #senha {
+            background: #fff url(imgs/editar.png) no-repeat 95% center;
+            background-size: 18px;
+        }
+
+        #senha2-div {
+            visibility: hidden;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,6 +42,8 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="modificarPessoa" method="post">
+                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="acao" value="alterar">
                     <div>
                         <label for="cpf">CPF</label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" value="<%=pessoa.getCpf()%>" readonly>
@@ -51,6 +64,11 @@
                         <input type="password" id="senha" name="senha" placeholder="Senha" value="<%=pessoa.getSenha()%>">
                         <small>A senha precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.</small>
                     </div>
+                    <div id="senha2-div">
+                        <label for="senha2">Confirme a nova senha <span class="input-obrigatorio">*</span></label>
+                        <input type="password" id="senha2" name="senha2" placeholder="Senha">
+                        <small>As senhas não correspondem.</small>
+                    </div>
                     <div id="caixa-form-footer">
                         <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarPessoa(document.frmAltUsuario)">
                         <input type="button" class="button" name="ordem" value="Excluir" onclick="excluirPessoa(<%=usuario.getCpf()%>, document.modificarPessoa)">
@@ -62,7 +80,7 @@
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-    <script src="../../js/validacao-pessoa.js"></script>
+    <script src="../../js/validacao.js"></script>
     <script>
         let senha2DivEl = document.querySelector("#senha2-div");
 

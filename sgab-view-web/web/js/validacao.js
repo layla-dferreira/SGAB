@@ -13,6 +13,25 @@ function validacaoView(inputEl, regexEl, smallEl, labelEl, inputObrigatorioEl) {
     }
 }
 
+let loginEl = document.querySelector("#login");
+cpfEl.addEventListener("change", () => {
+
+    let smallEl = document.querySelector("#cpf ~ small");
+    let labelEl = document.querySelector("label[for=cpf]");
+    let inputObrigatorioEl = document.querySelector("label[for=cpf] .input-obrigatorio");
+    
+    if(loginEl == null){
+        smallEl.classList.add("invalido");
+        labelEl.style.color = "#dd4b39";
+        loginEl.style.borderColor = "#dd4b39";
+        inputObrigatorioEl.style.visibility = "visible";
+    } else {
+        smallEl.classList.remove("invalido");
+        labelEl.style.color = "#00a65a";
+        loginEl.style.borderColor = "#00a65a";
+        inputObrigatorioEl.style.visibility = "hidden";
+    }
+});
 
 let cpfEl = document.querySelector("#cpf");
 cpfEl.addEventListener("change", () => {
@@ -88,22 +107,47 @@ function validarPessoa(frm) {
 }
 
 
-function gravarPessoa(frm) {
-    if (validarUsuario(frm)) {
-        if (frm.acao.value === "alterar")
-            caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
-        else if (frm.acao.value === "gravar")
-            caminhourl = "/sgab/main?acao=PessoaGravarInsercao";
+function gravar(frm) {
+    var table = frm.table.value;
+
+    if (table === "Usuario") {
+        if (validarUsuario(frm)) {
+            if (frm.acao.value === "alterar")
+                caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
+            else if (frm.acao.value === "gravar")
+                caminhourl = "/sgab/main?acao=PessoaGravarInsercao";
+        }
     }
 
     frm.action = caminhourl;
     frm.submit();
 }
 
-function excluirPessoa(cpf, frm) {
-    if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
-        frm.cpf.value = cpf;
-        frm.action = "/sgab/main?acao=PessoaExcluir";            
-        frm.submit();
+function pesquisar(frm){
+    var table = frm.table.value;
+
+    if (table === "Usuario") {
+        if (frm.cpf.value == "") {
+            alert("Informar o cpf!");
+            frm.cpf.focus();
+        } else {
+            frm.action = "/sgab/main?acao=PessoaPesquisar&PessoaCpf=" + frm.cpf.value;            
+            frm.submit();
+        }
+
+
+    }
+}
+
+function excluir(cpf, frm) {
+    var table = frm.table.value;
+
+    if (table === "Usuario") {
+
+        if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
+            frm.cpf.value = cpf;
+            frm.action = "/sgab/main?acao=PessoaExcluir";            
+            frm.submit();
+        }
     }
 }
