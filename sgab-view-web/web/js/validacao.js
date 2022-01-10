@@ -46,7 +46,7 @@ cpfEl.addEventListener("change", () => {
 
 let nomeEl = document.querySelector("#nome");
 nomeEl.addEventListener("change", () => {
-    let regexEl = /^[A-z]+(\s[A-z]+)+/;
+    let regexEl = /^[A-z]+[ ][A-z]+/;
     let smallEl = document.querySelector("#nome ~ small");
     let labelEl = document.querySelector("label[for=nome]");
     let inputObrigatorioEl = document.querySelector("label[for=nome] .input-obrigatorio");

@@ -19,6 +19,10 @@ public class PessoaHelper {
             exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
         }
         
+        if(pessoas.pesquisarLogin(pessoa.getLogin()) != null){
+            exMsgs.add("O Login precisa ser único.");
+        }
+        
         if(pessoas.pesquisarCpf(pessoa.getCpf()) != null) {
             exMsgs.add("O CPF inserido já foi cadastrado.");
         }
@@ -41,7 +45,7 @@ public class PessoaHelper {
         
         String c = Long.toString(cpf);
 
-        String regexCpf = "^[0-9]{9}$";
+        String regexCpf = "^[0-9]{11}$";
         Pattern validarCpf = Pattern.compile(regexCpf);
         Matcher matcher = validarCpf.matcher(c);
 
