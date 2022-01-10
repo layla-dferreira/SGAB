@@ -9,6 +9,7 @@ import sgab.model.dto.Biblioteca;
 import sgab.model.dao.BibliotecaDAO;
 import sgab.model.dto.util.BibliotecaHelper;
 import java.util.List;
+import sgab.model.dto.util.BibliotecaStatus;
 
 public class GestaoBiblioteca{
     
@@ -59,7 +60,16 @@ public class GestaoBiblioteca{
         else{
             bibliotecas.alterarNome(nome,org);
         } 
-    }    
+    }
+    
+    public void alterarStatus(String nome, BibliotecaStatus status){
+       if(status == BibliotecaStatus.SUSPENSA){
+            throw new RuntimeException("Biblioteca suspensa!");
+        }
+        else{
+            bibliotecas.alterarStatus(nome,status);
+        } 
+    } 
     
     public Biblioteca pesquisarId(Long id){
        if(BibliotecaHelper.validarId(id)==false){
