@@ -27,7 +27,7 @@
         <section id="form">
             <div id="caixa-form">
                 <div id="alterarInfo" class="divInputs">
-                    <h1>Alterar InformaÃ§Ãµes</h1>
+                    <h1>Alterar Informações</h1>
                     <form action="../../../src/java/sgab/controller/biblioteca/gerenciarServlet.java" method="POST">
                         <label for="id">Pesquisar por Id</label>
                         <input type="number" id="alterarNomeInput" name="pesquisarPorId" placeholder="Digite o Id">
