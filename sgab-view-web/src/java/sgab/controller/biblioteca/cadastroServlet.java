@@ -5,7 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model;
+import sgab.model.dto.Biblioteca;
+import sgab.model.service.GestaoBiblioteca;
 
 
 @WebServlet(urlPatterns = {"/cadastroServlet"})
@@ -29,11 +30,14 @@ public class cadastroServlet extends HttpServlet {
             
             String adicionarUnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
             String adicionarNomeInput = request.getParameter("adicionarNomeInput");
-            Integer adicionarIDInput = Integer.parseInt(request.getParameter("adicionarIDInput"));
+            Long adicionarIDInput = Long.parseLong(request.getParameter("adicionarIDInput"));
 
             GestaoBiblioteca cadastro = new GestaoBiblioteca();
 
-            Biblioteca novaBiblioteca = new Biblioteca(adicionarUnidadeOrgInput,adicionarNomeInput,adicionarIDInput);
+            Biblioteca novaBiblioteca = new Biblioteca();
+            novaBiblioteca.setNome(adicionarNomeInput);
+            novaBiblioteca.setId(adicionarIDInput);
+            novaBiblioteca.setUnidadeOrg(adicionarUnidadeOrgInput);
 
             cadastro.cadastrarBiblioteca(novaBiblioteca);
 

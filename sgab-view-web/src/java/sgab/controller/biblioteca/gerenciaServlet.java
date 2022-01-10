@@ -5,7 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model;
+import sgab.model.dto.Biblioteca;
+import sgab.model.service.GestaoBiblioteca;
 
 @WebServlet(urlPatterns = {"/gerenciaServlet"})
 public class gerenciaServlet extends HttpServlet {
@@ -27,10 +28,10 @@ public class gerenciaServlet extends HttpServlet {
             
             
             String nome = request.getParameter("nome");
-            Integer pesquisarId = Integer.parseInt(request.getParameter("pesquisarId"));
+            Long pesquisarId = Long.parseLong(request.getParameter("pesquisarId"));
             String pesquisarNome = request.getParameter("pesquisarNome");
             String alterarNomeInput = request.getParameter("alterarNomeInput");
-            String alterarIDInput = request.getParameter("alterarIDInput");
+            Long alterarIDInput = Long.parseLong(request.getParameter("alterarIDInput"));
             String alterarUnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
 
             GestaoBiblioteca gestao = new GestaoBiblioteca();
@@ -63,7 +64,7 @@ public class gerenciaServlet extends HttpServlet {
             }
 
             else if(alterarUnidadeOrgInput!=null){
-                gestao.alterarUnidadeOrgInput(nome,alterarUnidadeOrgInput);
+                gestao.alterarUnidadeOrganizacional(nome,alterarUnidadeOrgInput);
                 response.sendRedirect("../../../web/core/biblioteca/resposta.jsp");
             }
 
