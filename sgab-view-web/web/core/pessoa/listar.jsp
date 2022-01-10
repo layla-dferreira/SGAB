@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>SGAB</title>
-        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao-pessoa.js"></script>
+        <script type="text/javascript" language="JavaScript" src="../../js/validacao.js"></script>
     </head>
     <body>
         <header>
