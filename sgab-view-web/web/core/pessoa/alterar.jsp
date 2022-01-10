@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="sgab.model.dto.Pessoa" %>
+
+<%@include file="/core/menu.jsp" %>
 
 <%  Pessoa pessoa = (Pessoa) request.getAttribute("pessoa"); %>
 
@@ -23,19 +26,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <div id="pagina-inicial">
-            <a href=""title="Página Inicial">
-                SGAB
-            </a>
-        </div>
-        <div id="logo-topo">
-            <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
-            </a>
-        </div>
-    </header>
-    <main>
+    <center>
         <section id="nome-form">
             <h1>Alteraração de Pessoa</h1>
         </section>
@@ -45,7 +36,7 @@
                     <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="alterar">
                     <div>
-                        <label for="cpf">Código</label>
+                        <label for="pessoaId">Código</label>
                         <input type="number" id="pessoaId" name="pessoaId" placeholder="ID" value="<%=pessoa.getId()%>" readonly>
                     </div>
                     <div>
@@ -53,8 +44,8 @@
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" value="<%=pessoa.getCpf()%>" readonly>
                     </div>
                     <div>
-                        <label for="cpf">Login</label>
-                        <input type="number" id="login" name="login" placeholder="Login" value="<%=pessoa.getLogin()%>" readonly>
+                        <label for="login">Login</label>
+                        <input type="text" id="login" name="login" placeholder="Login" value="<%=pessoa.getLogin()%>" readonly>
                     </div>
                     <div>
                         <label for="nome">Nome</label>
@@ -77,13 +68,13 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div id="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarPessoa(document.frmAltUsuario)">
-                        <input type="button" class="button" name="ordem" value="Excluir" onclick="excluirPessoa(<%=usuario.getCpf()%>, document.modificarPessoa)">
+                        <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarAlteracao(document.modificarPessoa)">
+                        <input type="button" class="button" name="ordem" value="Excluir" onclick="excluir(<%=pessoa.getCpf()%>, document.modificarPessoa)">
                     </div>
                 </form>
             </div>
         </section>
-    </main>
+    </center>
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>

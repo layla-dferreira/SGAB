@@ -19,7 +19,7 @@ public class PessoaHelper {
             exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
         }
         
-        if(pessoas.pesquisar(pessoa.getCpf()) != null) {
+        if(pessoas.pesquisarCpf(pessoa.getCpf()) != null) {
             exMsgs.add("O CPF inserido já foi cadastrado.");
         }
         

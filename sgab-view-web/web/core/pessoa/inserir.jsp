@@ -62,7 +62,7 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div class="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravar(document.inserirPessoa)">
+                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravarAlteracao(document.inserirPessoa)">
                         <a href="/sgab/main?acao=PessoaListar">Listar Usuários</a><br>
                     </div>
                 </form>

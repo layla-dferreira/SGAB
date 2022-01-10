@@ -86,12 +86,12 @@ function validarPessoa(frm) {
 
 function pesquisar(frm){
     var table = frm.table.value;
-
+    
     if (table === "Pessoa") {
         if(frm.acao.valeu === "pesquisarPorLogin"){
             if (frm.login.value == "") {
                 alert("Informar o login!");
-                frm.cpf.focus();
+                frm.login.focus();
             } else {
                 frm.action = "/sgab/main?acao=PessoaPesquisar&PessoaLogin=" + frm.login.value;            
                 frm.submit();

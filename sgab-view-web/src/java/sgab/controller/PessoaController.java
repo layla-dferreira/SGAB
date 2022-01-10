@@ -16,7 +16,7 @@ public class PessoaController {
             listPessoa.add(gestaoPessoasService.pesquisarPorLogin(login)); 
             if (listPessoa != null) {
                 request.setAttribute("listPessoas", listPessoa);
-                jsp = "/core/usuario/listar.jsp";
+                jsp = "/core/pessoa/listar.jsp";
             } else {
                 String erro = "Nao existe registro!";
                 request.setAttribute("erro", erro);
@@ -36,7 +36,7 @@ public class PessoaController {
             List<Pessoa> listPessoas = gestaoPessoasService.pesquisarAtivos();
             if (listPessoas != null) {
                 request.setAttribute("listPessoas", listPessoas);
-                jsp = "/core/usuario/listar.jsp";
+                jsp = "/core/pessoa/listar.jsp";
             } else {
                 String erro = "Nao existe registro!";
                 request.setAttribute("erro", erro);
@@ -57,7 +57,7 @@ public class PessoaController {
             Pessoa pessoa = gestaoPessoasService.pesquisarPorId(pessoaId);
             if (pessoa != null) {
                 request.setAttribute("pessoa", pessoa);
-                jsp = "/core/usuario/alterar.jsp";
+                jsp = "/core/pessoa/alterar.jsp";
             } else {
                 String erro = "Ocorreu erro ao Alterar Pessoa!";
                 request.setAttribute("erro", erro);
@@ -114,7 +114,7 @@ public class PessoaController {
             Long pessoaId = gestaoPessoasService.cadastrar(pessoa);
 
             if (pessoaId != null) {
-                jsp = PessoaController.listar(request);
+                jsp = listar(request);
             } else {
                 String erro = "Nao foi possível gravar esse registro!";
                 request.setAttribute("erro", erro);
@@ -135,7 +135,7 @@ public class PessoaController {
             Pessoa pessoa = gestaoPessoasService.pesquisarPorId(pessoaId);
             try {
                 gestaoPessoasService.excluir(pessoa);
-                jsp = PessoaController.listar(request);
+                jsp = listar(request);
             }
             catch(PersistenciaException ex) {
                 String erro = "Ocorreu erro ao Excluir Pessoa!";

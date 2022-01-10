@@ -28,7 +28,7 @@
         </section>
         <section id="form">
             <div id="caixa-form">
-                <form name="perquisarPessoa" method="post">
+                <form name="pesquisarPessoa" method="post">
                     <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="pesquisarPorLogin">
                     <div>
@@ -37,7 +37,7 @@
                         <small>Digite um Login válido. </small>
                     </div>
                     <div class="caixa-form-footer">
-                       <input type="button" class="button" name="ordem" value="Pesquisar" onclick="pesquisar(document.inserirPessoa)">
+                       <input type="button" class="button" name="ordem" value="Pesquisar" onclick="pesquisar(document.pesquisarPessoa)">
                     </div>
                 </form>
             </div>
