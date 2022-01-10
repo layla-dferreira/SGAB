@@ -11,13 +11,13 @@
 <body>
     <header>
         <div id="pagina-inicial">
-            <a href="" title="Página Inicial">
+            <a href="../menu.jsp" title="Página Inicial">
                 Biblioteca
             </a>
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../img-template/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="../img/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -28,7 +28,7 @@
         <section id="form">
             <div id="caixa-form">
                 <h1>Cadastrar Biblioteca</h1>
-                <form action="../../../src/java/sgab/controller/biblioteca/cadastroServlet.java" method="POST">
+                <form action="/cadastroServlet" method="POST">
                     <form action="" method="POST">
                         <label for="id">Adicionar UnidadeOrg</label>
                         <input type="number" id="adicionarUnidadeOrgInput" name="adicionarUnidadeOrgInput" placeholder="Adicione uma UnidadeOrg">
