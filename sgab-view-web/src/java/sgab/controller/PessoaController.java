@@ -12,8 +12,9 @@ public class PessoaController {
         try {
             String login = request.getParameter("login");
             GestaoPessoasService gestaoPessoasService = new GestaoPessoasService();
-            List<Pessoa> listPessoa = gestaoPessoasService.pesquisarPorLogin(login);
-            if (pessoa != null) {
+            List<Pessoa> listPessoa = null;
+            listPessoa.add(gestaoPessoasService.pesquisarPorLogin(login)); 
+            if (listPessoa != null) {
                 request.setAttribute("listPessoas", listPessoa);
                 jsp = "/core/usuario/listar.jsp";
             } else {
