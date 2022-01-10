@@ -89,6 +89,9 @@ function validarPessoa(frm) {
     if (frm.cpf.value == "") {
         alert("Informar o cpf!");
         frm.cpf.focus();
+    } else if(frm.login.value === ""){
+        alert("Informar o Login!");
+        frm.login.focus();
     } else if (frm.nome.value === "") {
         alert("Informar o nome!");
         frm.nome.focus();
@@ -110,8 +113,8 @@ function validarPessoa(frm) {
 function gravar(frm) {
     var table = frm.table.value;
 
-    if (table === "Usuario") {
-        if (validarUsuario(frm)) {
+    if (table === "Pessoa") {
+        if (validarPessoa(frm)) {
             if (frm.acao.value === "alterar")
                 caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
             else if (frm.acao.value === "gravar")
@@ -126,12 +129,12 @@ function gravar(frm) {
 function pesquisar(frm){
     var table = frm.table.value;
 
-    if (table === "Usuario") {
-        if (frm.cpf.value == "") {
-            alert("Informar o cpf!");
+    if (table === "Pessoa") {
+        if (frm.login.value == "") {
+            alert("Informar o login!");
             frm.cpf.focus();
         } else {
-            frm.action = "/sgab/main?acao=PessoaPesquisar&PessoaCpf=" + frm.cpf.value;            
+            frm.action = "/sgab/main?acao=PessoaPesquisar&PessoaLogin=" + frm.login.value;            
             frm.submit();
         }
 
@@ -142,7 +145,7 @@ function pesquisar(frm){
 function excluir(cpf, frm) {
     var table = frm.table.value;
 
-    if (table === "Usuario") {
+    if (table === "Pessoa") {
 
         if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
             frm.cpf.value = cpf;

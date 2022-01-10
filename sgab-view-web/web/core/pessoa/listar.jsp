@@ -29,8 +29,8 @@
             </section>
             <a href="/sgab/core/pessoa/inserir.jsp">Nova Pessoa</a>
             <form name="frmPessoa" method="post">
-                <input type="hidden" name="table" value="Usuario">
-                <input type="hidden" name="usuarioId" value="">
+                <input type="hidden" name="table" value="Pessoa">
+                <input type="hidden" name="pessoaId" value="">
                 
                 <table id="usuario">
                     <tr>

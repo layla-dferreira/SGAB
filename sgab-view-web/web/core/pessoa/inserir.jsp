@@ -29,7 +29,7 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="inserirPessoa" method="post">
-                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="gravar">
                     <div>
                         <label for="login">Informe o seu Login <span class="input-obrigatorio">*</span></label>

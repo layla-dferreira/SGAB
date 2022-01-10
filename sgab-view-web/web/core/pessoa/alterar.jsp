@@ -42,12 +42,19 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="modificarPessoa" method="post">
-                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="alterar">
+                    <div>
+                        <label for="cpf">Código</label>
+                        <input type="number" id="id" name="id" placeholder="ID" value="<%=pessoa.getId()%>" readonly>
+                    </div>
                     <div>
                         <label for="cpf">CPF</label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" value="<%=pessoa.getCpf()%>" readonly>
-                        <small>Digite um CPF válido. Informe apenas números.</small>
+                    </div>
+                    <div>
+                        <label for="cpf">Login</label>
+                        <input type="number" id="login" name="login" placeholder="Login" value="<%=pessoa.getLogin()%>" readonly>
                     </div>
                     <div>
                         <label for="nome">Nome</label>

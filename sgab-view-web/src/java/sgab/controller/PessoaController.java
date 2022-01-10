@@ -7,6 +7,27 @@ import java.util.List;
 import sgab.model.exception.PersistenciaException;
 
 public class PessoaController {
+    public static String pesquisarLogin(HttpServletRequest request){
+        String jsp = "";
+        try {
+            String login = request.getParameter("login");
+            GestaoPessoasService gestaoPessoasService = new GestaoPessoasService();
+            List<Pessoa> listPessoa = gestaoPessoasService.pesquisarPorLogin(login);
+            if (pessoa != null) {
+                request.setAttribute("listPessoas", listPessoa);
+                jsp = "/core/usuario/listar.jsp";
+            } else {
+                String erro = "Nao existe registro!";
+                request.setAttribute("erro", erro);
+                jsp = "/core/erro.jsp";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsp = "";
+        }
+        return jsp;
+    }
+
     public static String listar(HttpServletRequest request) {
         String jsp = "";
         try {
@@ -30,7 +51,7 @@ public class PessoaController {
     public static String alterar(HttpServletRequest request) {
         String jsp = "";
         try {
-            Long pessoaId = Long.parseLong(request.getParameter("pessoaId"));
+            Long pessoaId = Long.parseLong(request.getParameter("id"));
             GestaoPessoasService gestaoPessoasService = new GestaoPessoasService();
             Pessoa pessoa = gestaoPessoasService.pesquisarPorId(pessoaId);
             if (pessoa != null) {

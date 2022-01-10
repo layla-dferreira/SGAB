@@ -29,12 +29,12 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="perquisarPessoa" method="post">
-                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="pesquisar">
                     <div>
-                        <label for="cpf">Informe o CPF <span class="input-obrigatorio">*</span></label>
-                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
-                        <small>Digite um CPF válido. Informe apenas números.</small>
+                        <label for="login">Informe o Login <span class="input-obrigatorio">*</span></label>
+                        <input type="number" id="login" name="login" placeholder="Login" required>
+                        <small>Digite um Login válido. </small>
                     </div>
                     <div class="caixa-form-footer">
                        <input type="button" class="button" name="ordem" value="Pesquisar" onclick="pesquisar(document.inserirPessoa)">
