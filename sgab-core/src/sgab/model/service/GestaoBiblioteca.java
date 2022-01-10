@@ -33,7 +33,7 @@ public class GestaoBiblioteca{
         } 
     }
     
-    public void alterarId(String nome, Integer id){
+    public void alterarId(String nome, Long id){
        if(BibliotecaHelper.validarId(id)==false){
             throw new RuntimeException("Dados Inválidos!");
         }
@@ -61,7 +61,7 @@ public class GestaoBiblioteca{
         } 
     }    
     
-    public Biblioteca pesquisarId(Integer id){
+    public Biblioteca pesquisarId(Long id){
        if(BibliotecaHelper.validarId(id)==false){
             throw new RuntimeException("Dados Inválidos!");
         }

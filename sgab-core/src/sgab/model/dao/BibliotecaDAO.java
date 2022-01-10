@@ -13,22 +13,22 @@ import java.util.Map;
 import sgab.model.dto.Biblioteca;
 
 
-public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
-    private static Map<Integer, Biblioteca> bibliotecas = new HashMap<>();
+public class BibliotecaDAO implements GenericDAO<Biblioteca, Long> {
+    private static Map<Long, Biblioteca> bibliotecas = new HashMap<>();
     
     @Override
     public void inserir(Biblioteca biblioteca){
-        this.bibliotecas.put((Integer)biblioteca.getId(), biblioteca);
+        this.bibliotecas.put(biblioteca.getId(), biblioteca);
     }
     
     
     @Override
     public void alterar(Biblioteca biblioteca){
-        this.bibliotecas.put((Integer)biblioteca.getId(), biblioteca);
+        this.bibliotecas.put(biblioteca.getId(), biblioteca);
     }
     
-    public void alterarId(String nome,Integer id){
-        for(Integer key : this.bibliotecas.keySet()){
+    public void alterarId(String nome,Long id){
+        for(Long key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);
             if(valor.getNome().equals(nome)){
@@ -39,7 +39,7 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     }
     
     public void alterarUnidadeOrg(String nome, String org){
-        for(Integer key : this.bibliotecas.keySet()){
+        for(Long key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);
             if(valor.getNome().equals(nome)){
@@ -50,7 +50,7 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     }
     
     public void alterarNome(String nomeAntigo, String nomeNovo){
-        for(Integer key : this.bibliotecas.keySet()){
+        for(Long key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);
             if(valor.getNome().equals(nomeAntigo)){
@@ -61,7 +61,7 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     }
    
     @Override
-    public Biblioteca pesquisar(Integer key){
+    public Biblioteca pesquisar(Long key){
         return (this.bibliotecas.get(key));
     }
     
@@ -72,7 +72,7 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Integer> {
     
     public Biblioteca pesquisar(String nome){
         Biblioteca resultado = new Biblioteca();
-        for(Integer key : this.bibliotecas.keySet()){
+        for(Long key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);
             if(valor.getNome().equals(nome)){

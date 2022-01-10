@@ -15,14 +15,14 @@ public class BibliotecaHelper {
             resultado = false;
         }
         
-        else if(biblioteca.getId().equals("0")){
+        else if(biblioteca.getId() == 0){
             resultado = false;
         }
 
         return resultado;
     }
      
-    public static boolean validarId(Integer id){
+    public static boolean validarId(Long id){
         if(id <= 0){
             return false;
         }

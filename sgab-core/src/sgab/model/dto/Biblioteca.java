@@ -6,15 +6,14 @@ package sgab.model.dto;
 
 import java.util.*;
 
-public class Biblioteca<Integer>{
+public class Biblioteca{
 
     private String unidadeorg;
     private String nome;
-    private Integer id;
+    private Long id;
 
     //construtor
-    public void Biblioteca(String unidadeorg, String nome, Integer id){
-        
+    public void Biblioteca(String unidadeorg, String nome, Long id){
         this.unidadeorg = unidadeorg;
         this.nome = nome;
         this.id = id;
@@ -29,7 +28,7 @@ public class Biblioteca<Integer>{
     
         this.nome = nome;
     }
-    public void setId(Integer id){
+    public void setId(Long id){
     
         this.id = id;
     }
@@ -41,7 +40,7 @@ public class Biblioteca<Integer>{
     public String getNome(){
         return nome;
     }
-    public Integer getId(){
+    public long getId(){
         return id;
     }
 }
