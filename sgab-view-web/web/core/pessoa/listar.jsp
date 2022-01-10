@@ -8,7 +8,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>SGAB</title>
-        <script type="text/javascript" language="JavaScript" src="../../js/validacao.js"></script>
+        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
+        <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
     </head>
     <body>
         <header>
@@ -19,7 +20,7 @@
             </div>
             <div id="logo-topo">
                 <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                    <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                    <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
                 </a>
             </div>
         </header>

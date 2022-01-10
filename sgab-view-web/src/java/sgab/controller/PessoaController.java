@@ -52,7 +52,7 @@ public class PessoaController {
     public static String alterar(HttpServletRequest request) {
         String jsp = "";
         try {
-            Long pessoaId = Long.parseLong(request.getParameter("id"));
+            Long pessoaId = Long.parseLong(request.getParameter("pessoaId"));
             GestaoPessoasService gestaoPessoasService = new GestaoPessoasService();
             Pessoa pessoa = gestaoPessoasService.pesquisarPorId(pessoaId);
             if (pessoa != null) {
