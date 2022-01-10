@@ -44,5 +44,6 @@
     <footer>
 
     </footer>
+        <script>"cadastro.js"</script>
 </body>
 </html>
