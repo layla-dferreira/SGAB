@@ -32,8 +32,8 @@
                 <c:set var="id" value="<%= request.getAttribute("id")%>"/>
                 <c:set var="org" value="<%= request.getAttribute("unidadeOrg")%>"/>
                 <p>Nome da Bilioteca: ${nome}</p>
-                <p>Id da Biblioteca: ${id]</p>
-                <p>Unidade Organizacional da Biblioteca: ${org]</p>
+                <p>Id da Biblioteca: ${id}</p>
+                <p>Unidade Organizacional da Biblioteca: ${org}</p>
             </div>
         </section>
     </main>

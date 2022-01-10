@@ -9,7 +9,7 @@ import sgab.model;
 
 
 @WebServlet(urlPatterns = {"/cadastroServlet"})
-public class NewServlet extends HttpServlet {
+public class cadastroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +29,7 @@ public class NewServlet extends HttpServlet {
             
             String adicionarUnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
             String adicionarNomeInput = request.getParameter("adicionarNomeInput");
-            Integer adicionarIDInput = request.getParameter("adicionarIDInput");
+            Integer adicionarIDInput = Integer.parseInt(request.getParameter("adicionarIDInput"));
 
             GestaoBiblioteca cadastro = new GestaoBiblioteca();
 

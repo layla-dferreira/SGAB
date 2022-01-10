@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import sgab.model;
 
 @WebServlet(urlPatterns = {"/gerenciaServlet"})
-public class NewServlet extends HttpServlet {
+public class gerenciaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,8 +26,8 @@ public class NewServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             
-            String nome = request.getparameter("nome");
-            Integer pesquisarId = request.getParameter("pesquisarId");
+            String nome = request.getParameter("nome");
+            Integer pesquisarId = Integer.parseInt(request.getParameter("pesquisarId"));
             String pesquisarNome = request.getParameter("pesquisarNome");
             String alterarNomeInput = request.getParameter("alterarNomeInput");
             String alterarIDInput = request.getParameter("alterarIDInput");
