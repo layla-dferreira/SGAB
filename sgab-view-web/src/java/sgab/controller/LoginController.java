@@ -38,8 +38,8 @@ public class LoginController {
     }
 
     public static void validarSessao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long usuarioId = (Long) request.getSession().getAttribute("pessoaId");
-        if (usuarioId == null) {
+        Long pessoaId = (Long) request.getSession().getAttribute("pessoaId");
+        if (pessoaId == null) {
             //Redirecionando pagina
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
