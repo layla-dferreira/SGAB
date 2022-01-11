@@ -11,9 +11,6 @@
         #correto{
             color: green;
         }
-        #errado{
-            color: red;
-        }
     </style>    
 </head>
 <body>
@@ -25,7 +22,7 @@
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../img/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>

@@ -37,6 +37,12 @@ public class Main extends HttpServlet {
             case "UsuarioExcluir":
                 jsp = UsuarioController.excluir(request);
                 break;
+            case "BibliotecaGravarAlteracao":
+                jsp = "gerenciaServlet";
+                break;
+            case "BibliotecaGravarInsercao":
+                jsp = "cadstroServlet";
+                break;
         }
 
         //Redirecionando pagina

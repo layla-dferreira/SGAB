@@ -17,7 +17,7 @@
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../img/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -28,15 +28,14 @@
         <section id="form">
             <div id="caixa-form">
                 <h1>Cadastrar Biblioteca</h1>
-                <form action="/cadastroServlet" method="POST">
-                    <form action="" method="POST">
-                        <label for="id">Adicionar UnidadeOrg</label>
-                        <input type="number" id="adicionarUnidadeOrgInput" name="adicionarUnidadeOrgInput" placeholder="Adicione uma UnidadeOrg">
-                        <label for="id">Adicionar Nome</label>
-                        <input type="text" id="adicionarNomeInput" name="adicionarNomeInput" placeholder="Adicione um Nome">
-                        <label for="id">Adicionar ID</label>
-                        <input type="text" id="adicionarIDInput" name="adicionarIDInput" placeholder="Adicione um ID">
-                        <button type="submit">Adicionar</button>
+                <form method="POST" name="cadastro">
+                    <input type="hidden" name="table" value="Biblioteca">
+                    <input type="hidden" name="acao" value="gravar">
+                    <label for="adicionarUnidadeOrgInput">Adicionar UnidadeOrg</label>
+                    <input type="text" id="adicionarUnidadeOrgInput" name="adicionarUnidadeOrgInput" placeholder="Adicione uma UnidadeOrg">
+                    <label for="adicionarNomeInput">Adicionar Nome</label>
+                    <input type="text" id="adicionarNomeInput" name="adicionarNomeInput" placeholder="Adicione um Nome">
+                    <button type="button" onclick="gravarAlteracao(document.cadastro)">Adicionar</button>
                 </form>
             </div>
         </section>
@@ -44,6 +43,6 @@
     <footer>
 
     </footer>
-        <script>"cadastro.js"</script>
+    <script src="../../js/helper.js"></script>
 </body>
 </html>

@@ -69,6 +69,14 @@ function gravarAlteracao(frm) {
                 caminhourl = "/sgab/main?acao=UsuarioGravarInsercao";
         }
     }
+    else if(table === "Biblioteca"){
+        if(validarBiblioteca(frm)){
+            if (frm.acao.value === "alterar")
+                caminhourl = "/sgab/gerenciaBiblioteca?acao=BibliotecaGravarAlteracao";
+            else if (frm.acao.value === "gravar")
+                caminhourl = "/sgab/cadastroBiblioteca?acao=BibliotecaGravarInsercao";
+        }
+    }
 
     frm.action = caminhourl;
     frm.submit();
@@ -85,3 +93,22 @@ function excluir(id, frm) {
         }
     }
 }
+
+function validarBiblioteca(validar) {
+    let result = false;
+
+    if (validar.adicionarUnidadeOrgInput.value == "") {
+        window.confirm("Adicionar Unidade Org!");
+
+    } 
+  
+    else if (validar.adicionarNomeInput.value == "") {
+        window.confirm("Adicionar Nome!");
+    }
+  
+    else
+        result = true;
+    
+    return result;
+}
+

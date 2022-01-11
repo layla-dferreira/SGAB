@@ -1,3 +1,6 @@
+package sgab.controller.biblioteca;
+
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -9,7 +12,7 @@ import sgab.model.dto.Biblioteca;
 import sgab.model.service.GestaoBiblioteca;
 
 
-@WebServlet(urlPatterns = {"/cadastroServlet"})
+@WebServlet(urlPatterns = {"/cadastroBiblioteca"})
 public class cadastroServlet extends HttpServlet {
 
     /**
@@ -27,27 +30,23 @@ public class cadastroServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            String UnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
+            String NomeInput = request.getParameter("adicionarNomeInput");
             
-            String adicionarUnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
-            String adicionarNomeInput = request.getParameter("adicionarNomeInput");
-            Long adicionarIDInput = Long.parseLong(request.getParameter("adicionarIDInput"));
-
             GestaoBiblioteca cadastro = new GestaoBiblioteca();
 
-            Biblioteca novaBiblioteca = new Biblioteca();
-            novaBiblioteca.setNome(adicionarNomeInput);
-            novaBiblioteca.setId(adicionarIDInput);
-            novaBiblioteca.setUnidadeOrg(adicionarUnidadeOrgInput);
-
-            cadastro.cadastrarBiblioteca(novaBiblioteca);
-
-            request.setAttribute("adicionarUnidadeOrgInput", adicionarUnidadeOrgInput);
-            request.setAttribute("adicionarNomeInput", adicionarNomeInput);
-            request.setAttribute("adicionarIDInput", adicionarIDInput);
-
-            response.sendRedirect("../../../web/core/biblioteca/resposta.jsp");
+            Biblioteca novaBiblioteca = new Biblioteca(UnidadeOrgInput,NomeInput);
             
-            //out.println("<h1>Teste Pega variavel " + "</h1>");
+            cadastro.cadastrarBiblioteca(novaBiblioteca);
+            
+            request.setAttribute("adicionarUnidadeOrgInput",UnidadeOrgInput);
+            request.setAttribute("adicionarNomeInput",NomeInput);
+
+            String path = "sgab/core/biblioteca/resposta.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher(path);
+            rd.forward(request, response);
+            
+            
             
             //out.println( "Variavel = " + adicionarAtendenteInput2);
             

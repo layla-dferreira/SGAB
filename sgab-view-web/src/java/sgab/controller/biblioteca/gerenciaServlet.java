@@ -1,3 +1,5 @@
+package sgab.controller.biblioteca;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -8,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import sgab.model.dto.Biblioteca;
 import sgab.model.service.GestaoBiblioteca;
 
-@WebServlet(urlPatterns = {"/gerenciaServlet"})
+@WebServlet(urlPatterns = {"/gerenciaBiblioteca"})
 public class gerenciaServlet extends HttpServlet {
 
     /**
@@ -32,7 +34,7 @@ public class gerenciaServlet extends HttpServlet {
             String pesquisarNome = request.getParameter("pesquisarNome");
             String alterarNomeInput = request.getParameter("alterarNomeInput");
             Long alterarIDInput = Long.parseLong(request.getParameter("alterarIDInput"));
-            String alterarUnidadeOrgInput = request.getParameter("adicionarUnidadeOrgInput");
+            String alterarUnidadeOrgInput = request.getParameter("alterarUnidadeOrgInput");
 
             GestaoBiblioteca gestao = new GestaoBiblioteca();
             Biblioteca biblioteca;
