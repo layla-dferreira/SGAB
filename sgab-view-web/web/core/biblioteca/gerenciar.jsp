@@ -16,7 +16,7 @@
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../img/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -28,40 +28,47 @@
             <div id="caixa-form">
                 <div id="alterarInfo" class="divInputs">
                     <h1>Alterar Informa��es</h1>
-                    <form action="/gerenciarServlet" method="POST">
+                    <form method="POST" name="gerencia">
+                        <input type="hidden" name="table" value="Biblioteca">
+                        <input type="hidden" name="acao" value="alterar">
                         <label for="id">Pesquisar por Id</label>
-                        <input type="number" id="alterarNomeInput" name="pesquisarPorId" placeholder="Digite o Id">
-                        <button type="submit">Pesquisar</button>
-                    </form>
-                    <form action="/gerenciarServlet" method="POST">
+                        <input type="radio" name="inputsGerenciar" value="1" class="retirar"><br>
                         <label for="id">Pesquisar por Nome</label>
-                        <input type="text" id="alterarNomeInput" name="pesquisarPorNome" placeholder="Digite o Nome">
-                        <button type="submit">Pesquisar</button>
-                    </form>
-                    <form action="/gerenciarServlet" method="POST">
+                        <input type="radio" name="inputsGerenciar" value="2" class="retirar"><br>
                         <label for="id">Alterar Nome</label>
-                        <input type="text" id="alterarNomeInput" name="nome" placeholder="Pesquisa biblioteca pelo Nome">
-                        <input type="text" id="alterarNomeInput" name="alterarNomeInput" placeholder="Altera o Nome">
-                        <button type="submit">Alterar</button>
-                    </form>
-                    <form action="/gerenciarServlet" method="POST">
+                        <input type="radio" name="inputsGerenciar" value="3" class="pesquisar"><br>
                         <label for="id">Alterar ID</label>
-                        <input type="text" id="alterarNomeInput" name="nome" placeholder="Pesquisa biblioteca pelo Nome">
-                        <input type="number" id="alterarIDInput" name="alterarIDInput" placeholder="Altera o ID">
-                        <button type="submit">Alterar</button>
-                    </form>
-                    <form action="/gerenciarServlet" method="POST">
-                        <label for="id">Alterar Org</label>
-                        <input type="text" id="alterarNomeInput" name="nome" placeholder="Pesquisa biblioteca pelo Nome">
-                        <input type="text" id="alterarOrgInput" name="alterarOrgInput" placeholder="Altera a Organização">
-                        <button type="submit">Alterar</button>
+                        <input type="radio" name="inputsGerenciar" value="4" class="pesquisar"><br>
+                        <label for="id">Alterar Unidade Organizacional</label>
+                        <input type="radio" name="inputsGerenciar" value="5" class="pesquisar">
+                        <input id="biblioteca" style="display: none;" type="text" name="Biblioteca" placeholder="Coloque aqui o nome da Biblioteca que deseja alterar"><br>
+                        <input type="text" name="dado" placeholder="Selecione uma op��o e digite aqui"><br>
+                        <button type="button" onclick="gravarAlteracao(document.gerencia)">Adicionar</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
     <footer>
-
+        
     </footer>
+    <script>
+        let pesquisar = document.querySelectorAll(".pesquisar");
+        let retirar = document.querySelectorAll(".retirar");
+        let biblioteca = document.querySelector("#biblioteca");
+        
+        for(pesquisa of pesquisar){
+            pesquisa.addEventListener('click',()=>{
+                biblioteca.style.display = "inline";
+            })
+        }
+        
+        for(retira of retirar){
+            retira.addEventListener('click',()=>{
+                biblioteca.style.display = "none";
+            })
+        }
+    </script>
+    <script src="../../js/helper.js"></script>
 </body>
 </html>

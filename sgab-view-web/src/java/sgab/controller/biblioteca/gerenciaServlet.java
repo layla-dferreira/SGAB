@@ -1,5 +1,6 @@
 package sgab.controller.biblioteca;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -28,48 +29,57 @@ public class gerenciaServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            String value = request.getParameter("inputsGerenciar");
             
-            String nome = request.getParameter("nome");
-            Long pesquisarId = Long.parseLong(request.getParameter("pesquisarId"));
-            String pesquisarNome = request.getParameter("pesquisarNome");
-            String alterarNomeInput = request.getParameter("alterarNomeInput");
-            Long alterarIDInput = Long.parseLong(request.getParameter("alterarIDInput"));
-            String alterarUnidadeOrgInput = request.getParameter("alterarUnidadeOrgInput");
-
             GestaoBiblioteca gestao = new GestaoBiblioteca();
             Biblioteca biblioteca;
-
-            if(pesquisarId!=null){
-                biblioteca = gestao.pesquisarId(pesquisarId);
-                request.setAttribute("nome", biblioteca.getNome());
-                request.setAttribute("id", biblioteca.getId());
-                request.setAttribute("unidadeOrg", biblioteca.getUnidadeOrg());
-                response.sendRedirect("../../../web/core/biblioteca/pesquisado.jsp");
+            String nome = request.getParameter("Biblioteca");
+            
+            switch(value){
+                case "1":
+                    Long pesquisarId = Long.parseLong(request.getParameter("dado"));
+                    biblioteca = gestao.pesquisarId(pesquisarId);
+                    request.setAttribute("nome", biblioteca.getNome());
+                    request.setAttribute("id", biblioteca.getId());
+                    request.setAttribute("unidadeOrg", biblioteca.getUnidadeOrg());
+                    String path = "sgab/core/biblioteca/pesquisado.jsp";
+                    RequestDispatcher rd = request.getRequestDispatcher(path);
+                    rd.forward(request, response);
+                    break;
+                case "2":
+                    String pesquisarNome = request.getParameter("dado");
+                    biblioteca = gestao.pesquisarNome(pesquisarNome);
+                    request.setAttribute("nome", biblioteca.getNome());
+                    request.setAttribute("id", biblioteca.getId());
+                    request.setAttribute("unidadeOrg", biblioteca.getUnidadeOrg());
+                    String path2 = "sgab/core/biblioteca/pesquisado.jsp";
+                    RequestDispatcher rd2 = request.getRequestDispatcher(path2);
+                    rd2.forward(request, response);
+                    break;
+                case "3":
+                    Long alterarIDInput = Long.parseLong(request.getParameter("dado"));
+                    gestao.alterarId(nome,alterarIDInput);
+                    String path3 = "sgab/core/biblioteca/pesquisado.jsp";
+                    RequestDispatcher rd3 = request.getRequestDispatcher(path3);
+                    rd3.forward(request, response);
+                    break;
+                case "4":
+                    String alterarNomeInput = request.getParameter("dado");
+                    gestao.alterarNome(nome,alterarNomeInput);
+                    String path4 = "sgab/core/biblioteca/pesquisado.jsp";
+                    RequestDispatcher rd4 = request.getRequestDispatcher(path4);
+                    rd4.forward(request, response);
+                    break;
+                case "5":
+                    String alterarUnidadeOrgInput = request.getParameter("dado");
+                    gestao.alterarUnidadeOrganizacional(nome,alterarUnidadeOrgInput);
+                    String path5 = "sgab/core/biblioteca/pesquisado.jsp";
+                    RequestDispatcher rd5 = request.getRequestDispatcher(path5);
+                    rd5.forward(request, response);
+                    break;
+                    
             }
-
-            else if(pesquisarNome!=null){
-                biblioteca = gestao.pesquisarNome(pesquisarNome);
-                request.setAttribute("nome", biblioteca.getNome());
-                request.setAttribute("id", biblioteca.getId());
-                request.setAttribute("unidadeOrg", biblioteca.getUnidadeOrg());
-                response.sendRedirect("../../../web/core/biblioteca/pesquisado.jsp");
-            }
-
-            else if(alterarNomeInput!=null){
-                gestao.alterarNome(nome,alterarNomeInput);
-                response.sendRedirect("../../../web/core/biblioteca/resposta.jsp");
-            }
-
-            else if(alterarIDInput!=null){
-                gestao.alterarId(nome,alterarIDInput);
-                response.sendRedirect("../../../web/core/biblioteca/resposta.jsp");
-            }
-
-            else if(alterarUnidadeOrgInput!=null){
-                gestao.alterarUnidadeOrganizacional(nome,alterarUnidadeOrgInput);
-                response.sendRedirect("../../../web/core/biblioteca/resposta.jsp");
-            }
-
+            
         }
     }
 

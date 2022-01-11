@@ -96,16 +96,16 @@ function excluir(id, frm) {
 
 function validarBiblioteca(validar) {
     let result = false;
-
-    if (validar.adicionarUnidadeOrgInput.value == "") {
-        window.confirm("Adicionar Unidade Org!");
-
+    
+    if(validar.adicionarUnidadeOrgInput.value == "" && validar.adicionarNomeInput.value != undefined) {
+        window.confirm("Adicionar Unidade glub glub Org!");
     } 
-  
-    else if (validar.adicionarNomeInput.value == "") {
+     
+    else if(validar.adicionarNomeInput.value == "" && validar.adicionarNomeInput.value != undefined) {
         window.confirm("Adicionar Nome!");
     }
-  
+
+
     else
         result = true;
     
