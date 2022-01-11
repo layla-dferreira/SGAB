@@ -34,6 +34,7 @@
             <div id="caixa-form">
                 <h1>Resultado: </h1>
                 <p id="correto">Operação feita com sucesso!</p>
+                <a href="opcoes.jsp"><p>Pagina Inicial Biblioteca<p></a>
             </div>
         </section>
     </main>
