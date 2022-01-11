@@ -15,15 +15,15 @@ public class AutorHelper {
             resultado = false;
         }
         
-        else if(autor.getId() <= 0){
+        else if(autor.getId() < 0){
             resultado = false;
         }
 
         return resultado;
     }
      
-    public static boolean validarId(Integer id){
-        if(id <= 0){
+    public static boolean validarId(Long id){
+        if(id < 0){
             return false;
         }
         else{

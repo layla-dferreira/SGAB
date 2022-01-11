@@ -9,10 +9,21 @@ import java.util.List;
 * @author Marcos Paulo
 */
 
-public class AutorDAO implements GenericDAO<Autor, Integer>{
-    ArrayList<Autor> mock = new ArrayList<Autor>();
+public class AutorDAO implements GenericDAO<Autor, Long>{
+    private static ArrayList<Autor> mock = new ArrayList<Autor>();
+    
+    private static Long idSequence;
+    static {
+        AutorDAO.idSequence = 0L;
+    }
+
+    public static Long getNextId() {
+        return AutorDAO.idSequence++;
+    } 
     
     public void inserir(Autor autor){
+        Long autorId = AutorDAO.getNextId();
+        autor.setId(autorId);
         this.mock.add(autor);
     }
 
@@ -30,7 +41,7 @@ public class AutorDAO implements GenericDAO<Autor, Integer>{
         
     }
 
-    public Autor pesquisar(Integer key){
+    public Autor pesquisar(Long key){
         for(Autor a : mock){
             if(a.getId() == key){
                 return a;
@@ -48,7 +59,7 @@ public class AutorDAO implements GenericDAO<Autor, Integer>{
         return null;
     }
 
-    public void remover(Integer key){
+    public void remover(Long key){
         boolean encontrado = false;
         for(Autor a : mock){
             if(a.getId() == key){
@@ -62,7 +73,7 @@ public class AutorDAO implements GenericDAO<Autor, Integer>{
         }
     }
     
-    public List<Autor> pesquisar(List<BasicPair<Integer, Autor>> parameterList){
+    public List<Autor> pesquisar(List<BasicPair<Long, Autor>> parameterList){
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 }

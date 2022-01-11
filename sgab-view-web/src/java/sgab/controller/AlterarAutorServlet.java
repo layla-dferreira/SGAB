@@ -1,3 +1,5 @@
+package sgab.controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -5,11 +7,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model;
 import sgab.model.dto.Autor;
+import sgab.model.service.GestaoAutor;
 
-@WebServlet(urlPatterns = { "/ExcluirAutor" })
-public class ExcluirAutorServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/AlterarAutor" })
+public class AlterarAutorServlet extends HttpServlet {
 
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,20 +28,28 @@ public class ExcluirAutorServlet extends HttpServlet {
     try (PrintWriter out = response.getWriter()) {
       /* TODO output your page here. You may use following sample code. */
 
-      Integer Id = request.getParameter("idAutor");
+      String nome = request.getParameter("nomeAutor");
+      Integer Id = Integer.parseInt(request.getParameter("idAutor"));
 
       GestaoAutor gestaoAutor = new GestaoAutor();
 
-      if (Id != null) {
+      if (Id != null && nome != null) {
         Autor autor = new Autor(nome);
         autor.setId(Id);
         try {
-          gestaoAutor.removerAutor(autor);
-          response.sendRedirect("../../../web/core/autores/resposta.jsp");
+          gestaoAutor.alterarAutor(autor);
+          response.sendRedirect("/sgab/core/autores/certo.jsp");
+
+        } catch (RuntimeException e) {
+          response.sendRedirect("/sgab/core/erro.jsp");
+          // ID não encontrado
+          return;
         } catch (Exception e) {
-          
+          // Erro desconhecido
+          return;
         }
       }
+
     }
   }
 
@@ -80,7 +90,7 @@ public class ExcluirAutorServlet extends HttpServlet {
    */
   @Override
   public String getServletInfo() {
-    return "Remove um autor no banco";
+    return "Altera um autor no banco";
   }// </editor-fold>
 
 }

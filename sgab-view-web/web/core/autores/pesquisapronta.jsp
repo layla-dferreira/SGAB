@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pesquisa</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="template-form.css">
+    <link rel="stylesheet" href="/sgab/css/styles.css">
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../img-template/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -31,7 +31,7 @@
                 <c:set var="nome" value="<%= request.getAttribute("nome")%>"/>
                 <c:set var="id" value="<%= request.getAttribute("id")%>"/>
                 <p>Nome do autor: ${nome}</p>
-                <p>Id do autor: ${id]</p>
+                <p>Id do autor: ${id}</p>
             </div>
         </section>
     </main>

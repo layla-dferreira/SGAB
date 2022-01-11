@@ -30,7 +30,7 @@ public class GestaoAutor {
         }
     }
 
-    public Autor pesquisarId(Integer id){
+    public Autor pesquisarId(Long id){
         if (!AutorHelper.validarId(id)) {
 
             throw new RuntimeException("Dados Inválidos!");
@@ -48,7 +48,7 @@ public class GestaoAutor {
         }
     }
 
-    public void removerAutor(Integer id){
+    public void removerAutor(Long id){
         if (!AutorHelper.validarId(id)) {
 
             throw new RuntimeException("Dados Inválidos!");

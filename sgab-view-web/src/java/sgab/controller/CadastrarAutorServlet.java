@@ -1,11 +1,11 @@
+package sgab.controller;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model;
 import sgab.model.dto.Autor;
 import sgab.model.service.GestaoAutor;
 
@@ -28,15 +28,9 @@ public class CadastrarAutorServlet extends HttpServlet {
 
         GestaoAutor gestaoAutor = new GestaoAutor();
 
-        while(true){
-            Integer id = Math.random();
-            if (gestaoAutor.pesquisarId(id) == null) {
-                Autor novaAutor = new Autor(nome);
-                novaAutor.setId(id);
-                cadastro.cadastrarAutor(autor);
-                response.sendRedirect("../../../web/core/autores/certo.jsp");
-            }
-        }
+        Autor autor = new Autor(nome);
+        gestaoAutor.cadastrarAutor(autor);
+        response.sendRedirect("/sgab/core/autores/certo.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the

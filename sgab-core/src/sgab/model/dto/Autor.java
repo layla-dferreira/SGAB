@@ -7,17 +7,17 @@ package sgab.model.dto;
 
 public class Autor{
     private String nome;
-    private int id;
+    private long id;
 
     public Autor(String nome) {
         this.nome = nome;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

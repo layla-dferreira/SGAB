@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pesquisa Autor</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../css/template-form.css">
+    <link rel="stylesheet" href="/sgab/css/styles.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank"
                 title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -30,13 +30,13 @@
         <section id="form">
             <div id="caixa-form">
                 <h2>Pesquisa por ID</h2>
-                <form action="../../../src/java/sgab/controller/autores/AlterarAutorServlet" method="POST">
+                <form action="/sgab/PesquisarAutor" method="POST">
                     <label for="idAutor">Digite o ID</label>
                     <input type="text" id="idAutor" name="idAutor" placeholder="Adicione um id">
                     <button type="submit">Pesquisar</button>
                 </form>
                 <h2>Pesquisa por Nome</h2>
-                <form action="../../../src/java/sgab/controller/autores/AlterarAutorServlet" method="POST">
+                <form action="/sgab/PesquisarAutor" method="POST">
                     <label for="nomeAutor">Digite o nome</label>
                     <input type="text" id="nomeAutor" name="nomeAutor" placeholder="Adicione um Nome">
                     <button type="submit">Pesquisar</button>

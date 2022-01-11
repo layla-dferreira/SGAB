@@ -1,3 +1,5 @@
+package sgab.controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -5,10 +7,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sgab.model;
+import sgab.model.dto.Autor;
+import sgab.model.service.GestaoAutor;
+
 
 @WebServlet(urlPatterns = {"/PesquisarAutor"})
-public class PesquisadorAutorServlet extends HttpServlet {
+public class PesquisarAutorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,23 +30,23 @@ public class PesquisadorAutorServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             
-            String nome = request.getparameter("nomeAutor");
-            Integer id = request.getParameter("idAutor");
+            String nome = request.getParameter("nomeAutor");
+            Long id = Long.parseLong(request.getParameter("idAutor"));
 
             GestaoAutor gestaoAutor = new GestaoAutor();
             Autor autor;
 
             if(id!=null){
-                autor = gestao.pesquisarId(pesquisarId);
+                autor = gestaoAutor.pesquisarId(id);
                 request.setAttribute("nome", autor.getNome());
                 request.setAttribute("id", autor.getId());
-                response.sendRedirect("../../../web/core/autores/pesquisapronta.jsp");
+                response.sendRedirect("/sgab/core/autores/pesquisapronta.jsp");
             } 
             else if(nome!=null){
-                autor = gestao.pesquisarNome(pesquisarNome);
+                autor = gestaoAutor.pesquisarNome(nome);
                 request.setAttribute("nome", autor.getNome());
                 request.setAttribute("id", autor.getId());
-                response.sendRedirect("../../../web/core/autores/pesquisapronta.jsp");
+                response.sendRedirect("/sgab/core/autores/pesquisapronta.jsp");
             }
 
 
