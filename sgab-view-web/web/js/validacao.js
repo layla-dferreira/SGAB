@@ -46,7 +46,7 @@ cpfEl.addEventListener("change", () => {
 
 let nomeEl = document.querySelector("#nome");
 nomeEl.addEventListener("change", () => {
-    let regexEl = /^[A-z]+[ ][A-z]+/;
+    let regexEl = /^[A-z]+([ ][A-z]+)+/;
     let smallEl = document.querySelector("#nome ~ small");
     let labelEl = document.querySelector("label[for=nome]");
     let inputObrigatorioEl = document.querySelector("label[for=nome] .input-obrigatorio");
@@ -83,13 +83,13 @@ senha2El.addEventListener("change", () => {
     if(senha2El.value !== senhaEl.value){
         smallEl.classList.add("invalido");
         labelEl.style.color = "#dd4b39";
-        inputEl.style.borderColor = "#dd4b39";
+        senha2El.style.borderColor = "#dd4b39";
         inputObrigatorioEl.style.visibility = "visible";
-        inputEl.focus();
+        senha2El.focus();
     } else {
         smallEl.classList.remove("invalido");
         labelEl.style.color = "#00a65a";
-        inputEl.style.borderColor = "#00a65a";
+        senha2El.style.borderColor = "#00a65a";
         inputObrigatorioEl.style.visibility = "hidden";
     }
 });

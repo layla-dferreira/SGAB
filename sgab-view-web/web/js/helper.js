@@ -136,8 +136,8 @@ function excluir(id, frm) {
         }
     } else if (table === "Pessoa") {
 
-        if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
-            frm.cpf.value = cpf;
+        if (confirm('Deseja excluir o Usuário com Id = ' + id + '?')) {
+            frm.pessoaId.value = id;
             frm.action = "/sgab/main?acao=PessoaExcluir";            
             frm.submit();
         }
