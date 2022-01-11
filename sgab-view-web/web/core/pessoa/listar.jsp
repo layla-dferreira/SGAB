@@ -2,25 +2,15 @@
 <%@page import="sgab.model.dto.Pessoa" %>
 <%@page import="java.util.List" %>
 
-<%@include file="/core/menu.jsp"%>
-
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>SGAB</title>
-        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
-        <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
-    </head>
-    <body>
+<%@include file="/core/header.jsp" %>
+       
         <center>
-            <section id="nome-form">
-                <h1>Lista de Pessoas</h1>
-            </section>
+            <h3>Lista de Pessoas</h3>
             <a href="/sgab/core/pessoa/inserir.jsp">Nova Pessoa</a>
             <form name="listarPessoa" method="post">
                 <input type="hidden" name="table" value="Pessoa">
                 <input type="hidden" name="pessoaId" value="">
-                
+
                 <table id="pessoa">
                     <tr>
                         <th>
@@ -69,6 +59,6 @@
                     <%  } %>
                 </table>
             </form>
-        </center> 
-    </body>
-</html>
+        </center>
+        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
+        <%@include file="/core/footer.jsp" %>        

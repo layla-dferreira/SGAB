@@ -9,6 +9,10 @@ body{
     text-align: left;
     font-family: Verdana, sans-serif;
     font-size: 14px;
+    /* Ajusta o footer para páginas curtas */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header{
@@ -46,6 +50,7 @@ header{
 
 main{
     background-color: #ffffff;
+    flex: 1;
 }
 
 #nome-form{
@@ -101,7 +106,7 @@ label{
     font-weight: 700;
 }
 
-input[type="text"], input[type="password"], input[type=number]{   
+input[type="text"], input[type="number"], select{   
     border-radius: 0;
     box-shadow: none;
     display: block;
@@ -115,6 +120,24 @@ input[type="text"], input[type="password"], input[type=number]{
     background-color: #fff;
     background-image: none;
     border: 1px solid #d2d6de;
+    margin-bottom: 1em;
+}
+
+input[type="password"]{   
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    box-sizing: border-box;
+    width: 95%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d2d6de;
+    margin-bottom: 1em;
 }
 
 input:focus-visible {
@@ -175,13 +198,13 @@ small {
     border: 1px solid transparent;
     font-size: 14px;
     padding: 6px 12px;
-    float: right;
     color: #fff;
     margin-left: 3px;
     text-decoration: none; 
 }
 
 footer{
+    /* Da forma que o footer estava, uma página com scroll não funcionava.*/
     background-color: #004C84;
     background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
     border-top: solid 3px #bebebe;
@@ -189,10 +212,13 @@ footer{
     display: flex;
     font-size: 11px;
     justify-content: space-between;
+    /*
     padding-left: 10px;
     padding-right: 10px;
+    */
     min-height: 20px;
-    vertical-align: middle;
+    vertical-align: middle;  
+    bottom: 0;
 }
 
 footer p{
@@ -227,11 +253,10 @@ footer p{
 }
 
 .menu { 
-    display: block;
-
+    display: flex;
+    width: 100%;
 }
 .menu a { 
-    position: absolute;
     text-decoration: none; 
     padding: 9px;
     color: #000;
@@ -248,12 +273,7 @@ footer p{
     margin-top: 5px;
     top: 121px;
 }
-.menu #usuario {
-    left: 190px;
-}
-.menu #fornecedor {
-    left: 363px;
-}
+
 .menu a:hover {background-color: #3c8dbc;
     border-radius: 3px;
     color: white; 
@@ -261,4 +281,39 @@ footer p{
 #usuario th{
     border: #000;
     background-color: #aaaaaa;
+}
+
+#pessoa th{
+    border: #000;
+    background-color: #aaaaaa;
+}
+
+.divisao{
+    display:flex;
+    padding-right: 15px;
+    justify-content: space-between;
+}
+
+input[disabled], select[disabled]{
+    background-color: #f0f0f0;
+}
+
+#buttons{
+    display: flex;
+    justify-content: end;
+}
+
+.acoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#pesquisa-container{
+    display: flex;
+    align-items: center;
+}
+#pesquisa-container input, select{
+    margin-bottom: 0;
 }

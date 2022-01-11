@@ -1,35 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="sgab.model.dto.Pessoa" %>
 
-<%@include file="/core/menu.jsp" %>
+<%@include file="/core/header.jsp" %>
 
 <%  Pessoa pessoa = (Pessoa) request.getAttribute("pessoa"); %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SGAB | Resultado de Pessoa</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="/sgab/css/styles.css">
-    <style>
-        #nome, #email, #senha {
-            background: #fff url(imgs/editar.png) no-repeat 95% center;
-            background-size: 18px;
-        }
-
-        #senha2-div {
-            visibility: hidden;
-            display: none;
-        }
-    </style>
-</head>
-<body>
     <center>
-        <section id="nome-form">
-            <h1>Alteraração de Pessoa</h1>
-        </section>
+        <h3>Alteração de Pessoa</h3>
+    </center>
         <section id="form">
             <div id="caixa-form">
                 <form name="modificarPessoa" method="post">
@@ -75,11 +53,8 @@
             </div>
         </section>
     </center>
-    <footer>
-        <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
-    </footer>
+
     <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
-    <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
     <script>
         let senha2DivEl = document.querySelector("#senha2-div");
 
@@ -92,5 +67,15 @@
             }
         });
     </script>
-</body>
-</html>
+        <style>
+        #nome, #email, #senha {
+            background: #fff url(imgs/editar.png) no-repeat 95% center;
+            background-size: 18px;
+        }
+
+        #senha2-div {
+            visibility: hidden;
+            display: none;
+        }
+    </style>
+    <%@include file="/core/footer.jsp" %>
