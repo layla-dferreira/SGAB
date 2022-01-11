@@ -39,9 +39,6 @@
                             Email
                         </th>
                         <th>
-                            Senha
-                        </th>
-                        <th>
                             &nbsp; &nbsp;
                         </th>
                     </tr>
@@ -64,9 +61,6 @@
                             </td>
                             <td>
                                 <a href="/sgab/main?acao=PessoaAlterar&pessoaId=<%=pessoa.getId()%>"><%=pessoa.getEmail()%></a>
-                            </td>
-                            <td>
-                                <a href="/sgab/main?acao=PessoaAlterar&pessoaId=<%=pessoa.getId()%>"><%=pessoa.getSenha()%></a>
                             </td>
                             <td>
                                 <input type="button" value="Excluir" onclick="excluir(<%=pessoa.getId()%>,document.listarPessoa)">

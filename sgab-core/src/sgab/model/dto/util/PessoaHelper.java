@@ -37,6 +37,26 @@ public class PessoaHelper {
 
         return exMsgs;
     }
+    
+    public static List<String> validarAlteracao(Pessoa pessoa, PessoasDAO pessoas){
+        List<String> exMsgs = new LinkedList<>();
+        
+        if(!validarEmail(pessoa.getEmail())){
+            exMsgs.add("O email da pessoa não é válido.");
+        }
+        
+        if(!pessoa.getSenha().equals(pessoas.pesquisar(pessoa.getId()).getSenha())){
+            if(!validarSenha(pessoa.getSenha())){
+                exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
+            }
+        }
+        
+        if(!validarNome(pessoa.getNome())){
+            exMsgs.add("O nome da pessoa não é válido.");
+        }
+
+        return exMsgs;
+    }
 
     public static boolean validarCpf(Long cpf){
         if(cpf == null){

@@ -79,13 +79,18 @@ public class PessoaController {
             String nomeCompleto = request.getParameter("nome");
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
-
-            Pessoa pessoa = new Pessoa(cpf, login, nomeCompleto, email, senha);
-
+            
+            Pessoa pessoa = new Pessoa(login, cpf);
+            pessoa.setId(pessoaId);
+            pessoa.setNome(nomeCompleto);
+            pessoa.setEmail(email);
+            pessoa.setSenha(senha);
+            pessoa.setHabilitado(true);
+            
             GestaoPessoasService gestaoPessoasService = new GestaoPessoasService();
             try {
-                gestaoPessoasService.cadastrar(pessoa);
-                jsp = UsuarioController.listar(request);
+                gestaoPessoasService.alterar(pessoa);
+                jsp = listar(request);
             } 
             catch(PersistenciaException ex) {
                 String erro = "Nao foi possivel alterar esse registro!";

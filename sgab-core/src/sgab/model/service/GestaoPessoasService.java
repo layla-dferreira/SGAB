@@ -48,7 +48,7 @@ public class GestaoPessoasService {
     }
 
     public void alterar(Pessoa pessoa){
-        List<String> exMsgs = PessoaHelper.validarPessoa(pessoa, pessoasDAO);
+        List<String> exMsgs = PessoaHelper.validarAlteracao(pessoa, pessoasDAO);
         
         if (!exMsgs.isEmpty())
             throw new NegocioException(exMsgs);

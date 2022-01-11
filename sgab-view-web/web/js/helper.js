@@ -112,9 +112,7 @@ function gravarAlteracao(frm) {
             else if (frm.acao.value === "gravar")
                 caminhourl = "/sgab/main?acao=UsuarioGravarInsercao";
         }
-    }
-
-    if (table === "Pessoa") {
+    }else if (table === "Pessoa") {
         if (validarPessoa(frm)) {
             if (frm.acao.value === "alterar")
                 caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
@@ -136,9 +134,7 @@ function excluir(id, frm) {
             frm.action = "/sgab/main?acao=UsuarioExcluir";            
             frm.submit();
         }
-    }
-
-    if (table === "Pessoa") {
+    } else if (table === "Pessoa") {
 
         if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
             frm.cpf.value = cpf;

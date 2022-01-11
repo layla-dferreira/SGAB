@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <label for="cpf">Informe o seu CPF <span class="input-obrigatorio">*</span></label>
-                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
+                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required maxlength="11">
                         <small>Digite um CPF válido. Informe apenas números.</small>
                     </div>
                     <div>

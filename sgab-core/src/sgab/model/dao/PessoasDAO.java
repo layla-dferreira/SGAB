@@ -34,9 +34,9 @@ public class PessoasDAO implements GenericDeleteDAO<Pessoa, Long>{
         if (pessoasDAO == null) {
             pessoasDAO = new PessoasDAO();
             
-            // insere administrador do sistema
-            Pessoa admin = new Pessoa("admin");
-            admin.setCpf(null);
+            Pessoa admin = new Pessoa("admin", 10000000001L);
+            Long pessoaId = PessoasDAO.getNextId();
+            admin.setId(pessoaId);
             admin.setNome("Administrador do Sistema");
             admin.setEmail("admin@sgab.cefetmg.br");
             admin.setSenha("admin");
@@ -73,13 +73,13 @@ public class PessoasDAO implements GenericDeleteDAO<Pessoa, Long>{
     }
 
     public List<Pessoa> listarAtivos() {
-        List<Pessoa> listUsuarios = new ArrayList<>();
+        List<Pessoa> listPessoas = new ArrayList<>();
         
         for (Pessoa pes: table.values())
             if (pes.getHabilitado() == true)
-                listUsuarios.add(pes);
+                listPessoas.add(pes);
         
-        return listUsuarios;
+        return listPessoas;
     }
 
     public List<Pessoa> listarTodos() {
@@ -92,17 +92,35 @@ public class PessoasDAO implements GenericDeleteDAO<Pessoa, Long>{
     
     @Override
     public void alterar(Pessoa pessoa){
+        String senhaAnterior = pesquisar(pessoa.getId()).getSenha();
         Pessoa pes = table.remove(pessoa.getId());
+        
         if (pes == null)
             throw new PersistenciaException("Nenhum usuário com "
                                         + "o id '" + pessoa.getId() + "'.");
-
-        inserir(pessoa);
+        
+        if(pessoa.getSenha().equals(senhaAnterior)){
+            if (pesquisarLogin(pessoa.getLogin()) != null)
+                throw new PersistenciaException("'" + pessoa.getLogin() 
+                                                                + "' precisa ser único.");
+            
+            Long pessoaId = PessoasDAO.getNextId();
+            pessoa.setId(pessoaId);
+            
+            table.put(pessoaId, pessoa);
+        } else {
+            inserir(pessoa);
+        }
     }
 
     @Override
     public Pessoa pesquisar(Long id) {
-        return table.get(id);
+        List<Pessoa> listPesssoa = listarTodos();
+        for (Pessoa pes: listPesssoa)
+            if (pes.getId().equals(id))
+                return pes;
+        
+        return null;
     }
 
     public Pessoa pesquisarCpf(Long cpf) {
@@ -150,5 +168,4 @@ public class PessoasDAO implements GenericDeleteDAO<Pessoa, Long>{
 
         p.setHabilitado(false);
     }
-    
 }

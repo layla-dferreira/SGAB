@@ -76,10 +76,20 @@ senhaEl.addEventListener("change", () => {
 
 let senha2El = document.querySelector("#senha2");
 senha2El.addEventListener("change", () => {
-    let regexEl = new RegExp(senhaEl.value);
     let smallEl = document.querySelector("#senha2 ~ small");
     let labelEl = document.querySelector("label[for=senha2]");
     let inputObrigatorioEl = document.querySelector("label[for=senha2] .input-obrigatorio");
-
-    validacaoView(senha2El, regexEl, smallEl, labelEl, inputObrigatorioEl);
+    
+    if(senha2El.value !== senhaEl.value){
+        smallEl.classList.add("invalido");
+        labelEl.style.color = "#dd4b39";
+        inputEl.style.borderColor = "#dd4b39";
+        inputObrigatorioEl.style.visibility = "visible";
+        inputEl.focus();
+    } else {
+        smallEl.classList.remove("invalido");
+        labelEl.style.color = "#00a65a";
+        inputEl.style.borderColor = "#00a65a";
+        inputObrigatorioEl.style.visibility = "hidden";
+    }
 });
