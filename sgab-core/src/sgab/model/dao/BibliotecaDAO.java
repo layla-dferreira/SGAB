@@ -28,7 +28,8 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Long> {
     
     @Override
     public void inserir(Biblioteca biblioteca){
-        biblioteca.setId(this.getNextId());
+        Long id = BibliotecaDAO.getNextId();
+        biblioteca.setId(id);
         this.bibliotecas.put(biblioteca.getId(), biblioteca);
     }
     
@@ -95,7 +96,7 @@ public class BibliotecaDAO implements GenericDAO<Biblioteca, Long> {
     }
     
     public Biblioteca pesquisar(String nome){
-        Biblioteca resultado = new Biblioteca();
+        Biblioteca resultado = new Biblioteca("temp","temp");
         for(Long key : this.bibliotecas.keySet()){
             
             Biblioteca valor = this.bibliotecas.get(key);

@@ -15,7 +15,7 @@ public class BibliotecaHelper {
             resultado = false;
         }
         
-        else if(biblioteca.getId() == 0){
+        else if(biblioteca.getUnidadeOrg().length() <= 1){
             resultado = false;
         }
 

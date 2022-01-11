@@ -4,7 +4,6 @@ package sgab.model.dto;
  * @author Victor Schneider
  */
 
-import java.util.*;
 import sgab.model.dto.util.BibliotecaStatus;
 
 public class Biblioteca{
@@ -15,7 +14,7 @@ public class Biblioteca{
     private BibliotecaStatus status;
 
     //construtor
-    public void Biblioteca(String unidadeorg, String nome){
+    public Biblioteca(String unidadeorg, String nome){
         this.unidadeorg = unidadeorg;
         this.nome = nome;
         this.status = BibliotecaStatus.ATIVA;
