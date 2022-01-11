@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>SGAB | Sistema de Gestão de Acervo Bibliográfico </title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="/sgab/css/styles.css">
+        <link rel="stylesheet" href="/sgab/core/obras/styles-modificadoObras.css">
         <script src="/sgab/js/helper.js"></script>
     </head>
     <body>
@@ -37,9 +37,3 @@
                 <a href='/sgab/main?acao=FornecedorListar' id="fornecedor">Cadastro de Fornecedores</a>
                 <a href='/sgab/main?acao=ObrasListar' id="obras">Cadastro de Obras</a>
             </div>
-        </main>
-        <footer>
-            <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
-        </footer>
-    </body>
-</html>

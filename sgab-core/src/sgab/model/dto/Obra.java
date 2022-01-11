@@ -4,24 +4,27 @@
  */
 package sgab.model.dto;
 
+import sgab.model.dto.util.ObraStatus;
+
 /**
  *
  * @author HP
  */
 public class Obra  {
-    private Integer id;
+    private Long id;
     private String categoria;
     private String titulo;
     //private Autores[] autor;
     //private Assuntos[] assuntos;
     private String nota;
-    private int anoPublicacao;
+    private Integer anoPublicacao;
     private String editora;
     private String cidadeEditora;
-    private String edicao;
-    private int volume;
+    private Integer edicao;
+    private Integer volume;
+    private ObraStatus status;
 
-    public Obra(String categoria, String titulo, String nota, int anoPublicacao, String editora, String cidadeEditora, String edicao, int volume) {
+    public Obra(String categoria, String titulo, String nota, Integer anoPublicacao, String editora, String cidadeEditora, Integer edicao, Integer volume) {
         this.categoria = categoria;
         this.titulo = titulo;
         this.nota = nota;
@@ -30,13 +33,14 @@ public class Obra  {
         this.cidadeEditora = cidadeEditora;
         this.edicao = edicao;
         this.volume = volume;
+        this.status = ObraStatus.ATIVA;
     }
 
-    public int getId() {
-        return id;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,11 +84,11 @@ public class Obra  {
         this.nota = nota;
     }
 
-    public int getAnoPublicacao() {
+    public Integer getAnoPublicacao() {
         return anoPublicacao;
     }
 
-    public void setAnoPublicacao(int anoPublicacao) {
+    public void setAnoPublicacao(Integer anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 
@@ -104,20 +108,28 @@ public class Obra  {
         this.cidadeEditora = cidadeEditora;
     }
 
-    public String getEdicao() {
+    public Integer getEdicao() {
         return edicao;
     }
 
-    public void setEdicao(String edicao) {
+    public void setEdicao(Integer edicao) {
         this.edicao = edicao;
     }
 
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
+    }
+
+    public ObraStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ObraStatus status) {
+        this.status = status;
     }
 
     

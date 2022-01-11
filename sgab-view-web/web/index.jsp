@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>SGAB | Sistema de Gestão de Acervo Bibliográfico </title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="/sgab/css/styles.css">
-        <script src="/sgab/js/helper.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/helper.js"></script>
     </head>
     <body>
         <header>
@@ -19,7 +19,7 @@
             </div>
             <div id="logo-topo">
                 <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                    <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais" />
+                    <img src="images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais" />
                 </a>
             </div>
         </header>
@@ -30,11 +30,11 @@
             <section id="form">
                 <div id="caixa-form">
                     <form name="frmLogin" method='post'>
-                        <label>Usuário: <input type="text" id="login" name="login" placeholder="Login" required> </label>
-                        <br />
-                        <label>Senha: <input type="password" id="senha" name="senha" placeholder="Senha" required> </label>
-                        <br />
-                        <button type="button" onclick="validarCamposLogin(document.frmLogin)">Acessar</button>                       
+                        <label>Usuário: </label><input type="text" id="login" name="login" placeholder="Login" required> 
+                        <label>Senha: </label><input type="password" id="senha" name="senha" placeholder="Senha" required>
+                        <div id="buttons">
+                            <button type="button" onclick="validarCamposLogin(document.frmLogin)">Acessar</button>
+                        </div>                     
                     </form>          
                 </div>
             </section>

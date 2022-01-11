@@ -34,6 +34,24 @@ function validarCamposLogin(frm) {
     return result;
 }
 
+function validarCamposPesquisaObra(frm){
+    let tipo = frm.tipo.value;
+    let nome = frm.nome.value;
+    
+    if(tipo == "null"){
+        alert("Escolha um tipo de pesquisa!");
+        frm.tipo.focus();
+    }
+    else if (nome == ""){
+        alert("Preencha o campo de nome!");
+        frm.nome.focus();
+    }
+    else{
+        frm.action = "/sgab/main?acao=ObraPesquisar";
+        frm.submit();
+    }
+}
+
 
 function validarUsuario(frm) {
     var result = false;
@@ -58,6 +76,33 @@ function validarUsuario(frm) {
 
 }
 
+function validarObra(frm){
+    let result = false;
+    if (frm.titulo.value === "") {
+        alert("Informar o título!");
+        frm.titulo.focus();
+    } else if (frm.ano.value === "") {
+        alert("Informar o ano de publicação!");
+        frm.ano.focus();
+    } else if (frm.editora.value === "") {
+        alert("Informar a editora!");
+        frm.editora.focus();
+    } else if (frm.cidEditora.value === "") {
+        alert("Informar a cidade da editora!");
+        frm.cidEditora.focus();
+    } else if (frm.edicao.value === "") {
+        alert("Informar a edição!");
+        frm.edicao.focus();
+    } else if (frm.volume.value === "") {
+        alert("Informar o volume!");
+        frm.volume.focus();
+    }
+    else
+        result = true;
+    
+    return result
+}
+
 function gravarAlteracao(frm) {
     var table = frm.table.value;
 
@@ -67,6 +112,14 @@ function gravarAlteracao(frm) {
                 caminhourl = "/sgab/main?acao=UsuarioGravarAlteracao";
             else if (frm.acao.value === "gravar")
                 caminhourl = "/sgab/main?acao=UsuarioGravarInsercao";
+        }
+    }
+    else if(table === "obra") {
+        if (validarObra(frm)) {
+            if (frm.acao.value === "alterar")
+                caminhourl = "/sgab/main?acao=ObraGravarAlteracao";
+            else if (frm.acao.value === "gravar")
+                caminhourl = "/sgab/main?acao=ObraGravarInsercao";
         }
     }
 
@@ -81,6 +134,13 @@ function excluir(id, frm) {
         if (confirm('Deseja excluir o Usuário com Id = ' + id + '?')) {
             frm.usuarioId.value = id;
             frm.action = "/sgab/main?acao=UsuarioExcluir";            
+            frm.submit();
+        }
+    }
+    if(table === "obra") {
+        if (confirm('Deseja excluir a Obra com Id = ' + id + '?')) {
+            frm.obraId.value = id;
+            frm.action = "/sgab/main?acao=ObraExcluir";            
             frm.submit();
         }
     }

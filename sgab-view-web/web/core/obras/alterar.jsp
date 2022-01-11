@@ -5,62 +5,39 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% import sgab.model.dto.Obra;
+<%@page import="sgab.model.dto.Obra" %>
+<%@include file="/core/obras/header.jsp" %>
+
+<% 
    Obra obraAlvo = (Obra) request.getAttribute("obra");
 %>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Consulta</title>
-    <meta
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-      name="viewport"
-    />
-    <link rel="stylesheet" href="css/template-form.css" />
-  </head>
   <body>
-    <header>
-      <div id="pagina-inicial">
-        <a href="" title="Página Inicial"> Biblioteca </a>
-      </div>
-      <div id="logo-topo">
-        <a
-          href="http://www.cefetmg.br/"
-          target="_blank"
-          title="Centro Federal de Educação Tecnológica de Minas Gerais"
-        >
-          <img
-            src="img-template/logo_topo.png"
-            alt="Centro Federal de Educação Tecnológica de Minas Gerais"
-          />
-        </a>
-      </div>
-    </header>
-    <main>
-      <section id="nome-form">
-        <h1>Consulta de Obra</h1>
-      </section>
+  <center><h3>Consulta de Obra</h3></center>
       <section id="form">
         <div id="caixa-form">
-          <form action="AlteraObra" method="post">
+          <form name="AlteraObra" method="post">
+            <input type="hidden" name="table" value="obra">
+            <input type="hidden" name="acao" value="alterar">
+            <input type="hidden" name="obraId" value="<%= request.getParameter("obraId") %>">
             <label for="categoria">Categoria</label>
             <select disabled name="categoria" id="categoria">
-              <option value="">Livro</option>
-              <option value="">Mapa</option>
-              <option value="">Documento computacional</option>
+              <option value="livro">Livro</option>
+              <option value="mapa">Mapa</option>
+              <option value="docComputacional">Documento computacional</option>
             </select>
             <label for="titulo">Título</label>
             <input
+              type="text"
               disabled
               id="titulo"
               name="titulo"
-              placeholder="<%= obraAlvo.getTitulo()%>"
               value="<%= obraAlvo.getTitulo()%>"
             />
             <label for="autor">Nome do(a) autor(a)</label>
             <input
+              type="text"
               disabled
               id="autor"
               name="autor"
@@ -74,61 +51,61 @@
             
             <label for="nota">Nota</label>
             <input
+              type="text"
               disabled
               style="height: 5em;"
               id="nota"
               name="nota"
-              placeholder="<%= obraAlvo.getNota()%>"
               value="<%= obraAlvo.getNota()%>"
             />
             <div class="divisao">
               <div>
                 <label for="ano">Ano de publicação</label>
                 <input
+                  type="text"  
                   disabled
                   id="ano"
                   name="ano"
-                  placeholder="<%= obraAlvo.getAnoPublicacao()%>"
-                  value="<%= obraAlvo.getAnoPublicacao()%>"
+                  value=<%= obraAlvo.getAnoPublicacao()%>
                 />
               </div>
               <div>
                 <label for="editora">Editora</label>
                 <input
+                  type="text"
                   disabled
                   id="editora"
                   name="editora"
-                  placeholder="<%= obraAlvo.getEditora()%>"
-                  value="<%= obraAlvo.getEditora%>"
+                  value="<%= obraAlvo.getEditora()%>"
                 />
               </div>
             </div>
             <label for="cidEditora">Cidade da Editora</label>
             <input
+              type="text"
               disabled
               id="cidEditora"
               name="cidEditora"
-              placeholder="<%= obraAlvo.getCidadeEditora()%>"
               value="<%= obraAlvo.getCidadeEditora()%>"
             />
             <div class="divisao">
               <div>
                 <label for="edicao">Edição</label>
                 <input
+                  type="text"
                   disabled
                   id="edicao"
                   name="edicao"
-                  placeholder="<%= obraAlvo.getEdicao()%>"
                   value="<%= obraAlvo.getEdicao()%>"
                 />
               </div>
               <div>
                 <label for="volume">Volume</label>
                 <input
+                  type="text"
                   disabled
                   id="volume"
                   name="volume"
-                  placeholder="<%= obraAlvo.getVolume()%>"
                   value="<%= obraAlvo.getVolume()%>"
                 />
               </div>
@@ -139,8 +116,30 @@
           </form>
         </div>
       </section>
-    </main>
-    <footer></footer>
-    <script src="consultaObra.js"></script>
+  
+    <%@include file="/core/obras/footer.jsp" %>
+    <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
+    <script>
+        let alterarEl = document.querySelector("#alterar");
+
+        alterarEl.addEventListener("click", e => {
+            let disabled = document.querySelectorAll("*[disabled]");
+            disabled.forEach(element => {
+                element.removeAttribute("disabled");
+            });
+
+            let botaoConfirmarEl = document.createElement("button");
+            botaoConfirmarEl.innerHTML = "Confirmar";
+            botaoConfirmarEl.setAttribute("type", "button");
+
+            alterarEl.parentNode.appendChild(botaoConfirmarEl);
+            alterarEl.parentNode.removeChild(alterarEl);
+            
+            botaoConfirmarEl.addEventListener("click", e => {
+                gravarAlteracao(document.AlteraObra);
+            })
+        });
+    </script>
+    
   </body>
 </html>

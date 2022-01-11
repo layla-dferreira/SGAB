@@ -37,6 +37,24 @@ public class Main extends HttpServlet {
             case "UsuarioExcluir":
                 jsp = UsuarioController.excluir(request);
                 break;
+            case "ObrasListar":
+                jsp = ObraController.listar(request);
+                break;
+            case "ObraPesquisar":
+                jsp = ObraController.pesquisar(request);
+                break;
+            case "ObraGravarInsercao":
+                jsp = ObraController.gravarInsercao(request);
+                break;
+            case "ObraAlterar":
+                jsp = ObraController.alterar(request);
+                break;
+            case "ObraGravarAlteracao":
+                jsp = ObraController.gravarAlteracao(request);
+                break;
+            case "ObraExcluir":
+                jsp = ObraController.excluir(request);
+                break;
         }
 
         //Redirecionando pagina

@@ -1,57 +1,60 @@
 package sgab.model.service;
 
 import java.util.LinkedList;
+import java.util.List;
 import sgab.model.dto.util.ObraHelper;
 import sgab.model.dto.Obra;
 import sgab.model.dao.ObraDAO;
+import sgab.model.dto.util.ObraStatus;
+import sgab.model.exception.NegocioException;
 
 public class GestaoObras {
     
-    private ObraHelper helper = new ObraHelper();
-    private ObraDAO dao = new ObraDAO();
-    private Obra obra;
-    private static int idsObra = 0;
+    private ObraDAO obraDAO;
     
-
-    public void cadastrarObra(Obra obra) throws Exception{
-        
-        helper.validarObra(obra);
-        
-        obra.setId(idsObra);
-        idsObra++;
-        dao.inserir(obra);
+    public GestaoObras(){
+        obraDAO = ObraDAO.getInstance();
     }
     
-    public void alterarObra(Obra obra) throws Exception{
-        helper.validarObra(obra);
+    public Long cadastrarObra(Obra obra){
         
-        dao.alterar(obra);
+        List<String> erros = ObraHelper.validarObra(obra);
+        if(!erros.isEmpty()){
+            throw new NegocioException(erros);
+        }
+        
+        obraDAO.inserir(obra);
+        return obra.getId();
     }
     
-    public Obra pesquisarObra(Integer id) throws Exception{
-        if(id<0){
-            throw new Exception("Id inválido");
-        } 
-        
-        obra = dao.pesquisar(id);
-        if(obra==null){
-            throw new Exception("Obra não encontrada");
+    public void atualizaCadastroObra(Obra obra){
+        List<String> erros = ObraHelper.validarObra(obra);
+        if(!erros.isEmpty()){
+            throw new NegocioException(erros);
         }
         
-        return obra;
+        obraDAO.alterar(obra);
     }
     
-    public LinkedList<Obra> pesquisarObra(String nome) throws Exception{
-        if(nome.length()<=1){
-            throw new Exception("O nome não é válido");
+    public void excluirObra(Obra obra){
+        Obra obr = obraDAO.pesquisar(obra.getId());
+        if(obr == null){
+            throw new NegocioException("Obra 'id=" + obra.getId() + "'não encontrado!");
         }
         
-        LinkedList<Obra> resultados = dao.pesquisar(nome);
-        if(resultados.isEmpty()){
-            throw new Exception("Nenhuma obra econtrada");
-        }
-        
-        return resultados;
+        obr.setStatus(ObraStatus.DESATIVADA);
+    }
+    
+    public Obra pesquisarObraID(Long id){
+        return obraDAO.pesquisar(id);
+    }
+    
+    public List<Obra> pesquisarObraNome(String nome){
+        return obraDAO.pesquisarNome(nome);
+    }
+    
+    public List<Obra> pesquisarObrasAtivas(){
+        return obraDAO.listarObras();
     }
     
     
