@@ -8,31 +8,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>SGAB</title>
-        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao-pessoa.js"></script>
+        <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
+        <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
     </head>
     <body>
-        <header>
-            <div id="pagina-inicial">
-                <a href=""title="Página Inicial">
-                    SGAB
-                </a>
-            </div>
-            <div id="logo-topo">
-                <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                    <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
-                </a>
-            </div>
-        </header>
-        <main>
+        <center>
             <section id="nome-form">
                 <h1>Lista de Pessoas</h1>
             </section>
             <a href="/sgab/core/pessoa/inserir.jsp">Nova Pessoa</a>
-            <form name="frmPessoa" method="post">
-                <input type="hidden" name="table" value="Usuario">
-                <input type="hidden" name="usuarioId" value="">
+            <form name="listarPessoa" method="post">
+                <input type="hidden" name="table" value="Pessoa">
+                <input type="hidden" name="pessoaId" value="">
                 
-                <table id="usuario">
+                <table id="pessoa">
                     <tr>
                         <th>
                             Código
@@ -48,9 +37,6 @@
                         </th>
                         <th>
                             Email
-                        </th>
-                        <th>
-                            Senha
                         </th>
                         <th>
                             &nbsp; &nbsp;
@@ -77,15 +63,12 @@
                                 <a href="/sgab/main?acao=PessoaAlterar&pessoaId=<%=pessoa.getId()%>"><%=pessoa.getEmail()%></a>
                             </td>
                             <td>
-                                <a href="/sgab/main?acao=PessoaAlterar&pessoaId=<%=pessoa.getId()%>"><%=pessoa.getSenha()%></a>
-                            </td>
-                            <td>
-                                <input type="button" value="Excluir" onclick="excluir(<%=usuario.getId()%>,document.frmPessoa)">
+                                <input type="button" value="Excluir" onclick="excluir(<%=pessoa.getId()%>,document.listarPessoa)">
                             </td>
                         </tr>
                     <%  } %>
                 </table>
             </form>
-        </main> 
+        </center> 
     </body>
 </html>

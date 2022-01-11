@@ -36,14 +36,19 @@ public class GestaoPessoasService {
         return pessoasDAO.pesquisar(id);
     }   
 
-    public Pessoa pesquisarUsuario(String login, String senha){
+    public Pessoa pesquisarConta(String login, String senha){
         
         Pessoa result = pessoasDAO.pesquisarLoginSenha(login, senha);
         return result;               
     }
 
+    public Pessoa pesquisarPorLogin(String login){
+        Pessoa result = pessoasDAO.pesquisarLogin(login);
+        return result;
+    }
+
     public void alterar(Pessoa pessoa){
-        List<String> exMsgs = PessoaHelper.validarPessoa(pessoa, pessoasDAO);
+        List<String> exMsgs = PessoaHelper.validarAlteracao(pessoa, pessoasDAO);
         
         if (!exMsgs.isEmpty())
             throw new NegocioException(exMsgs);

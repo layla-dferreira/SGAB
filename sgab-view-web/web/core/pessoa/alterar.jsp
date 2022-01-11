@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="sgab.model.dto.Pessoa" %>
+
+<%@include file="/core/menu.jsp" %>
 
 <%  Pessoa pessoa = (Pessoa) request.getAttribute("pessoa"); %>
 
@@ -9,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SGAB | Resultado de Pessoa</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="/sgab/css/styles.css">
     <style>
         #nome, #email, #senha {
             background: #fff url(imgs/editar.png) no-repeat 95% center;
@@ -23,31 +26,26 @@
     </style>
 </head>
 <body>
-    <header>
-        <div id="pagina-inicial">
-            <a href=""title="Página Inicial">
-                SGAB
-            </a>
-        </div>
-        <div id="logo-topo">
-            <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
-            </a>
-        </div>
-    </header>
-    <main>
+    <center>
         <section id="nome-form">
             <h1>Alteraração de Pessoa</h1>
         </section>
         <section id="form">
             <div id="caixa-form">
                 <form name="modificarPessoa" method="post">
-                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="alterar">
+                    <div>
+                        <label for="pessoaId">Código</label>
+                        <input type="number" id="pessoaId" name="pessoaId" placeholder="ID" value="<%=pessoa.getId()%>" readonly>
+                    </div>
                     <div>
                         <label for="cpf">CPF</label>
                         <input type="number" id="cpf" name="cpf" placeholder="CPF" value="<%=pessoa.getCpf()%>" readonly>
-                        <small>Digite um CPF válido. Informe apenas números.</small>
+                    </div>
+                    <div>
+                        <label for="login">Login</label>
+                        <input type="text" id="login" name="login" placeholder="Login" value="<%=pessoa.getLogin()%>" readonly>
                     </div>
                     <div>
                         <label for="nome">Nome</label>
@@ -70,17 +68,18 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div id="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarPessoa(document.frmAltUsuario)">
-                        <input type="button" class="button" name="ordem" value="Excluir" onclick="excluirPessoa(<%=usuario.getCpf()%>, document.modificarPessoa)">
+                        <input type="button" class="button" name="ordem" value="Alterar" onclick="gravarAlteracao(document.modificarPessoa)">
+                        <input type="button" class="button" name="ordem" value="Excluir" onclick="excluir(<%=pessoa.getCpf()%>, document.modificarPessoa)">
                     </div>
                 </form>
             </div>
         </section>
-    </main>
+    </center>
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-    <script src="../../js/validacao.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
     <script>
         let senha2DivEl = document.querySelector("#senha2-div");
 

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sgab.controller.LoginController"%>
-<%@page import="sgab.model.dto.Usuario"%>
+<%@page import="sgab.model.dto.Pessoa"%>
 
 <%
     LoginController.validarSessao(request, response);
@@ -34,6 +34,9 @@
             </section>
             <div class="menu">
                 <a href='/sgab/main?acao=UsuarioListar' id="usuario">Cadastro de Usuarios</a><br>
+            </div >
+            <div class="menu">
+                <a href='/sgab/main?acao=PessoaListar' id="pessoa">Cadastro de Pessoas</a><br>
             </div >
             <div class="menu">
                 <a href='/sgab/main?acao=FornecedorListar' id="fornecedor">Cadastro de Fornecedores</a><br>

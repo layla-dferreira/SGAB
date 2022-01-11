@@ -10,15 +10,16 @@ function validacaoView(inputEl, regexEl, smallEl, labelEl, inputObrigatorioEl) {
         labelEl.style.color = "#dd4b39";
         inputEl.style.borderColor = "#dd4b39";
         inputObrigatorioEl.style.visibility = "visible";
+        inputEl.focus();
     }
 }
 
 let loginEl = document.querySelector("#login");
-cpfEl.addEventListener("change", () => {
+loginEl.addEventListener("change", () => {
 
-    let smallEl = document.querySelector("#cpf ~ small");
-    let labelEl = document.querySelector("label[for=cpf]");
-    let inputObrigatorioEl = document.querySelector("label[for=cpf] .input-obrigatorio");
+    let smallEl = document.querySelector("#login ~ small");
+    let labelEl = document.querySelector("label[for=login]");
+    let inputObrigatorioEl = document.querySelector("label[for=login] .input-obrigatorio");
     
     if(loginEl == null){
         smallEl.classList.add("invalido");
@@ -45,7 +46,7 @@ cpfEl.addEventListener("change", () => {
 
 let nomeEl = document.querySelector("#nome");
 nomeEl.addEventListener("change", () => {
-    let regexEl = /^[A-z]+(\s[A-z]+)+/;
+    let regexEl = /^[A-z]+([ ][A-z]+)+/;
     let smallEl = document.querySelector("#nome ~ small");
     let labelEl = document.querySelector("label[for=nome]");
     let inputObrigatorioEl = document.querySelector("label[for=nome] .input-obrigatorio");
@@ -75,79 +76,20 @@ senhaEl.addEventListener("change", () => {
 
 let senha2El = document.querySelector("#senha2");
 senha2El.addEventListener("change", () => {
-    let regexEl = new RegExp(senhaEl.value);
     let smallEl = document.querySelector("#senha2 ~ small");
     let labelEl = document.querySelector("label[for=senha2]");
     let inputObrigatorioEl = document.querySelector("label[for=senha2] .input-obrigatorio");
-
-    validacaoView(senha2El, regexEl, smallEl, labelEl, inputObrigatorioEl);
-});
-
-function validarPessoa(frm) {
-    var result = false;
     
-    if (frm.cpf.value == "") {
-        alert("Informar o cpf!");
-        frm.cpf.focus();
-    } else if (frm.nome.value === "") {
-        alert("Informar o nome!");
-        frm.nome.focus();
-    } else if (frm.senha.value === "") {
-        alert("Informar a senha!");
-        frm.senha.focus();
-    } else if (frm.email.value === "") {
-        alert("Informar o email!");
-        frm.email.focus();
-    } 
-    else
-        result = true;
-        
-    return result;
-
-}
-
-
-function gravar(frm) {
-    var table = frm.table.value;
-
-    if (table === "Usuario") {
-        if (validarUsuario(frm)) {
-            if (frm.acao.value === "alterar")
-                caminhourl = "/sgab/main?acao=PessoaGravarAlteracao";
-            else if (frm.acao.value === "gravar")
-                caminhourl = "/sgab/main?acao=PessoaGravarInsercao";
-        }
+    if(senha2El.value !== senhaEl.value){
+        smallEl.classList.add("invalido");
+        labelEl.style.color = "#dd4b39";
+        senha2El.style.borderColor = "#dd4b39";
+        inputObrigatorioEl.style.visibility = "visible";
+        senha2El.focus();
+    } else {
+        smallEl.classList.remove("invalido");
+        labelEl.style.color = "#00a65a";
+        senha2El.style.borderColor = "#00a65a";
+        inputObrigatorioEl.style.visibility = "hidden";
     }
-
-    frm.action = caminhourl;
-    frm.submit();
-}
-
-function pesquisar(frm){
-    var table = frm.table.value;
-
-    if (table === "Usuario") {
-        if (frm.cpf.value == "") {
-            alert("Informar o cpf!");
-            frm.cpf.focus();
-        } else {
-            frm.action = "/sgab/main?acao=PessoaPesquisar&PessoaCpf=" + frm.cpf.value;            
-            frm.submit();
-        }
-
-
-    }
-}
-
-function excluir(cpf, frm) {
-    var table = frm.table.value;
-
-    if (table === "Usuario") {
-
-        if (confirm('Deseja excluir o Usuário com Id = ' + cpf + '?')) {
-            frm.cpf.value = cpf;
-            frm.action = "/sgab/main?acao=PessoaExcluir";            
-            frm.submit();
-        }
-    }
-}
+});

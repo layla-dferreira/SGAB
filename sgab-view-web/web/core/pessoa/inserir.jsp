@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SGAB | Cadastro de Pessoa</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="/sgab/css/styles.css">
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
         </div>
         <div id="logo-topo">
             <a href="http://www.cefetmg.br/" target="_blank" title="Centro Federal de Educação Tecnológica de Minas Gerais">
-                <img src="../../images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
+                <img src="/sgab/images/logo_topo.png" alt="Centro Federal de Educação Tecnológica de Minas Gerais">
             </a>
         </div>
     </header>
@@ -29,7 +29,7 @@
         <section id="form">
             <div id="caixa-form">
                 <form name="inserirPessoa" method="post">
-                    <input type="hidden" name="table" value="Usuario">
+                    <input type="hidden" name="table" value="Pessoa">
                     <input type="hidden" name="acao" value="gravar">
                     <div>
                         <label for="login">Informe o seu Login <span class="input-obrigatorio">*</span></label>
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <label for="cpf">Informe o seu CPF <span class="input-obrigatorio">*</span></label>
-                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required>
+                        <input type="number" id="cpf" name="cpf" placeholder="CPF" required maxlength="11">
                         <small>Digite um CPF válido. Informe apenas números.</small>
                     </div>
                     <div>
@@ -62,7 +62,7 @@
                         <small>As senhas não correspondem.</small>
                     </div>
                     <div class="caixa-form-footer">
-                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravar(document.inserirPessoa)">
+                        <input type="button" class="button" name="ordem" value="Cadastrar" onclick="gravarAlteracao(document.inserirPessoa)">
                         <a href="/sgab/main?acao=PessoaListar">Listar Usuários</a><br>
                     </div>
                 </form>
@@ -72,6 +72,7 @@
     <footer>
         <p>SGAB - Sistema de Gestão de Acervo Bibliográfico</p>
     </footer>
-    <script src="../../js/validacao.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/sgab/js/validacao.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/sgab/js/helper.js"></script>
 </body>
 </html>

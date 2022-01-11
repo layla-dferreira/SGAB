@@ -19,7 +19,11 @@ public class PessoaHelper {
             exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
         }
         
-        if(pessoas.pesquisar(pessoa.getCpf()) != null) {
+        if(pessoas.pesquisarLogin(pessoa.getLogin()) != null){
+            exMsgs.add("O Login precisa ser único.");
+        }
+        
+        if(pessoas.pesquisarCpf(pessoa.getCpf()) != null) {
             exMsgs.add("O CPF inserido já foi cadastrado.");
         }
         
@@ -33,6 +37,26 @@ public class PessoaHelper {
 
         return exMsgs;
     }
+    
+    public static List<String> validarAlteracao(Pessoa pessoa, PessoasDAO pessoas){
+        List<String> exMsgs = new LinkedList<>();
+        
+        if(!validarEmail(pessoa.getEmail())){
+            exMsgs.add("O email da pessoa não é válido.");
+        }
+        
+        if(!pessoa.getSenha().equals(pessoas.pesquisar(pessoa.getId()).getSenha())){
+            if(!validarSenha(pessoa.getSenha())){
+                exMsgs.add("A senha da pessoa precisa ter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
+            }
+        }
+        
+        if(!validarNome(pessoa.getNome())){
+            exMsgs.add("O nome da pessoa não é válido.");
+        }
+
+        return exMsgs;
+    }
 
     public static boolean validarCpf(Long cpf){
         if(cpf == null){
@@ -41,7 +65,7 @@ public class PessoaHelper {
         
         String c = Long.toString(cpf);
 
-        String regexCpf = "^[0-9]{9}$";
+        String regexCpf = "^[0-9]{11}$";
         Pattern validarCpf = Pattern.compile(regexCpf);
         Matcher matcher = validarCpf.matcher(c);
 
@@ -57,7 +81,7 @@ public class PessoaHelper {
             return false;
         }
         
-        String regexNomeCompleto = "^[A-z]+(\s[A-z]+)+";
+        String regexNomeCompleto = "^[A-z]+([ ][A-z]+)+";
         Pattern validarNome = Pattern.compile(regexNomeCompleto);
         Matcher matcher = validarNome.matcher(nome);
 

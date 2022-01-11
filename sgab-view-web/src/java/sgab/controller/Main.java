@@ -37,7 +37,9 @@ public class Main extends HttpServlet {
             case "UsuarioExcluir":
                 jsp = UsuarioController.excluir(request);
                 break;
-
+            case "PessoaPesquisar":
+                jsp = PessoaController.pesquisarLogin(request);
+                break;
             case "PessoaListar":
                 jsp = PessoaController.listar(request);
                 break;

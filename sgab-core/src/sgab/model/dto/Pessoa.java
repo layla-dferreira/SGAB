@@ -4,14 +4,15 @@ public class Pessoa {
     
     private Long id;
     private final String Login;
-    private Long cpf;
+    private final Long cpf;
     private String nome;
     private String email;
     private String senha;
     private boolean habilitado;
 
-    public Pessoa(String login){
+    public Pessoa(String login, Long cpf){
         this.Login = login;
+        this.cpf = cpf;
         this.habilitado = true;
     }
 
@@ -38,10 +39,6 @@ public class Pessoa {
 
     public Long getCpf() {
         return cpf;
-    }
-
-    public void setCpf(Long cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
