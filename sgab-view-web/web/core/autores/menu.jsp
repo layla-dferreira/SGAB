@@ -43,10 +43,10 @@
         <section id="form">
             <div id="caixa-form">
                 <h2>Gestão</h2>
-                <a href="cadastrar.html"><button>Cadastrar um autor</button></a>
-                <a href="excluir.html"><button>Excluir um autor</button></a>
-                <a href="pesquisar.html"><button>Pesquisar um autor</button></a>
-                <a href="pesquisar.html"><button>Alterar um autor</button></a>
+                <a href="cadastrar.jsp"><button>Cadastrar um autor</button></a>
+                <a href="excluir.jsp"><button>Excluir um autor</button></a>
+                <a href="pesquisar.jsp"><button>Pesquisar um autor</button></a>
+                <a href="pesquisar.jsp"><button>Alterar um autor</button></a>
             </div>
         </section>
     </main>
