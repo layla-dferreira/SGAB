@@ -8,6 +8,7 @@ import java.util.Map;
 import sgab.model.dto.Obra;
 import sgab.model.dto.util.ObraStatus;
 import sgab.model.exception.PersistenciaException;
+import sgab.model.dto.Autor;
 
 public class ObraDAO implements GenericDAO<Obra, Long>{
     private Map<Long, Obra> obras = new HashMap<>();
@@ -79,7 +80,16 @@ public class ObraDAO implements GenericDAO<Obra, Long>{
     }
     
     public List pesquisarAutor(String autor){
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");LinkedList<Obra> resultados = new LinkedList();
+        LinkedList<Obra> resultados = new LinkedList();
+        for (Obra obra : listarObras()){
+            for (Autor autores : obra.getAutor()){
+                if(autores.getNome().equals(autor)){
+                    resultados.add(obra);
+                }   
+            }
+        }
+        return resultados;
     }
     
     @Override
