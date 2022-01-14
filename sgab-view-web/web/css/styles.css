@@ -201,6 +201,7 @@ small {
     color: #fff;
     margin-left: 3px;
     text-decoration: none; 
+    cursor: pointer;
 }
 
 footer{
@@ -274,10 +275,18 @@ footer p{
     top: 121px;
 }
 
-.menu a:hover {background-color: #3c8dbc;
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover{background-color: #3c8dbc;
     border-radius: 3px;
     color: white; 
 } 
+
+
+
 #usuario th{
     border: #000;
     background-color: #aaaaaa;
@@ -298,7 +307,7 @@ input[disabled], select[disabled]{
     background-color: #f0f0f0;
 }
 
-#buttons{
+.buttons{
     display: flex;
     justify-content: end;
 }
@@ -310,10 +319,10 @@ input[disabled], select[disabled]{
     margin-bottom: 1em;
 }
 
-#pesquisa-container{
+.pesquisa-container{
     display: flex;
     align-items: center;
 }
-#pesquisa-container input, select{
+.pesquisa-container input, select{
     margin-bottom: 0;
 }
