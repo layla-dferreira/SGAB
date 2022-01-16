@@ -37,9 +37,6 @@ public class PesquisaAutorAjax extends HttpServlet {
             GestaoAutor gestaoAutor = new GestaoAutor();
             
             String nomeAutor = request.getParameter("nomeAutor");
-            System.out.println(nomeAutor);
-            Autor autor = new Autor(nomeAutor);
-            gestaoAutor.cadastrarAutor(autor);
             Autor alvo = gestaoAutor.pesquisarNome(nomeAutor);
             
             if(alvo != null)

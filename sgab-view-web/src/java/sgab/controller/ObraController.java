@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import sgab.model.dto.Autor;
 import sgab.model.dto.Obra;
-import sgab.model.exception.NegocioException;
 import sgab.model.exception.PersistenciaException;
 import sgab.model.service.GestaoAutor;
 import sgab.model.service.GestaoObras;
@@ -87,7 +86,7 @@ public class ObraController {
             Integer volumeObra = Integer.parseInt(request.getParameter("volume"));
 
             Obra obra = new Obra(categoriaObra, tituloObra, autores, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
-
+            
             Long obraId = gestaoObras.cadastrarObra(obra);
 
             if (obraId != null) {
@@ -97,10 +96,7 @@ public class ObraController {
                 request.setAttribute("erro", erro);
                 jsp = "/core/erro.jsp";
             }
-        } catch (NegocioException e) {
-            for(String mensagem : e.getMessages()){
-                System.out.println(mensagem);
-            }
+        } catch (Exception e) {
             e.printStackTrace();
             jsp = "";
         }
@@ -155,7 +151,6 @@ public class ObraController {
 
             Obra obra = new Obra(categoriaObra, tituloObra, autores, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
             obra.setId(idObra);
-            
             
             try {
                 gestaoObra.atualizaCadastroObra(obra);

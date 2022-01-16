@@ -171,31 +171,18 @@ file="/core/header.jsp" %>
       novoAutorEl.id = nome;
 
       autoresEL.appendChild(novoAutorEl);
-      if(autoresInputEl.value != ""){
-        autoresInputEl.value = autoresInputEl.value + "::" + nome;
-      }
-      else{
-        autoresInputEl.value = nome;
-      }
+      autoresInputEl.value = autoresInputEl.value + nome + "::";
+
   }
 
   function excluirAutor(nome){
-    let descricao = "::" + nome;
+    let descricao = nome + "::";
     let regex = new RegExp(descricao, "gm");
-    let regexDois = new RegExp(nome + "::", "gm");
     let autoresInputEl = document.querySelector("#autores-input");
 
     let autorAlvoEl = document.querySelector("#" + nome);
     autorAlvoEl.parentNode.removeChild(autorAlvoEl);
-    if(regex.exec(autoresInputEl.value)!= null){
-      autoresInputEl.value = autoresInputEl.value.replace(regex, "");
-    }
-    else if(regexDois.exec(autoresInputEl.value)){
-      autoresInputEl.value = autoresInputEl.value.replace(regexDois, "");
-    }
-    else{
-      autoresInputEl.value = autoresInputEl.value.replace(nome, "");
-    }
+    autoresInputEl.value = autoresInputEl.value.replace(regex, "");
   }
 </script>
 <%@include file="/core/footer.jsp" %>

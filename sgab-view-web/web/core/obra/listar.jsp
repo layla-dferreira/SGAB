@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sgab.model.dto.Obra" %>
+<%@page import="sgab.model.dto.Autor" %>
 <%@page import="java.util.List" %>
 
 <%@include file="/core/header.jsp" %>
@@ -48,7 +49,11 @@
                         <td class="pesquisa"><a href="/sgab/main?acao=ObraAlterar&obraId=<%=obra.getId()%>">&#128270</a></td>
                       <td><%= obra.getId()%></td>
                       <td><%= obra.getTitulo()%></td>
-                      <td></td>
+                      <td>
+                      <% for(Autor autor: obra.getAutor()){ %>
+                        <%= autor.getNome()%>;
+                      <% } %>
+                      </td>
                       <td><%= obra.getEditora()%></td>
                       <td><%= obra.getEdicao()%></td>
                       <td><%= obra.getVolume()%></td>
