@@ -72,11 +72,6 @@ public class Main extends HttpServlet {
                 break;
             case "PessoaExcluir":
                 jsp = PessoaController.excluir(request);
-            case "BibliotecaGravarAlteracao":
-                jsp = "gerenciaServlet";
-                break;
-            case "BibliotecaGravarInsercao":
-                jsp = "cadstroServlet";
                 break;
         }
 
