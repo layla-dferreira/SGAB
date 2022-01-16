@@ -126,6 +126,8 @@ function gravarAlteracao(frm) {
                 caminhourl = "/sgab/main?acao=ObraGravarAlteracao";
             else if (frm.acao.value === "gravar")
                 caminhourl = "/sgab/main?acao=ObraGravarInsercao";
+        }
+    }
     else if(table === "Biblioteca"){
         if(validarBiblioteca(frm)){
             if (frm.acao.value === "alterar")
