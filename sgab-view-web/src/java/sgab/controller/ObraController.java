@@ -1,10 +1,13 @@
 package sgab.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.LinkedList;
 import java.util.List;
+import sgab.model.dto.Autor;
 import sgab.model.dto.Obra;
 import sgab.model.exception.NegocioException;
 import sgab.model.exception.PersistenciaException;
+import sgab.model.service.GestaoAutor;
 import sgab.model.service.GestaoObras;
 
 
@@ -63,18 +66,28 @@ public class ObraController {
     public static String gravarInsercao(HttpServletRequest request) {
         String jsp = "";
         try {
+            GestaoAutor gestaoAutor = new GestaoAutor();
+            GestaoObras gestaoObras = new GestaoObras();
+            
             String tituloObra = request.getParameter("titulo");
             String categoriaObra = request.getParameter("categoria");
             String notaObra = request.getParameter("nota");
+            
+            List<Autor> autores = new LinkedList<>();
+            String[] nomeAutores = request.getParameter("autores").split("::");
+            for(String autor: nomeAutores){
+                Autor alvo = gestaoAutor.pesquisarNome(autor);
+                autores.add(alvo);
+            }
+            
             Integer anoObra = Integer.parseInt(request.getParameter("ano"));
             String editoraObra = request.getParameter("editora");
             String cidadeEditoraObra = request.getParameter("cidEditora");
             Integer edicaoObra = Integer.parseInt(request.getParameter("edicao"));
             Integer volumeObra = Integer.parseInt(request.getParameter("volume"));
 
-            Obra obra = new Obra(categoriaObra, tituloObra, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
+            Obra obra = new Obra(categoriaObra, tituloObra, autores, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
 
-            GestaoObras gestaoObras = new GestaoObras();
             Long obraId = gestaoObras.cadastrarObra(obra);
 
             if (obraId != null) {
@@ -119,21 +132,31 @@ public class ObraController {
     public static String gravarAlteracao(HttpServletRequest request) {
         String jsp = "";
         try {
-
+            GestaoAutor gestaoAutor = new GestaoAutor();
+            GestaoObras gestaoObra = new GestaoObras();
+            
             Long idObra = Long.parseLong(request.getParameter("obraId"));
             String tituloObra = request.getParameter("titulo");
             String categoriaObra = request.getParameter("categoria");
             String notaObra = request.getParameter("nota");
+            
+            List<Autor> autores = new LinkedList<>();
+            String[] nomeAutores = request.getParameter("autores").split("::");
+            for(String autor: nomeAutores){
+                Autor alvo = gestaoAutor.pesquisarNome(autor);
+                autores.add(alvo);
+            }
+            
             Integer anoObra = Integer.parseInt(request.getParameter("ano"));
             String editoraObra = request.getParameter("editora");
             String cidadeEditoraObra = request.getParameter("cidEditora");
             Integer edicaoObra = Integer.parseInt(request.getParameter("edicao"));
             Integer volumeObra = Integer.parseInt(request.getParameter("volume"));
 
-            Obra obra = new Obra(categoriaObra, tituloObra, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
+            Obra obra = new Obra(categoriaObra, tituloObra, autores, notaObra, anoObra, editoraObra, cidadeEditoraObra, edicaoObra, volumeObra);
             obra.setId(idObra);
             
-            GestaoObras gestaoObra = new GestaoObras();
+            
             try {
                 gestaoObra.atualizaCadastroObra(obra);
                 jsp = ObraController.listar(request);
