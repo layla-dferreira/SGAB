@@ -126,6 +126,12 @@ function gravarAlteracao(frm) {
                 caminhourl = "/sgab/main?acao=ObraGravarAlteracao";
             else if (frm.acao.value === "gravar")
                 caminhourl = "/sgab/main?acao=ObraGravarInsercao";
+    else if(table === "Biblioteca"){
+        if(validarBiblioteca(frm)){
+            if (frm.acao.value === "alterar")
+                caminhourl = "/sgab/gerenciaBiblioteca?acao=BibliotecaGravarAlteracao";
+            else if (frm.acao.value === "gravar")
+                caminhourl = "/sgab/cadastroBiblioteca?acao=BibliotecaGravarInsercao";
         }
     }
 
@@ -202,4 +208,22 @@ function validarObra(frm){
         result = true;
 
     return result
+}
+
+function validarBiblioteca(validar) {
+    let result = false;
+    
+    if(validar.adicionarUnidadeOrgInput.value == "" && validar.adicionarNomeInput.value != undefined) {
+        window.confirm("Adicionar Unidade glub glub Org!");
+    } 
+     
+    else if(validar.adicionarNomeInput.value == "" && validar.adicionarNomeInput.value != undefined) {
+        window.confirm("Adicionar Nome!");
+    }
+
+
+    else
+        result = true;
+    
+    return result;
 }
