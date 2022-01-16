@@ -1,5 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%
+    Long pessoaId = (Long) request.getSession().getAttribute("pessoaId");
+    if (pessoaId != null) {
+        //Redirecionando pagina
+        RequestDispatcher rd = request.getRequestDispatcher("/core/menu.jsp");
+        rd.forward(request, response);
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,13 +16,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>SGAB | Sistema de Gestão de Acervo Bibliográfico </title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="/sgab/css/styles.css">
         <script src="/sgab/js/helper.js"></script>
     </head>
     <body>
         <header>
             <div id="pagina-inicial">
-                <a href=""title="Página Inicial">
+                <a href="" title="Página Inicial">
                     SGAB
                 </a>
             </div>
@@ -30,12 +39,12 @@
             <section id="form">
                 <div id="caixa-form">
                     <form name="frmLogin" method='post'>
-                        <label>Usuário: <input type="text" id="login" name="login" placeholder="Login" required> </label>
+                        <label>Login: <input type="text" id="login" name="login" placeholder="Login" required> </label>
                         <br />
                         <label>Senha: <input type="password" id="senha" name="senha" placeholder="Senha" required> </label>
                         <br />
                         <button type="button" onclick="validarCamposLogin(document.frmLogin)">Acessar</button>                       
-                    </form>          
+                    </form>
                 </div>
             </section>
         </main>
