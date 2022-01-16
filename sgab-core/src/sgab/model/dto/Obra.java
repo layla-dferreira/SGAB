@@ -5,6 +5,8 @@
 package sgab.model.dto;
 
 import sgab.model.dto.util.ObraStatus;
+import sgab.model.dto.Autor;
+import java.util.List;
 
 /**
  *
@@ -14,7 +16,7 @@ public class Obra  {
     private Long id;
     private String categoria;
     private String titulo;
-    //private Autores[] autor;
+    private List<Autor> autores;
     //private Assuntos[] assuntos;
     private String nota;
     private Integer anoPublicacao;
@@ -24,9 +26,10 @@ public class Obra  {
     private Integer volume;
     private ObraStatus status;
 
-    public Obra(String categoria, String titulo, String nota, Integer anoPublicacao, String editora, String cidadeEditora, Integer edicao, Integer volume) {
+    public Obra(String categoria, String titulo, List<Autor> autores, String nota, Integer anoPublicacao, String editora, String cidadeEditora, Integer edicao, Integer volume) {
         this.categoria = categoria;
         this.titulo = titulo;
+        this.autores = autores;
         this.nota = nota;
         this.anoPublicacao = anoPublicacao;
         this.editora = editora;
@@ -60,15 +63,15 @@ public class Obra  {
         this.titulo = titulo;
     }
 
-    /*public Autores[] getAutor() {
-        return autor;
+    public List<Autor> getAutor() {
+        return autores;
     }
 
-    public void setAutor(Autores[] autor) {
-        this.autor = autor;
+    public void setAutor(List<Autor> autores) {
+        this.autores = autores;
     }
 
-    public Assuntos[] getAssuntos() {
+    /*public Assuntos[] getAssuntos() {
         return assuntos;
     }
 
