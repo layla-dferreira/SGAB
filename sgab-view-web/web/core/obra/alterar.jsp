@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sgab.model.dto.Obra" %>
+<%@page import="sgab.model.dto.Autor" %>
 
 <%@include file="/core/header.jsp" %>
 
@@ -15,7 +16,7 @@
   <center><h3>Consulta de Obra</h3></center>
       <section id="form">
         <div id="caixa-form">
-          <form name="AlteraObra" method="post">
+          <form id="AlteraObra" name="AlteraObra" method="post">
             <input type="hidden" name="table" value="Obra">
             <input type="hidden" name="acao" value="alterar">
             <input type="hidden" name="obraId" value="<%= request.getParameter("obraId") %>">
@@ -33,14 +34,14 @@
               name="titulo"
               value="<%= obraAlvo.getTitulo()%>"
             />
-            <label for="autor">Nome do(a) autor(a)</label>
-            <input
-              type="text"
-              disabled
-              id="autor"
-              name="autor"
-              placeholder="TODO"
-            />
+            <label>Autores</label>
+            <input id="autores-input" type="hidden" name="autores" value="<% for(Autor autorAtual:obraAlvo.getAutor()){ %><%= autorAtual.getNome()%>::<% } %>">
+            <div id="autores" style="padding-top: 10px;">
+              <% for(Autor autorAtual:obraAlvo.getAutor()){ %>
+                <div class="acoes" id="<%= autorAtual.getNome()%>"><span><%= autorAtual.getNome()%></span></div>
+              <% } %>
+            </div>
+            
             <label for="assunto">Assunto</label>
             <div id="tags" class="visivel">
 
@@ -108,13 +109,44 @@
                 />
               </div>
             </div>
-            <div id="buttons">
+            <div class="buttons">
                 <button type="button" id="alterar">Alterar</button>
             </div>
           </form>
         </div>
       </section>
+
+      <!--Mask-->
+      <div id="mask" onclick="fechaModalAll()"></div>
+
+      <!-- Modal Autores-->
+      <div class="form-popup" id="pesquisaAutor">
+        <div class="close-btn" onclick="fechaModal('pesquisaAutor')">&times;</div>
+        <form class="form-container">
+          <h2>Adicionar Autor</h2>
+          <div>
+            <div class="pesquisa-container">
+              <input type="hidden" value="ObraPesquisar" name="acao" />
+              <input type="text" id="nomeAutor" placeholder="Insira o nome do autor." />
+              <input class="button" type="button" onclick="ajaxAutor()" value="Pesquisar" />
+            </div>
+            <div id="resultados-pesquisa-autores"></div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal Assuntos-->
+      <div class="form-popup" id="pesquisaAssunto">
+        <div class="close-btn" onclick="fechaModal('pesquisaAssunto')">&times;</div>
+        <form class="form-container">
+          <h2>Adicionar Assunto</h2>
+          <div>
+            <button type="submit" class="button-form">Adicionar</button>
+          </div>
+        </form>
+      </div>
   
+    <script src="/sgab/js/cssControl.js"></script>
     <script>
         let alterarEl = document.querySelector("#alterar");
 
@@ -134,6 +166,77 @@
             botaoConfirmarEl.addEventListener("click", e => {
                 gravarAlteracao(document.AlteraObra);
             })
+
+            let autores = document.querySelectorAll("#autores div");
+            autores.forEach(element => {
+              let botaoExcluirEl = document.createElement("input");
+              botaoExcluirEl.type = "button";
+              botaoExcluirEl.value = "Excluir";
+              botaoExcluirEl.addEventListener("click", e =>{
+                excluirAutor(e.target.parentNode.id);
+              });
+              element.appendChild(botaoExcluirEl);
+            });
+
+            let formEl = document.querySelector("#AlteraObra");
+            let autoresEl = document.querySelector("#autores");
+
+            let botaoAdicionarEl = document.createElement("span");
+            botaoAdicionarEl.style = "float: right; font-weight: bolder; font-size: 1.5em; cursor: pointer; user-select: none;";
+            botaoAdicionarEl.id = "expandir";
+            botaoAdicionarEl.innerText = "+";
+            botaoAdicionarEl.addEventListener("click", e => {
+              abreModal('pesquisaAutor');
+            })
+            formEl.insertBefore(botaoAdicionarEl, autoresEl);
+
         });
+        
+        let autoresResultEL = document.querySelector("#resultados-pesquisa-autores");
+
+        function ajaxAutor() {
+          let xh;
+          if (window.XMLHttpRequest) // código dos browsers modernos
+            xh = new XMLHttpRequest();
+          else
+            xh = new ActiveXObject("Microsoft.XMLHTTP");
+
+          xh.onreadystatechange = function (){
+            if (this.readyState == 4 && this.status == 200) {
+              autoresResultEL.innerHTML = this.responseText;
+            };
+          }
+
+          let nomeAutor = encodeURIComponent(document.querySelector("#nomeAutor").value);
+          let parameters = "nomeAutor=" + nomeAutor;
+          xh.open("POST", "/sgab/PesquisaAutorAjax", true);
+          xh.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xh.send(parameters);
+        }
+        
+        function adicionaAutor(nome){
+
+          let autoresEL = document.querySelector("#autores");
+          let autoresInputEl = document.querySelector("#autores-input");
+
+          let novoAutorEl = document.createElement("div");
+          novoAutorEl.innerHTML = "<span>" + nome + "</span><input type=\"button\" value=\"Excluir\" onclick=\"excluirAutor('" + nome + "')\">";
+          novoAutorEl.classList.add("acoes");
+          novoAutorEl.id = nome;
+
+          autoresEL.appendChild(novoAutorEl);
+          autoresInputEl.value = autoresInputEl.value + nome + "::";
+
+        }
+        
+        function excluirAutor(nome){
+          let descricao = nome + "::";
+          let regex = new RegExp(descricao, "gm");
+          let autoresInputEl = document.querySelector("#autores-input");
+
+          let autorAlvoEl = document.querySelector("#" + nome);
+          autorAlvoEl.parentNode.removeChild(autorAlvoEl);
+          autoresInputEl.value = autoresInputEl.value.replace(regex, "");
+        }
     </script>
     <%@include file="/core/footer.jsp" %>
